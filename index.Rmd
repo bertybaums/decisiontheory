@@ -24,7 +24,7 @@ documentclass: book
 # - packages.bib
 # biblio-style: apalike
 # link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: bertybaums/decisiontheory
 description: "This is a draft of a decision theory book written in BookDown"
 ---
 
