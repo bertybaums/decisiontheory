@@ -1,0 +1,8 @@
+Type: project
+Description: test bookdown build.
+Depends:
+    rmarkdown,
+    bookdown,
+    magick,
+    pdftools,
+    ggplot2
