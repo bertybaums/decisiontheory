@@ -1,3 +1,4 @@
+// slightly tweaked TOC from tufte_book
 #TOC ul,
 #TOC li,
 #TOC span,
@@ -71,6 +72,7 @@
   background: linear-gradient(to bottom, #262626 0%, #070707 100%);
 }
 #TOC .has-sub {
+  // z-index removed to avoid issues on hover
   //z-index: 1;
 }
 #TOC .has-sub:hover > ul {
@@ -82,6 +84,7 @@
   width: 200px;
   top: 100%;
   left: 0;
+  // add z-index to hover dropdown to avoid issues
   z-index: 99;
 }
 #TOC .has-sub ul li a {

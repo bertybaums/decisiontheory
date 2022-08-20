@@ -1,8 +1,8 @@
 bookdown::tufte_html_book:
   toc: yes
   css: 
-    - toc.css
-    #- custom.css 
+    - toc-vip.css
+    #- toc-tufte.css 
   split_by: chapter
 
 bookdown::pdf_book:
