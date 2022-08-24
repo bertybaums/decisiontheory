@@ -1,8 +1,9 @@
 bookdown::tufte_html_book:
   toc: yes
-  css: 
+  toc_depth: 2
+  css:
     - toc-vip.css
-    #- toc-tufte.css 
+    #- toc-tufte.css
   split_by: chapter
   # add mathjax url since default build gives messed up local url
   mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
