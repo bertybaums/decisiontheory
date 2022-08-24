@@ -18,6 +18,7 @@ header-includes:
   - \usepackage{tikz}
   - \usepackage{pgfplots}
 site: bookdown::bookdown_site
+url: https://bertybaums.github.io/decisionstheory/
 documentclass: book
 # bibliography:
 # - book.bib
