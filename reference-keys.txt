@@ -80,7 +80,6 @@ causal-models
 common-causes
 application-to-newcomb-like-problems
 the-locus-of-choice-and-types-of-decision-theories
-exercises-6
 probabilities
 measures
 normalized-measures
