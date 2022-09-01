@@ -1,1 +1,3 @@
 # Base Rates, Priors, and Bayes Rule
+
+Evan is cool
