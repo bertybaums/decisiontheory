@@ -6,7 +6,7 @@ Another way of thinking about what is and isn't in our control is in terms of **
 
 We have to be careful about how we think about intervention in our decision tables. It can be tempting to think that by intervening we are shaping the world to our will, but that's not quite right, or at least not that simple. A better way is to imagine that the world is like an agent that has already selected which column in a table is true, but we are uncertain about what the world has selected. The action that we then select intervenes by narrowing down the set of possible outcomes by selecting a particular row. The world then "reveals" what it had already selected just before we made our choice, and the outcome then becomes known to us.
 
-There have been some recent developments in modeling the idea of interventions. These include the idea of a causal model.^[Judea Pearl's book *Causality* had a big impact on thinking about causal models. Another more recent book of his is *The Book of Why*.] This chapter will introduce the idea of causal models and their respresentations as causal graphs (or networks). After introducing the basic ideas behind causal models, we'll use them to illustrate that there are different kinds of decisions theories. All of these make use of expected utility, but they differ in their interpretations of how choices intervene.
+There have been some recent developments in modeling the idea of interventions. These include the idea of a causal model.^[Judea Pearl's book *Causality* had a big impact on thinking about causal models. Another more recent book of his is *The Book of Why*.] This chapter will introduce the idea of causal models and their representations as causal graphs (or networks). After introducing the basic ideas behind causal models, we'll use them to illustrate that there are different kinds of decisions theories. All of these make use of expected utility, but they differ in their interpretations of how choices intervene.
 
 
 ## Causal Models
@@ -23,15 +23,15 @@ To start, let's temporarily assume that the world is perfectly deterministic and
     el/.style = {inner sep=2pt, align=left, sloped}
 }
 \begin{tikzpicture}
-    \node[state] (x) at (0,0) {$BEHAVIOR$};
-    \node[state] (y) [right=of x] {$TEST$};
-    \node[state] (z) [right=of y] {$PRIZE$};
+    \node[state] (x) at (0,0) {BEHAVIOR};
+    \node[state] (y) [right=of x] {TEST};
+    \node[state] (z) [right=of y] {PRIZE};
     \path (x) edge (y);
     \path (y) edge (z); 
 \end{tikzpicture}
 ```
 
-Given our assumptions, there is just one way for you to get the prize. You getting the prize depends on you passing the test, and you passing the test depends on you studying. We can express these dependencies using some very simple equations. Let's use '1' to represent cases of studying, passing, and winning the prize, and we'll use '0' to represent partying, failing, and not getting a prize. In addition, we'll read 'X:=Y' as 'the value of X depends on the value of Y' (note the direction of dependency, which only goes the one way). The following single equation then represents that the PRIZE variable depends on the TEST variable:
+Given our assumptions, there is just one way for you to get the prize. You getting the prize depends on you passing the test, and you passing the test depends on you studying. We can express these dependencies using some very simple equations. Let's use '1' to represent cases of studying, passing, and winning the prize, and we'll use '0' to represent partying, failing, and not getting a prize. In addition, we'll read 'X:=Y' as 'the value of X depends on the value of Y'.^[Note the direction of dependency, which only goes the one way. Think of ':=' as a single symbol, like going backwards along the arrow on the diagrams.] The following single equation then represents that the PRIZE variable depends on the TEST variable:
 \[
 PRIZE := TEST
 \]
@@ -53,7 +53,7 @@ The simple scenario we have been working with might remind you of decisions made
 
 We can use our graphs to also represent this situation. We'll have three nodes, one for the possible actions (bet / don't bet), one for the possible world states (heads / tails), and one for the possible outcomes (the four cells in our table).
 
-```{tikz, echo=FALSE, fig.cap = "Causal Pathway for Decisions", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
+```{tikz, echo=FALSE, fig.cap = "General Causal Pathway for Decisions. The WORLD bubble is like all the columns in our decision tables, the ACTION bubble is like all the rows, and the OUTCOME bubble is like all the cells of a table.", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
 \usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
 \tikzset{
     -Latex,auto,node distance =1 cm and 1 cm,semithick,
@@ -84,7 +84,7 @@ We now have three kinds of representations we can make use of.^[That is, tables,
 An important concept that causal graphs help us illustrate is the idea of a common cause. Let's suppose that you occassionally suffer from severe headaches. A pretty good indicator of whether you will get one later in the day is if you have "spots" in your vision in the morning. You also notice that on days when you eat a banana in the morning you tend not to get a headache later in the day.  Let's use $H=1$ to represent that you get a headache, $H=0$ that you don't, $V=1$ that you have spots in your vision, $V=0$ that you don't, and $A=1$ that you ate a banana in the morning and $A=0$ that you didn't. The causal graph would look like this.
 
 
-```{tikz, echo=FALSE, fig.cap = "Simple causal pathway", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
+```{tikz, echo=FALSE, fig.cap = "Getting a headache can depend on having spots in your vision or whether you ate a banana.", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
 \usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
 \tikzset{
     -Latex,auto,node distance =1 cm and 1 cm,semithick,
@@ -121,7 +121,7 @@ Now lets add in an additional consideration. Suppose that you go to the doctor a
 
 Let's update our causal graph. You'll notice that a potassium deficiency has two effects, one on spotty vision and one on your choice to eat a banana. Let's say $D=1$ means you have a potassium deficiency and $D=0$ means you don't.
 
-```{tikz, echo=FALSE, fig.cap = "Common cause pathway", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
+```{tikz, echo=FALSE, fig.cap = "A common cause pathway. A deficiency of potassium causes both spots in vision and a desire to eat bananas.", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
 \usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
 \tikzset{
     -Latex,auto,node distance =1 cm and 1 cm,semithick,
@@ -142,13 +142,21 @@ Let's update our causal graph. You'll notice that a potassium deficiency has two
 \end{tikzpicture}
 ```
 
-TODO: SHOW THE SYSTEM OF STRUCTURAL EQUATIONS (and recall the distinction between a structural equation and a system of them)
+This more complicated causal graph can no longer be represented by a single equation. Rather, we now need a *system* of equations that when taken together represent the graph.^[In the literature each line is called a *structural* equation, and the collection of them is the *system* of structural equations.] 
 
-If we now consider the possibilities, we'll notice that you never get a headache. This is because on the days that you would get a headache from spotty vision are days when you have a potassium deficiency, but a potassium deficiency also means that you will eat a banana, and thereby counteract the headache. In our example, spotty vision and eating bananas have a **common cause**, namely a potassium deficiency. 
+$$
+\begin{aligned}
+V &:= D\\
+A &:= D \\
+H &:= V\times(1-A)
+\end{aligned}
+$$
+
+If we now consider the possibilities, we'll notice that you never get a headache. This is because on the days that you would get a headache from spotty vision are days when you have a potassium deficiency, but a potassium deficiency also means that you will eat a banana, and thereby counteract the headache. In our example, spotty vision and eating bananas have a **common cause**, namely a potassium deficiency.^[Try out this reasoning on the system of equations: set $D=0$ and find the value of $H$, then do it again when you set $D=1$. What do you notice about the value of $H$ in each case?] 
 
 Causal graphs make it really easy to spot when two or more variables have a common cause. We simply take those nodes and trace the upstream arrows: if the variables all have a common ancestor, then they have a common cause (the variable that is the common ancestor).
 
-When two or more variables have a common cause, those variables will be highly correlated with each other, even though they are not causes of one another. For example, an increase in ice cream sales can be correlated with an increase in pool drownings. We should not think, however, that ice cream sales cause pool drownings (nor for that matter, that pool drownings cause more ice cream sales!). Rather, an increase in ice cream sales and pool drownings have a common cause: an increase in temperature, which tends to cause people to both buy more ice cream and to go swimming (which in some cases unfortunately leads to some people drowning).
+When two or more variables have a common cause, those variables will be highly correlated with each other, even though they are not causes of one another. For example, an increase in ice cream sales can be correlated with an increase in pool drownings. We should not think, however, that ice cream sales cause pool drownings (nor for that matter, that pool drownings cause more ice cream sales!). Rather, an increase in ice cream sales and pool drownings have a common cause: an increase in temperature, which tends to cause people to both buy more ice cream and to go swimming (which in some cases unfortunately leads to some people drowning).^[Careful here. If $X$ is a common cause of $Y$ and $Z$, then $Y$ and $Z$ will be correlated. But just because $U$ and $W$ are correlated does not mean they have a common cause - some correlations are *spurious*. See [these examples of spurious correlations.](https://www.tylervigen.com/spurious-correlations)]
 
 Similarly in our case: your spotty vision does not cause you to choose to eat bananas, nor does eating bananas cause your spotty vision. Rather, it is a potassium deficiency that causes both.
 
@@ -173,9 +181,9 @@ What this table hides are causal assumptions about the outcomes. We have been in
     el/.style = {inner sep=2pt, align=left, sloped}
 }
 \begin{tikzpicture}
-    \node[state] (x) at (0,-1) {$OUTCOME$};
-    \node[state] (y) at (2.5,0) {$BOX-PICK$};
-    \node[state] (z) at (-2.5,0) {$AI-PREDICTION$};
+    \node[state] (x) at (0,-1) {OUTCOME};
+    \node[state] (y) at (2.5,0) {BOX PICK};
+    \node[state] (z) at (-2.5,0) {AI PREDICTION};
     \path (y) edge (x);
     \path (z) edge (x); 
 \end{tikzpicture}
@@ -193,10 +201,10 @@ But given the narrative of the scenario, there is a correlation between what the
     el/.style = {inner sep=2pt, align=left, sloped}
 }
 \begin{tikzpicture}
-    \node[state] (x) at (0,-1) {$OUTCOME$};
-    \node[state] (y) at (2.5,0) {$BOX-PICK$};
-    \node[state] (z) at (-2.5,0) {$AI-PREDICTION$};
-    \node[state] (w) at (0,1) {$CHARACTER$};
+    \node[state] (x) at (0,-1) {OUTCOME};
+    \node[state] (y) at (2.5,0) {BOX PICK};
+    \node[state] (z) at (-2.5,0) {AI PREDICTION};
+    \node[state] (w) at (0,1) {CHARACTER};
     \path (y) edge (x);
     \path (z) edge (x); 
     \path (w) edge (y);
@@ -206,14 +214,14 @@ But given the narrative of the scenario, there is a correlation between what the
 
 This representation makes it clear that there is a common cause to the AI's prediction and your action. If that's right, then the setup is actually not a legitimate kind of decision making problem, since we are not maintaining that the world states and actions be independent of one another. It is not obvious, however, how we might go about fixing this and numerous proposals exist, some of which we'll cover in due course.
 
-First, let's see how some other examples we've discussed are like the Newcomb problem. Consider again the situation where you are deciding wether to stay at home to work on a project or to show up to the park to play a game of frisbee with your friends. In that decision problem, the uncertainty involved whether "Annoying Guy" would also show up. Here was the utility table we had.
+First, let's see how some other examples we've discussed are like the Newcomb problem. Consider again the situation where you are deciding whether to work on a project from home or to show up to the park to play a game of frisbee with your friends. In that decision problem, the uncertainty involved whether "Annoying Guy" would also show up. Here was the utility table we had.
 
                         Annoying guy stays home     Annoying guy shows up
 --------------------   -------------------------   -----------------------
 **You stay home**            2                            0
 **You show up**               3                          1
 
-We additionally suggested that, while you might not like it, you and Annoying Guy are very much alike. In fact, let's just suppose that you and Annoying Guy are identical twins. What this means for this example is that what you choose to do is correlated with what Annoying Guy does.  We can again use a causal graph to model this situation. When we do, we need to decide whether the correlation between your choice and Annoying Guy's is completely accidental, or whether there is a reason for that correlation. We have suggested that it's the latter. If we unpack this, it would be again reasonable to think that the correlation reflects a common cause between the two of you: you have similar characters.(And given that we said you are identical twins, the common character could be the effect of having a common physiology, but we leave that out for now). So we might have this kind of causal graph:
+We additionally suggested that, while you might not like it, you and Annoying Guy are very much alike. In fact, let's just suppose that you and Annoying Guy are identical twins. What this means for this example is that what you choose to do is correlated with what Annoying Guy does.  We can again use a causal graph to model this situation. When we do, we need to decide whether the correlation between your choice and Annoying Guy's is completely accidental, or whether there is a reason for that correlation. We have suggested that it's the latter. If we unpack this, it would be again reasonable to think that the correlation reflects a common cause between the two of you: you have similar characters.^[And given that we said you are identical twins, the common character could be the effect of having a common physiology, but we leave that out for now.] So we might have this kind of causal graph:
 
 ```{tikz, echo=FALSE, fig.cap = "The Twin Example", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
 \usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
@@ -225,10 +233,10 @@ We additionally suggested that, while you might not like it, you and Annoying Gu
     el/.style = {inner sep=2pt, align=left, sloped}
 }
 \begin{tikzpicture}
-    \node[state] (x) at (0,-1) {$OUTCOME$};
-    \node[state] (y) at (2,0) {$YOUR-ACT$};
-    \node[state] (z) at (-2,0) {$TWINS-ACT$};
-    \node[state] (w) at (0,1) {$CHARACTER$};
+    \node[state] (x) at (0,-1) {OUTCOME};
+    \node[state] (y) at (2,0) {YOUR ACT};
+    \node[state] (z) at (-2,0) {TWINS ACT};
+    \node[state] (w) at (0,1) {CHARACTER};
     \path (y) edge (x);
     \path (z) edge (x); 
     \path (w) edge (y);
@@ -236,9 +244,9 @@ We additionally suggested that, while you might not like it, you and Annoying Gu
 \end{tikzpicture}
 ```
 
-We can imagine similar graphs to represent the incorrect way of modeling our test example. When we set it up, we insisted that we had to be careful to understand that what it means for a test to be difficult is independent of the action to study - "difficult" had to be some kind of measure by which an instructor uses to design questions. This is because your studying for the test can affect the *perceived difficulty* of it, and that would violate our requirement that the world states be independent of the actions. A causal graph makes it clear why we have to be careful: if we're not, then your choice (study or party) would be the common cause of the outcome! That is, if we're not careful we would have this:
+Think about another example we've discussed about whether to study for a test or to party. Here too it might be tempting to set up a graph that looks like this.
 
-```{tikz, echo=FALSE, fig.cap = "Test Example - Incorrect decision model setup if we insist that world states and acts are supposed to be independent.", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
+```{tikz, echo=FALSE, fig.cap = "Test Example - Incorrect decision model setup because world states and acts are supposed to be independent, but they are not (CHOICE is a common cause).", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
 \usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
 \tikzset{
     -Latex,auto,node distance =1 cm and 1 cm,semithick,
@@ -248,16 +256,19 @@ We can imagine similar graphs to represent the incorrect way of modeling our tes
     el/.style = {inner sep=2pt, align=left, sloped}
 }
 \begin{tikzpicture}
-    \node[state] (x) at (0,-1) {$OUTCOME$};
-    \node[state] (y) at (2,0) {$CHOICE$};
-    \node[state] (z) at (-2,0) {$DIFFICULTY$};
+    \node[state] (x) at (0,-1) {OUTCOME};
+    \node[state] (y) at (2,0) {CHOICE};
+    \node[state] (z) at (-2,0) {DIFFICULTY};
     \path (y) edge (x);
     \path (z) edge (x); 
     \path (y) edge (z);
 \end{tikzpicture}
 ```
 
-But if world states and our choices are independent prior to the outcome, then we should have this: 
+But that graph is incorrect. We insisted that we had to be careful to understand that what it means for a test to be difficult is independent of the action to study - "difficult" had to be some kind of measure by which an instructor uses to design questions. This is because your studying for the test can affect the *perceived difficulty* of it, and that would violate our requirement that the world states be independent of the actions. A causal graph makes it clear why we have to be careful: if we're not, then your choice (study or party) would be the common cause of the outcome! 
+
+
+If world states and our choices are independent prior to the outcome, as we are trying to be careful to do, then we should have this: 
 
 ```{tikz, echo=FALSE, fig.cap = "Test Example - Correct decision model setup if we insist that world states and acts are supposed to be independent.", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
 \usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
@@ -269,17 +280,17 @@ But if world states and our choices are independent prior to the outcome, then w
     el/.style = {inner sep=2pt, align=left, sloped}
 }
 \begin{tikzpicture}
-    \node[state] (x) at (0,-1) {$OUTCOME$};
-    \node[state] (y) at (2,0) {$CHOICE$};
-    \node[state] (z) at (-2,0) {$DIFFICULTY$};
+    \node[state] (x) at (0,-1) {OUTCOME};
+    \node[state] (y) at (2,0) {CHOICE};
+    \node[state] (z) at (-2,0) {DIFFICULTY};
     \path (y) edge (x);
     \path (z) edge (x); 
 \end{tikzpicture}
 ```
 
-What we might notice is that the Newcomb problem is more like the incorrect test example if we take into account something like a person's character. Newcomb-like problems all seem to have a kind of causal structure where, if we go back far enough, there are common causes that influence both the world state and our action. That is, if we were to map out causal graphs in more detail, they are likely to end up looking something like this.
+What we might notice is that the Newcomb problem is more like the incorrect test example if we take into account something like a person's character. Newcomb-like problems all seem to have a kind of causal structure where, if we go back far enough, there are common causes that influence both the world state and our action. That is, if we were to map out causal graphs in more detail, they are likely to end up looking something like the following.
 
-```{tikz, echo=FALSE, fig.cap = "More realistic causal graphs of decisions", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
+```{tikz, echo=FALSE, fig.cap = "More realistic causal graphs of decisions. The idea to represent things in this way come from Kenny Easwaran's 'A classification of Newcomb problems and decision theories' in *Synthese* (2021, 198).", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
 \usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
 \tikzset{
     -Latex,auto,node distance =1 cm and 1 cm,semithick,
@@ -289,10 +300,10 @@ What we might notice is that the Newcomb problem is more like the incorrect test
     el/.style = {inner sep=2pt, align=left, sloped}
 }
 \begin{tikzpicture}
-    \node[state] (o) at (0,-2) {$OUTCOME$};
-    \node[state] (b) at (6,0) {$BEHAVIOR$};
-    \node[state] (c) at (2,2) {$CHARACTER$};
-    \node[state] (p) at (-2,4) {$PHYSIOLOGY$};
+    \node[state] (o) at (0,-2) {OUTCOME};
+    \node[state] (b) at (6,0) {BEHAVIOR};
+    \node[state] (c) at (2,2) {CHARACTER};
+    \node[state] (p) at (-2,4) {PHYSIOLOGY};
     \node[state] (w) at (-2,0) {WORLD};
     \node[state] (x) at (0,3) {$\ldots$};
     \node[state] (y) at (4,1) {$\ldots$};
@@ -326,7 +337,7 @@ It is reasonable to suggest that rationality has a kind of unity. We started our
 
 If the unity of rationality is true and we are trying to maximize expected utility, then for Newcomb-like problems we should be selecting the analogs of the one-box option. For if we did not, then selecting the two-box option in the moment is a reflection of our broader character, which means the AI would have made that prediction, and so we would be missing out on \$1M (and consistently so if we went on the game show multiple times). 
 
-The dominance argument suggests, however, that the rational thing to do is to pick the two-box option. How can this be rational if that effectively guarantees that one will be consistently missing out on \$1M? There are at least two things to say here. First, one might suggest that the world is imperfect and sometimes it rewards what is irrational. Just because the world rewards the irrational does not detract from the rationality of the choice. (David Lewis has made this sort of response in 1981.) 
+The dominance argument suggests, however, that the rational thing to do is to pick the two-box option. How can this be rational if that effectively guarantees that one will be consistently missing out on \$1M? There are at least two things to say here. First, one might suggest that the world is imperfect and sometimes it rewards what is irrational. Just because the world rewards the irrational does not detract from the rationality of the choice.^[David Lewis has made this sort of response in his `Causal Decision Theory' in 1981.]
 
 The second thing one could say is that rationality might not have the sort of unity that is suggested above. That is, perhaps in some situations it is possible that the rationality of doing X is at odds with the rationality of planning to do X, or is at odds with the rationality of having the relevant character traits. That is, if we deny the unity of rationality, one might say that it is perfectly consistent to develop a character that corresponds to being a one-box kind of person, but then in the moment on the game show where one makes the choice, one chooses to two-box at the very last minute. The dominance argument seems to be suggesting something along these lines if the outcome of winning \$1M + \$1,000 is a live possibility at all.
 
@@ -334,7 +345,7 @@ A related difficulty concerns about our *knowledge* of what is and is not in our
 
 There is a parasite called *toxoplasma gondii* that is primarily hosted by cats but affects mammals in general. Infected individuals tend not to show symptoms, but there do exist a wide range of negative effects. Interestingly, infected rats will tend to be less afraid of cats and even be attracted to cat urine, which from the parasite's perspective is advantageous because that's how it perpetuates its life-cycle (the larvae develop in rats and then mature in cats, laying more eggs in the excrement of cats which are then picked up by rats). 
 
-Consider then a decision agent that knows it's possible they have toxoplasmosis. Given this possibility, they know that there is some chance that they will experience negative effects from it, but they also know that they are more inclined to adore cats by, e.g., speaking to them, collecting pictures of them, and potentially even petting them.  That is, they consider the following causal graph.
+Consider then an agent that knows it's possible they have toxoplasmosis. Given this possibility, they know that there is some chance that they will experience negative effects from it, but they also know that they are more inclined to adore cats by, e.g., speaking to them, collecting pictures of them, and potentially even petting them.  That is, they consider the following causal graph.
 
 ```{tikz, echo=FALSE, fig.cap = "Toxoplasmosis problem", fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png'}
 \usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
@@ -346,9 +357,9 @@ Consider then a decision agent that knows it's possible they have toxoplasmosis.
     el/.style = {inner sep=2pt, align=left, sloped}
 }
 \begin{tikzpicture}
-    \node[state] (x) at (0,2) {$Toxoplasmosis$};
-    \node[state] (y) at (3,0) {$Adore ~ cat$};
-    \node[state] (z) at (-3,0) {$Negative ~ effect$};
+    \node[state] (x) at (0,2) {Toxoplasmosis};
+    \node[state] (y) at (3,0) {Adore cat};
+    \node[state] (z) at (-3,0) {Negative effect};
     \path (x) edge (y);
     \path (x) edge (z); 
 \end{tikzpicture}
@@ -370,9 +381,9 @@ Alternatively, the agent might follow our insistence that there be no common cau
     el/.style = {inner sep=2pt, align=left, sloped}
 }
 \begin{tikzpicture}
-    \node[state] (x) at (0,2) {$Toxoplasmosis$};
-    \node[state] (y) at (3,0) {$Adore ~ cat$};
-    \node[state] (z) at (-3,0) {$Negative ~ effect$};
+    \node[state] (x) at (0,2) {Toxoplasmosis};
+    \node[state] (y) at (3,0) {Adore cat};
+    \node[state] (z) at (-3,0) {Negative effect};
     \path (x) edge (z); 
 \end{tikzpicture}
 ```
@@ -388,18 +399,33 @@ From this perspective, the agent reasons that they should adore cats, since that
 
 What we are illustrating with this last example is a question about whether choices, wherever they are located in the causal graphs, can be informative about the very causal graphs we are using to guide our choices.
 
-So we have two kinds of questions, one about where the locus of choice is, and one about whether interventions related to choices are further evidence to be used in our reasoning. It turns out that how we answer these questions will characterize different kinds of decision theories.
+So we have two kinds of questions. One kind of question is about `r newthought(" where the locus of choice is")`. The other kind of question is about `r newthought("whether interventions related to choices are further evidence")` to be used in our reasoning. It turns out that how we answer these questions will characterize different kinds of decision theories.
 
-The most common decision theory, called **causal decision theory** (CDT), puts the locus of choice furthest to the right of the causal graph we had above, i.e., a choice for the purpose of standard decision making is what decides the behavior. Variables that are upstream, such as character and physiology, are not part of what is being analyzed, at least not for the purpose of understanding rationality in terms of comparison of options. 
+The most common decision theory, called `r newthought("causal decision theory")` (CDT), puts the locus of choice furthest to the right of the causal graph we had above, i.e., a choice for the purpose of standard decision making is what decides the behavior. Variables that are upstream, such as character and physiology, are not part of what is being analyzed, at least not for the purpose of understanding rationality in terms of comparison of options. 
 
-On the other extreme of the causal graph, and a more recent addition to the literature, is **functional decision theory** (earlier known as **timeless decision theory**). On this decision theory options are compared by considering the furthest upstream points of evaluation. So if that happens to be character, for example, then options are compared by imagining the impacts of interventions (the removal of causal arrows) at those points. In some presentations of FDT, we imagine that we are choosing what kind of robot or set of functions we do best in a decision problem.
+On the other extreme of the causal graph, and a more recent addition to the literature, is  `r newthought("functional decision theory")` (earlier known as **timeless decision theory**). On this decision theory options are compared by considering the furthest upstream points of evaluation. So if that happens to be character, for example, then options are compared by imagining the impacts of interventions (the removal of causal arrows) at those points. In some presentations of FDT, we imagine that we are choosing what kind of robot or set of functions we do best in a decision problem.
 
-A third kind is **evidential decision theory** (EDT). The idea behind EDT is that we don't intervene on a causal graph at all when we analyze what to do. Rather, just like in the toxoplasmosis example, we simply conditionalize on the evidence that is captured on the graph. This notion of conditionalization has a technical meaning that is addressed in probability theory. So it is finally time for us to get clear on what we mean when we talk about probabilities. 
+A third kind is  `r newthought("evidential decision theory")` (EDT). The idea behind EDT is that we don't intervene on a causal graph at all when we analyze what to do. Rather, just like in the toxoplasmosis example, we simply conditionalize on the evidence that is captured on the graph. This notion of conditionalization has a technical meaning that is addressed in probability theory. So it is finally time for us to get clear on what we mean when we talk about probabilities. 
 
 
-## Exercises
+## Exercises {-}
 
-1. Here is an example from Derek Parfit (1984): "Suppose that I am driving at midnight through some desert. My car breaks down. You are a stranger and the only other driver near. I manage to stop you, and Ioffer you a great reward if you rescue me. I cannot reward you now, but I promise to do so when we reach my home. Suppose next that I am transparent, unable to deceive others. I cannot lie convincingly. Either a blush, or my tone of voice, always gives me away."  I want to get the major benefit of a ride out of the desert, but actually giving you the reward is a cost to me. So ideally, I would like to be able to formulate a sincere plan to give you the reward, a plan that is sufficiently sincere that you come to believe me and give me a ride out of the desert, but after having gotten the ride I'd rather not follow through on this plan.  Using the causal graph model representation, analyze this decision (note that planning happens somewhere between CHARACTER and BEHAVIOR). You may find it helpful to also include the decision table like we have been doing. 
+1. Consider the following system of structured equations: $$\begin{aligned}
+O &:= W \times A\\
+A &:= P \\
+W &:= C \\
+P &:= C \\
+\end{aligned}
+$$ 
+Draw the corresponding causal graph.
 
-2. Here is an example from Egan (2007): "Paul is debating whether to press the "kill all psychopaths" button. It would, he thinks, be much better to line in a world with no psychopaths. Unfortunately, Paul is quite confident that only a psychopath would press such a button. Paul very strongly prefers living in a world *with* psychopaths to dying."  Represent Paul's decision problem in a standard decision matrix. Then draw a causal graph diagram for it. Is there a common cause here? This is sometimes presented as a problem for causal decision theory. Explain how that could be.
 
+1. Here is an example to consider from Derek Parfit (1984): Suppose that I am driving at midnight through some desert. My car breaks down. You are a stranger and the only other driver near. I manage to stop you, and I offer you a great reward if you rescue me. I cannot reward you now, but I promise to do so when we reach my home. Suppose next that I am transparent, unable to deceive others. I cannot lie convincingly. Either a blush, or my tone of voice, always gives me away. I want to get the major benefit of a ride out of the desert, but actually giving you the reward is a cost to me. So ideally, I would like to be able to formulate a sincere plan to give you the reward, a plan that is sufficiently sincere that you come to believe me and give me a ride out of the desert, but after having gotten the ride I'd rather not follow through on this plan.  
+
+    - Using the causal graph model representation, analyze this decision (note that planning happens somewhere between CHARACTER and BEHAVIOR). You may find it helpful to also include the decision table like we have been doing. 
+
+1. Here is an example from Egan (2007): Paul is debating whether to press the "kill all psychopaths" button. It would, he thinks, be much better to line in a world with no psychopaths. Unfortunately, Paul is quite confident that only a psychopath would press such a button. Paul very strongly prefers living in a world *with* psychopaths to dying.
+
+    - Represent Paul's decision problem in a standard decision matrix. Then draw a causal graph diagram for it. Is there a common cause here? This is sometimes presented as a problem for causal decision theory. Explain how that could be.
+
+1. In our discussion of the unity of rationality, we considered the possibility that an action is rational even though "the world" would reward the irrational action (at least according to dominance reasoning). Can you think of any examples besides our discussion of the Newcomb Problem or the Toxoplasmosis Problem? What argument would support the claim that the example action is rational despite the world rewarding a different action (is it the dominance strategy or something else)?
