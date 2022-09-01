@@ -45,11 +45,8 @@ library(tufte)
 library(ggplot2)
 ```
 
-<!-- TODO: -->
-<!-- BOLD DEFINITIONS -->
-<!-- CAPITALIZE ANNOYING GUY -->
-<!-- MAKE DECISION RULES MORE EXPLICIT - LINE BREAKS? -->
 
+[Download PDF of Entire Textbook](decisiontheory.pdf)
 
 
 # Preface and Prerequisites {-}
