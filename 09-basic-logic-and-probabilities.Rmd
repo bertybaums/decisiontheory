@@ -1,7 +1,7 @@
 
-# Probabilities
+# Probabilities and Logic
 
-We have come to the point where it will no longer be enough to work with our intuitive notion of probability. If we want to go beyond toy decision problems, like the one's we've been covered, and model decisions that are more like the ones we more frequently face, we'll need to have a sufficiently robust understanding of probability. For example, one of the main things we'll want to be able to do is update our beliefs given new information, which effectively amounts to knowing how to update probabilities.
+
 
 In this chapter we're going to learn what it means when we say that a probability function is a *normalized measure over a possibility space*. There are three parts here: i) what is it for a function to be a measure, ii) what is a normalized measure, and iii) what is a possibility space. 
 
@@ -24,18 +24,18 @@ We can represent functions with tables. Let's suppose we have a function that ta
  Islands             7
 
 
-Notice that there are two inputs that get mapped onto the same output (Lowlands and Campbeltown), but no input has any more or less than one output (e.g., it's not the case that Islay has both 8 and 7 distilleries).
+Notice that there are two inputs that get mapped onto the same output (Lowlands and Campbeltown both have 3 as their output), but no input has any more or less than one output (e.g., it's not the case that Islay has both 8 and 7 distilleries).
 
 
-What we want to know next is what it means for a function to be a measure. First, the function has to have non-negative numbers as output. Our example meets this condition. Second, the input is some space that can have 'regions' or subsets. For example, we can organize our distilling regions into those that are on the mainland (the first four in our table) and those not on the mainland (i.e., Islay and Islands). Alternatively, we could group the list into those whose name starts with one of the first ten letters of the alphabet, those that start with `S', and then the rest. The specifics here don't matter, just that different subsets are possible. 
+`r newthought("What it means for a function to be a measure")`. **First**, the function has to have non-negative numbers as output. Our example meets this condition. **Second**, the input is some space that can have 'regions' or subsets. For example, we can organize our distilling regions into those that are on the mainland (the first four in our table) and those not on the mainland (i.e., Islay and Islands). Alternatively, we could group the list into those whose name starts with one of the first ten letters of the alphabet, those that start with `S', and then the rest. The specifics here don't matter, just that different subsets are possible. 
 
 
-Third, and this important property is called *additivity*, is that the measure of a subset is the sum of the measures of the members that make up the subset. For example, suppose we're considering the mainland distillery regions (the first four on our list). Then the number of distilleries on the mainland is just the sum of the distilleries in the regions of Highlands, Speyside, Lowlands, and Campbeltown (95). 
+**Third**, and this important property is called *additivity*, is that the measure of a subset is the sum of the measures of the members that make up the subset. For example, suppose we're considering the mainland distillery regions (the first four on our list). Then the number of distilleries on the mainland is just the sum of the distilleries in the regions of Highlands, Speyside, Lowlands, and Campbeltown (95). 
 
 
 It doesn't really matter how we decide to group things. We could decide that the 'groups' are just the members themselves. In that case, there is just one number to consider. Or we could consider the entire input as the subset (here 'subset' doesn't indicate a strictly smaller set - in set theoretic speak, we say that a set is a subset of itself). For example, the number of distilleries in Scotland is, according to our table, 110 (i.e., the sum of each region).   
 
-Not all functions are measures. That is, some functions fail to be additive. For example, let's suppose we have a function from distilling regions to the proportion of distilleries owned by multinational companies (these numbers are not necessarily accurate). 
+Not all functions are measures. That is, *some functions fail to be additive*. For example, let's suppose we have a function from distilling regions to the proportion of distilleries owned by multinational companies (these numbers are not necessarily accurate). 
 
 
    Input           Output (proportion of owned by corps.)
