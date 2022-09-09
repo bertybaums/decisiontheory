@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 8 Odds, Probabilities and Actions | Decision Theory" />
+<meta property="og:type" content="book" />
+
+<meta property="og:description" content="This is a draft of a decision theory book written in BookDown" />
+<meta name="github-repo" content="bertybaums/decisiontheory" />
+
+<meta name="author" content="Bert Baumgaertner" />
+
+<meta name="date" content="2022-09-09" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+
+<meta name="description" content="This is a draft of a decision theory book written in BookDown">
+
+<title>Chapter 8 Odds, Probabilities and Actions | Decision Theory</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte-fonts.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-background.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-italics.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+
+
+
+
+
+<link rel="stylesheet" href="toc-vip.css" type="text/css" />
+<link rel="stylesheet" href="custom.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#preface-and-prerequisites">Preface and Prerequisites</a><ul>
+<li><a href="index.html#what-is-a-conceptual-introduction"><span class="toc-section-number">0.1</span> What is a conceptual introduction?</a></li>
+<li><a href="index.html#how-to-read-a-table-or-matrix"><span class="toc-section-number">0.2</span> How to read a table or matrix</a></li>
+<li><a href="index.html#the-very-basic-math"><span class="toc-section-number">0.3</span> The Very Basic Math</a></li>
+<li><a href="index.html#inspiration-and-acknowledgments"><span class="toc-section-number">0.4</span> Inspiration and Acknowledgments</a></li>
+</ul></li>
+<li class="has-sub"><a href="intro.html#intro"><span class="toc-section-number">1</span> Introduction</a><ul>
+<li><a href="intro.html#some-basic-conceptual-ingredients"><span class="toc-section-number">1.1</span> Some Basic Conceptual Ingredients</a></li>
+<li><a href="intro.html#rationality---the-descriptive-and-normative"><span class="toc-section-number">1.2</span> Rationality - the Descriptive and Normative</a></li>
+<li><a href="intro.html#uncertainty"><span class="toc-section-number">1.3</span> Uncertainty</a></li>
+<li><a href="intro.html#practical-and-theoretical-problems"><span class="toc-section-number">1.4</span> Practical and Theoretical Problems</a></li>
+<li><a href="intro.html#summary"><span class="toc-section-number">1.5</span> Summary</a></li>
+<li><a href="intro.html#exercises">Exercises</a></li>
+</ul></li>
+<li class="has-sub"><a href="ranking.html#ranking"><span class="toc-section-number">2</span> Ranking</a><ul>
+<li><a href="ranking.html#maximin-and-maximax"><span class="toc-section-number">2.1</span> Maximin and Maximax</a></li>
+<li><a href="ranking.html#the-dominance-principle"><span class="toc-section-number">2.2</span> The Dominance Principle</a></li>
+<li><a href="ranking.html#more-than-two-options-and-two-states"><span class="toc-section-number">2.3</span> More than two options and two states</a></li>
+<li><a href="ranking.html#non-unique-recommendations"><span class="toc-section-number">2.4</span> Non-Unique Recommendations</a></li>
+<li><a href="ranking.html#independence-of-options-and-states"><span class="toc-section-number">2.5</span> Independence of Options and States</a></li>
+<li><a href="ranking.html#exercises-1">Exercises</a></li>
+</ul></li>
+<li class="has-sub"><a href="transitivity-and-completeness.html#transitivity-and-completeness"><span class="toc-section-number">3</span> Transitivity and Completeness</a><ul>
+<li><a href="transitivity-and-completeness.html#notation"><span class="toc-section-number">3.1</span> Notation</a></li>
+<li><a href="transitivity-and-completeness.html#money-pump-arguments-for-axioms"><span class="toc-section-number">3.2</span> Money Pump Arguments for Axioms</a></li>
+<li><a href="transitivity-and-completeness.html#arguments-for-transitivity"><span class="toc-section-number">3.3</span> Arguments for Transitivity</a></li>
+<li><a href="transitivity-and-completeness.html#arguments-for-completeness"><span class="toc-section-number">3.4</span> Arguments for Completeness</a></li>
+<li><a href="transitivity-and-completeness.html#social-choice"><span class="toc-section-number">3.5</span> Social Choice</a></li>
+<li><a href="transitivity-and-completeness.html#limitations-and-key-take-aways"><span class="toc-section-number">3.6</span> Limitations and Key Take Aways</a></li>
+<li><a href="transitivity-and-completeness.html#exercises-2">Exercises</a></li>
+</ul></li>
+<li class="has-sub"><a href="utilities.html#utilities"><span class="toc-section-number">4</span> Utilities</a><ul>
+<li><a href="utilities.html#creating-an-interval-scale"><span class="toc-section-number">4.1</span> Creating an Interval Scale</a></li>
+<li><a href="utilities.html#what-do-the-numbers-mean"><span class="toc-section-number">4.2</span> What do the numbers mean?</a></li>
+<li><a href="utilities.html#applications-and-challenges"><span class="toc-section-number">4.3</span> Applications and Challenges</a></li>
+<li><a href="utilities.html#more-challenges-and-final-remarks"><span class="toc-section-number">4.4</span> More Challenges and Final Remarks</a></li>
+<li><a href="utilities.html#exercises-3">Exercises</a></li>
+</ul></li>
+<li class="has-sub"><a href="expected-utilities.html#expected-utilities"><span class="toc-section-number">5</span> Expected Utilities</a><ul>
+<li><a href="expected-utilities.html#expected-utility-by-example"><span class="toc-section-number">5.1</span> Expected Utility by Example</a></li>
+<li><a href="expected-utilities.html#meu-maximize-expected-utility-strategy"><span class="toc-section-number">5.2</span> (MEU) Maximize Expected Utility Strategy</a></li>
+<li><a href="expected-utilities.html#application-combining-meu-and-the-multi-attribute-approach"><span class="toc-section-number">5.3</span> Application: Combining MEU and the Multi-Attribute Approach</a></li>
+<li><a href="expected-utilities.html#pascals-wager"><span class="toc-section-number">5.4</span> Pascal’s Wager</a></li>
+<li><a href="expected-utilities.html#key-take-aways"><span class="toc-section-number">5.5</span> Key Take Aways</a></li>
+<li><a href="expected-utilities.html#exercises-4">Exercises</a></li>
+</ul></li>
+<li class="has-sub"><a href="arguments-about-meu.html#arguments-about-meu"><span class="toc-section-number">6</span> Arguments about MEU</a><ul>
+<li><a href="arguments-about-meu.html#the-domain-of-meu"><span class="toc-section-number">6.1</span> The Domain of MEU</a></li>
+<li><a href="arguments-about-meu.html#long-run-arguments-for-meu"><span class="toc-section-number">6.2</span> Long Run Arguments for MEU</a></li>
+<li><a href="arguments-about-meu.html#two-kinds-of-arguments-against-meu"><span class="toc-section-number">6.3</span> Two Kinds of Arguments Against MEU</a></li>
+<li><a href="arguments-about-meu.html#arguments-against-normative-meu"><span class="toc-section-number">6.4</span> Arguments Against Normative MEU</a></li>
+<li><a href="arguments-about-meu.html#arguments-against-descriptive-meu"><span class="toc-section-number">6.5</span> Arguments Against Descriptive MEU</a></li>
+<li><a href="arguments-about-meu.html#summary-1"><span class="toc-section-number">6.6</span> Summary</a></li>
+<li><a href="arguments-about-meu.html#exercises-5"><span class="toc-section-number">6.7</span> Exercises</a></li>
+</ul></li>
+<li class="has-sub"><a href="intervention.html#intervention"><span class="toc-section-number">7</span> Intervention</a><ul>
+<li><a href="intervention.html#causal-models"><span class="toc-section-number">7.1</span> Causal Models</a></li>
+<li><a href="intervention.html#common-causes"><span class="toc-section-number">7.2</span> Common Causes</a></li>
+<li><a href="intervention.html#application-to-newcomb-like-problems"><span class="toc-section-number">7.3</span> Application to Newcomb-like Problems</a></li>
+<li><a href="intervention.html#the-locus-of-choice-and-types-of-decision-theories"><span class="toc-section-number">7.4</span> The Locus of Choice and Types of Decision Theories</a></li>
+<li><a href="intervention.html#exercises-6">Exercises</a></li>
+</ul></li>
+<li class="has-sub"><a href="odds-probabilities-and-actions.html#odds-probabilities-and-actions"><span class="toc-section-number">8</span> Odds, Probabilities and Actions</a><ul>
+<li><a href="odds-probabilities-and-actions.html#odds-and-fair-betting-rates"><span class="toc-section-number">8.1</span> Odds and Fair Betting Rates</a></li>
+<li><a href="odds-probabilities-and-actions.html#advantageous-bets"><span class="toc-section-number">8.2</span> Advantageous Bets</a></li>
+</ul></li>
+<li class="has-sub"><a href="probabilities-and-logic.html#probabilities-and-logic"><span class="toc-section-number">9</span> Probabilities and Logic</a><ul>
+<li><a href="probabilities-and-logic.html#measures"><span class="toc-section-number">9.1</span> Measures</a></li>
+<li><a href="probabilities-and-logic.html#normalized-measures"><span class="toc-section-number">9.2</span> Normalized Measures</a></li>
+<li><a href="probabilities-and-logic.html#possibilities-and-truth-tables"><span class="toc-section-number">9.3</span> Possibilities and Truth Tables</a></li>
+<li><a href="probabilities-and-logic.html#exercises-7"><span class="toc-section-number">9.4</span> Exercises</a></li>
+</ul></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a></li>
+<li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
+<li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="odds-probabilities-and-actions" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Odds, Probabilities and Actions</h1>
+<p>We have come to the point where it will no longer be enough to work with our intuitive notion of probability. If we want to go beyond toy decision problems, like the one’s we’ve been covered, and model decisions that are more like the ones we more frequently face, we’ll need to have a sufficiently robust understanding of probability. For example, one of the main things we’ll want to be able to do is update our beliefs given new information, which effectively amounts to knowing how to update probabilities.</p>
+<p>Probabilities are a way of quantifying beliefs. It may seem impossible to measure something as elusive and subjective as beliefs. But some clever conceptual tools have been developed to do just that.</p>
+<p><span class="newthought">The key idea behind measuring a person’s belief</span> about the world is to figure out how willing they are to risk things that they care about. To illustrate this idea we’re going to momentarily assume that money is our measure of utility.</p>
+<div id="odds-and-fair-betting-rates" class="section level2">
+<h2><span class="header-section-number">8.1</span> Odds and Fair Betting Rates</h2>
+<p>Here’s a roughly general observation of people’s behaviour: the more confident someone is that some event is going to happen, the more willing they are to bet.</p>
+<p>Suppose <span class="math inline">\(S\)</span> is some event that Bob and Ally care about. The event might be a sports team winning a game, that it’s going to rain tomorrow, that the stock price of some company will be higher by next year, etc.</p>
+<p>Let’s say Bob is more than 50% confident that <span class="math inline">\(S\)</span> will happen. In fact, let’s suppose that Bob would accept a deal that would pay him <span class="math inline">\(\$1\)</span> if <span class="math inline">\(S\)</span> happens, but would cost him <span class="math inline">\(\$2\)</span> if it doesn’t. Let’s say Ally thinks Bob is wrong to be so confident and agrees to take Bob’s bet. In effect, this means that Ally is willing to put <span class="math inline">\(\$1\)</span> on the table for the chance of winning the <span class="math inline">\(\$2\)</span> that Bob is willing to put on the table. The <strong>stake</strong> is the sum of all the money on the table, in this case <span class="math inline">\(\$1 + \$2 = \$3\)</span>. Whoever ends up being right gets to take the stake.<label for="tufte-sn-76" class="margin-toggle sidenote-number">76</label><input type="checkbox" id="tufte-sn-76" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">76</span> Careful here. If Ally turns out to win because <span class="math inline">\(S\)</span> does not happen, she wins the stake (<span class="math inline">\(\$3\)</span>), but since she contributed <span class="math inline">\(\$1\)</span> to it the amount she <em>gains</em> is <span class="math inline">\(\$2\)</span>.</span></p>
+<p><span class="newthought">Bob’s fair betting rate</span> can be expressed by dividing his potential loss by the stake:</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \mbox{Betting Rate} &amp;= \frac{\mbox{Potential Loss}}{\mbox{Stake}}\\
+                        &amp;= \frac{\$2}{\$2 + \$1}\\
+                        &amp;= \frac{2}{3}.
+  \end{aligned}
+\]</span></p>
+<p>Bob’s betting rate is <span class="math inline">\(2/3\)</span>, which is a reflection of how confident he is that <span class="math inline">\(S\)</span> will happen. And here’s the next move: that’s Bob’s personal probability that <span class="math inline">\(S\)</span> will happen, i.e. <span class="math inline">\(Pr_{Bob}(S)=2/3\)</span>.</p>
+<p><span class="newthought">Bob’s fair odds</span> is another way that betting is sometimes talked about. To express Bob’s fair better rate in terms of odds, we take the ratio of potential loss to potential win:</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \mbox{Odds} &amp;= \mbox{Potential Loss : Potential Win}\\
+                &amp;=  2:1
+  \end{aligned}
+\]</span></p>
+<p>The odds that Bob would accept are another reflection of his degree of confidence. In fact, there is a handy way of linking up our notion of expected value with odds and probabilities.</p>
+<p><span class="newthought">A fair bet</span> is one in which the <em>expected value</em> is zero. That is, if we weight the potential win by the probability of winning, and we weight the potential loss by the probability of losing, the odds should “cancel out”: <span class="math display">\[ (2/3)(\$1) + (1/3)(-\$2) = 0. \]</span></p>
+<p>Here’s a helpful visual way of understanding the idea of “canceling out”. Notice first an inverse relationship between probabilities and payoffs when it comes to risks (especially in gambling): events with really high payoffs tend to have low probabilities, and likewise, the more probable an event is the lower the payoffs tend to be. If the amount of probability is like the width of a rectangle, and the payoff (or loss) is like the height of a rectangle, then a fair bet will be one in which the area of a rectangle that represents Bob winning will have the same amount of area that represents Bob lossing.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-19"></span>
+<p class="caption marginnote shownote">
+Figure 8.1: A bet that pays <span class="math inline">\(\$1\)</span> if Bob wins and costs <span class="math inline">\(\$2\)</span> if he loses, is fair when the purple and orange regions have equal area: when the probability of winning is <span class="math inline">\(2/3\)</span>.
+</p>
+<img src="decisiontheory_files/figure-html/unnamed-chunk-19-1.png" alt="A bet that pays $\$1$ if Bob wins and costs $\$2$ if he loses, is fair when the purple and orange regions have equal area: when the probability of winning is $2/3$." width="672"  />
+</div>
+<p>To be clear, what Bob considers to be a fair bet might change. For example, suppose Bob comes into some information that significantly decreases his confidence that <span class="math inline">\(S\)</span> will happen. Let’s say his confidence goes all the way down to 10% (i.e. 1/10). Since his confidence went down, he should be willing to risk less, that is, he should be willing to stake much less. How much less? As a fair bet, Bob will want to make sure that the expected value will be 0: <span class="math display">\[ (1/10)(\$9) + (9/10)(-\$1) = 0. \]</span> So for Bob to be willing make a bet with Ally give this new information, Ally would need to be willing to put at least <span class="math inline">\(\$9\)</span> in the stake for Bob’s <span class="math inline">\(\$1\)</span>.</p>
+<p>Notice how our visualization using rectangles will change for this new scenario, but the two rectangles will still have the same area.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
+<p class="caption marginnote shownote">
+Figure 8.2: A bet that pays <span class="math inline">\(\$9\)</span> if Bob wins and costs <span class="math inline">\(\$1\)</span> if he loses is fair when the probability of winning is <span class="math inline">\(1/10\)</span>.
+</p>
+<img src="decisiontheory_files/figure-html/unnamed-chunk-20-1.png" alt="A bet that pays $\$9$ if Bob wins and costs $\$1$ if he loses is fair when the probability of winning is $1/10$." width="672"  />
+</div>
+<p><span class="newthought">Here’s a General Recipe</span> for quantifying a person’s probability that a proposition <span class="math inline">\(S\)</span> is true using the idea of fair bets:</p>
+<ol style="list-style-type: decimal">
+<li>Find a bet on <span class="math inline">\(S\)</span> that they see as fair. Call the potential winnings <span class="math inline">\(W\)</span> and the potential losses <span class="math inline">\(L\)</span>.</li>
+<li>Because the bet is fair to their eyes, set the expected value of the bet equal to zero:
+<span class="math display">\[ [Pr(S) \times W] + [(1-\Pr(S)) \times -L] = 0. \]</span></li>
+<li>Now solve for <span class="math inline">\(Pr(S)\)</span>:
+<span class="math display">\[
+   \begin{aligned}
+     (Pr(S) \times W)  + ((1-Pr(S)) \times -L) &amp;= 0 \\
+     (Pr(S) \times W)  + (-L) + (Pr(S) \times L) &amp;= 0 \\
+          (Pr(S) \times W) + (Pr(S) \times L) &amp;= L \\
+          Pr(S)\times (W + L) &amp;= L \\
+                                    Pr(S) &amp;= \frac{L}{W+L}.
+   \end{aligned}
+ \]</span>
+Notice that we have the formula for the fair betting rate again! It’s helpful to memorize this formula so you don’t have to do the derivation each time. But more important than that is knowing that there is a recipe for getting from bets to personal probabilities.</li>
+</ol>
+</div>
+<div id="advantageous-bets" class="section level2">
+<h2><span class="header-section-number">8.2</span> Advantageous Bets</h2>
+<p>The general recipe we just developed uses the idea of fair bets (or fair odds). The idea here is that a person would be willing to take either side of the bet. Using the language of preferences: the person is <em>indifferent</em> between the two sides. What happens if betting rates aren’t fair in the eyes of Bob? In that case Bob would no longer be indifferent, he would want to take one side.</p>
+<p>complications with utilities</p>
+<p>?show some bets that aren’t worth taking to illustrate what’s coming in the more technical chapter next?</p>
+
+</div>
+</div>
+<p style="text-align: center;">
+<a href="intervention.html"><button class="btn btn-default">Previous</button></a>
+<a href="probabilities-and-logic.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>

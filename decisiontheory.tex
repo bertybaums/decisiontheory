@@ -75,7 +75,7 @@
 % title / author / date
 \title{Decision Theory}
 \author{Bert Baumgaertner}
-\date{2022-09-01}
+\date{2022-09-09}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -2820,10 +2820,98 @@ A third kind is \newthought{evidential decision theory} (EDT). The idea behind E
   In our discussion of the unity of rationality, we considered the possibility that an action is rational even though ``the world'' would reward the irrational action (at least according to dominance reasoning). Can you think of any examples besides our discussion of the Newcomb Problem or the Toxoplasmosis Problem? What argument would support the claim that the example action is rational despite the world rewarding a different action (is it the dominance strategy or something else)?
 \end{enumerate}
 
-\hypertarget{probabilities}{%
-\chapter{Probabilities}\label{probabilities}}
+\hypertarget{odds-probabilities-and-actions}{%
+\chapter{Odds, Probabilities and Actions}\label{odds-probabilities-and-actions}}
 
 We have come to the point where it will no longer be enough to work with our intuitive notion of probability. If we want to go beyond toy decision problems, like the one's we've been covered, and model decisions that are more like the ones we more frequently face, we'll need to have a sufficiently robust understanding of probability. For example, one of the main things we'll want to be able to do is update our beliefs given new information, which effectively amounts to knowing how to update probabilities.
+
+Probabilities are a way of quantifying beliefs. It may seem impossible to measure something as elusive and subjective as beliefs. But some clever conceptual tools have been developed to do just that.
+
+\newthought{The key idea behind measuring a person's belief} about the world is to figure out how willing they are to risk things that they care about. To illustrate this idea we're going to momentarily assume that money is our measure of utility.
+
+\hypertarget{odds-and-fair-betting-rates}{%
+\section{Odds and Fair Betting Rates}\label{odds-and-fair-betting-rates}}
+
+Here's a roughly general observation of people's behaviour: the more confident someone is that some event is going to happen, the more willing they are to bet.
+
+Suppose \(S\) is some event that Bob and Ally care about. The event might be a sports team winning a game, that it's going to rain tomorrow, that the stock price of some company will be higher by next year, etc.
+
+Let's say Bob is more than 50\% confident that \(S\) will happen. In fact, let's suppose that Bob would accept a deal that would pay him \(\$1\) if \(S\) happens, but would cost him \(\$2\) if it doesn't. Let's say Ally thinks Bob is wrong to be so confident and agrees to take Bob's bet. In effect, this means that Ally is willing to put \(\$1\) on the table for the chance of winning the \(\$2\) that Bob is willing to put on the table. The \textbf{stake} is the sum of all the money on the table, in this case \(\$1 + \$2 = \$3\). Whoever ends up being right gets to take the stake.\footnote{Careful here. If Ally turns out to win because \(S\) does not happen, she wins the stake (\(\$3\)), but since she contributed \(\$1\) to it the amount she \emph{gains} is \(\$2\).}
+
+\newthought{Bob's fair betting rate} can be expressed by dividing his potential loss by the stake:
+
+\[
+  \begin{aligned}
+    \mbox{Betting Rate} &= \frac{\mbox{Potential Loss}}{\mbox{Stake}}\\
+                        &= \frac{\$2}{\$2 + \$1}\\
+                        &= \frac{2}{3}.
+  \end{aligned}
+\]
+
+Bob's betting rate is \(2/3\), which is a reflection of how confident he is that \(S\) will happen. And here's the next move: that's Bob's personal probability that \(S\) will happen, i.e.~\(Pr_{Bob}(S)=2/3\).
+
+\newthought{Bob's fair odds} is another way that betting is sometimes talked about. To express Bob's fair better rate in terms of odds, we take the ratio of potential loss to potential win:
+
+\[
+  \begin{aligned}
+    \mbox{Odds} &= \mbox{Potential Loss : Potential Win}\\
+                &=  2:1
+  \end{aligned}
+\]
+
+The odds that Bob would accept are another reflection of his degree of confidence. In fact, there is a handy way of linking up our notion of expected value with odds and probabilities.
+
+\newthought{A fair bet} is one in which the \emph{expected value} is zero. That is, if we weight the potential win by the probability of winning, and we weight the potential loss by the probability of losing, the odds should ``cancel out'': \[ (2/3)(\$1) + (1/3)(-\$2) = 0. \]
+
+Here's a helpful visual way of understanding the idea of ``canceling out''. Notice first an inverse relationship between probabilities and payoffs when it comes to risks (especially in gambling): events with really high payoffs tend to have low probabilities, and likewise, the more probable an event is the lower the payoffs tend to be. If the amount of probability is like the width of a rectangle, and the payoff (or loss) is like the height of a rectangle, then a fair bet will be one in which the area of a rectangle that represents Bob winning will have the same amount of area that represents Bob lossing.
+
+\begin{figure}
+\includegraphics{decisiontheory_files/figure-latex/unnamed-chunk-19-1} \caption[A bet that pays $\$1$ if Bob wins and costs $\$2$ if he loses, is fair when the purple and orange regions have equal area]{A bet that pays $\$1$ if Bob wins and costs $\$2$ if he loses, is fair when the purple and orange regions have equal area: when the probability of winning is $2/3$.}\label{fig:unnamed-chunk-19}
+\end{figure}
+
+To be clear, what Bob considers to be a fair bet might change. For example, suppose Bob comes into some information that significantly decreases his confidence that \(S\) will happen. Let's say his confidence goes all the way down to 10\% (i.e.~1/10). Since his confidence went down, he should be willing to risk less, that is, he should be willing to stake much less. How much less? As a fair bet, Bob will want to make sure that the expected value will be 0: \[ (1/10)(\$9) + (9/10)(-\$1) = 0. \] So for Bob to be willing make a bet with Ally give this new information, Ally would need to be willing to put at least \(\$9\) in the stake for Bob's \(\$1\).
+
+Notice how our visualization using rectangles will change for this new scenario, but the two rectangles will still have the same area.
+
+\begin{figure}
+\includegraphics{decisiontheory_files/figure-latex/unnamed-chunk-20-1} \caption[A bet that pays $\$9$ if Bob wins and costs $\$1$ if he loses is fair when the probability of winning is $1/10$]{A bet that pays $\$9$ if Bob wins and costs $\$1$ if he loses is fair when the probability of winning is $1/10$.}\label{fig:unnamed-chunk-20}
+\end{figure}
+
+\newthought{Here's a General Recipe} for quantifying a person's probability that a proposition \(S\) is true using the idea of fair bets:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Find a bet on \(S\) that they see as fair. Call the potential winnings \(W\) and the potential losses \(L\).
+\item
+  Because the bet is fair to their eyes, set the expected value of the bet equal to zero:
+  \[ [Pr(S) \times W] + [(1-\Pr(S)) \times -L] = 0. \]
+\item
+  Now solve for \(Pr(S)\):
+  \[
+     \begin{aligned}
+       (Pr(S) \times W)  + ((1-Pr(S)) \times -L) &= 0 \\
+       (Pr(S) \times W)  + (-L) + (Pr(S) \times L) &= 0 \\
+            (Pr(S) \times W) + (Pr(S) \times L) &= L \\
+            Pr(S)\times (W + L) &= L \\
+                                      Pr(S) &= \frac{L}{W+L}.
+     \end{aligned}
+   \]
+  Notice that we have the formula for the fair betting rate again! It's helpful to memorize this formula so you don't have to do the derivation each time. But more important than that is knowing that there is a recipe for getting from bets to personal probabilities.
+\end{enumerate}
+
+\hypertarget{advantageous-bets}{%
+\section{Advantageous Bets}\label{advantageous-bets}}
+
+The general recipe we just developed uses the idea of fair bets (or fair odds). The idea here is that a person would be willing to take either side of the bet. Using the language of preferences: the person is \emph{indifferent} between the two sides. What happens if betting rates aren't fair in the eyes of Bob? In that case Bob would no longer be indifferent, he would want to take one side.
+
+complications with utilities
+
+?show some bets that aren't worth taking to illustrate what's coming in the more technical chapter next?
+
+\hypertarget{probabilities-and-logic}{%
+\chapter{Probabilities and Logic}\label{probabilities-and-logic}}
 
 In this chapter we're going to learn what it means when we say that a probability function is a \emph{normalized measure over a possibility space}. There are three parts here: i) what is it for a function to be a measure, ii) what is a normalized measure, and iii) what is a possibility space.
 
@@ -2850,15 +2938,15 @@ Islands & 7\tabularnewline
 \bottomrule
 \end{longtable}
 
-Notice that there are two inputs that get mapped onto the same output (Lowlands and Campbeltown), but no input has any more or less than one output (e.g., it's not the case that Islay has both 8 and 7 distilleries).
+Notice that there are two inputs that get mapped onto the same output (Lowlands and Campbeltown both have 3 as their output), but no input has any more or less than one output (e.g., it's not the case that Islay has both 8 and 7 distilleries).
 
-What we want to know next is what it means for a function to be a measure. First, the function has to have non-negative numbers as output. Our example meets this condition. Second, the input is some space that can have `regions' or subsets. For example, we can organize our distilling regions into those that are on the mainland (the first four in our table) and those not on the mainland (i.e., Islay and Islands). Alternatively, we could group the list into those whose name starts with one of the first ten letters of the alphabet, those that start with `S', and then the rest. The specifics here don't matter, just that different subsets are possible.
+\newthought{What it means for a function to be a measure}. \textbf{First}, the function has to have non-negative numbers as output. Our example meets this condition. \textbf{Second}, the input is some space that can have `regions' or subsets. For example, we can organize our distilling regions into those that are on the mainland (the first four in our table) and those not on the mainland (i.e., Islay and Islands). Alternatively, we could group the list into those whose name starts with one of the first ten letters of the alphabet, those that start with `S', and then the rest. The specifics here don't matter, just that different subsets are possible.
 
-Third, and this important property is called \emph{additivity}, is that the measure of a subset is the sum of the measures of the members that make up the subset. For example, suppose we're considering the mainland distillery regions (the first four on our list). Then the number of distilleries on the mainland is just the sum of the distilleries in the regions of Highlands, Speyside, Lowlands, and Campbeltown (95).
+\textbf{Third}, and this important property is called \emph{additivity}, is that the measure of a subset is the sum of the measures of the members that make up the subset. For example, suppose we're considering the mainland distillery regions (the first four on our list). Then the number of distilleries on the mainland is just the sum of the distilleries in the regions of Highlands, Speyside, Lowlands, and Campbeltown (95).
 
 It doesn't really matter how we decide to group things. We could decide that the `groups' are just the members themselves. In that case, there is just one number to consider. Or we could consider the entire input as the subset (here `subset' doesn't indicate a strictly smaller set - in set theoretic speak, we say that a set is a subset of itself). For example, the number of distilleries in Scotland is, according to our table, 110 (i.e., the sum of each region).
 
-Not all functions are measures. That is, some functions fail to be additive. For example, let's suppose we have a function from distilling regions to the proportion of distilleries owned by multinational companies (these numbers are not necessarily accurate).
+Not all functions are measures. That is, \emph{some functions fail to be additive}. For example, let's suppose we have a function from distilling regions to the proportion of distilleries owned by multinational companies (these numbers are not necessarily accurate).
 
 \begin{longtable}[]{@{}cr@{}}
 \toprule
@@ -3303,9 +3391,6 @@ Linda is 31 years old, single, outspoken, and very bright. She majored in philos
 \item
   Linda is a bank teller and a feminist
 \end{enumerate}
-
-\hypertarget{odds-and-actions}{%
-\chapter{Odds and Actions}\label{odds-and-actions}}
 
 \hypertarget{conditional-probabilities-and-likelihoods}{%
 \chapter{Conditional Probabilities and Likelihoods}\label{conditional-probabilities-and-likelihoods}}
