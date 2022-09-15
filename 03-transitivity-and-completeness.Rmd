@@ -84,7 +84,7 @@ Almost all of the examples we have covered have been about individual choices. I
 
 That said, we will see that there are different ways in which we can be explicit about how a group (a collective of indivbiduals) should be connected to the preferences of the individuals that make up the collective. Social choice theory is about how to aggregate preferences of individuals into a single collective preference. It turns out that there are many ways of doing this aggregation. However, there can be tensions between the individual level and the collective level, particularly concerning the notion of rationality.
 
-Here's a brief illustration of how such a tension could come about. Suppose that there are three judges, J1, J2, and J3. Each judge is "rational", which means at the very least that they subscribe to a rule of inference philosophers call **modus ponens** (a latin name for affirming the consequent). Modus ponens says that if you believe a conditional like 'If A then B' is true and you also believe that 'A' is true, then you should infer that 'B' is true. For example, suppose you know that if Johnny eats peanuts then he will have an allergic reaction, and you also know that Johnny is eating peanuts, then you should infer that Johnny will have an allergic reaction!^[Note that the other direction isn't valid, i.e., if you know that Johnny is having an allergic reaction, it's not guaranteed that that's because Johnny ate peanuts - he might have eaten something else that he's allergic to.]  
+Here's a brief illustration of how such a tension could come about. Suppose that there are three judges, J1, J2, and J3. Each judge is "rational", which means at the very least that they subscribe to a rule of inference philosophers call **modus ponens** (a latin name for affirming the antecedent). Modus ponens says that if you believe a conditional like 'If A then B' is true and you also believe that 'A' is true, then you should infer that 'B' is true. For example, suppose you know that if Johnny eats peanuts then he will have an allergic reaction, and you also know that Johnny is eating peanuts, then you should infer that Johnny will have an allergic reaction!^[Note that the other direction isn't valid, i.e., if you know that Johnny is having an allergic reaction, it's not guaranteed that that's because Johnny ate peanuts - he might have eaten something else that he's allergic to.]  
 
 Now suppose that each of our judges has been called on to make a decision about a case. The case is concerned about a purported incidence of theft of a water bottle. The judges are asked to assess the truth of the following three claims:
 
@@ -92,7 +92,7 @@ Now suppose that each of our judges has been called on to make a decision about 
 
 **S2** If S1, then the defendant should go to jail.
 
-**S3** The defendant should go to jail.
+**S3** The defendant should go to jail.^[Notice that if S1 and S2 are true, by a matter of logic S3 is forced to be true too.]
 
 Each judge makes their own decision about the case, which are then collected in the table below.
 
