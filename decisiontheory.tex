@@ -75,7 +75,7 @@
 % title / author / date
 \title{Decision Theory}
 \author{Bert Baumgaertner}
-\date{2022-09-09}
+\date{2022-09-15}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -928,7 +928,7 @@ Almost all of the examples we have covered have been about individual choices. I
 
 That said, we will see that there are different ways in which we can be explicit about how a group (a collective of indivbiduals) should be connected to the preferences of the individuals that make up the collective. Social choice theory is about how to aggregate preferences of individuals into a single collective preference. It turns out that there are many ways of doing this aggregation. However, there can be tensions between the individual level and the collective level, particularly concerning the notion of rationality.
 
-Here's a brief illustration of how such a tension could come about. Suppose that there are three judges, J1, J2, and J3. Each judge is ``rational'', which means at the very least that they subscribe to a rule of inference philosophers call \textbf{modus ponens} (a latin name for affirming the consequent). Modus ponens says that if you believe a conditional like `If A then B' is true and you also believe that `A' is true, then you should infer that `B' is true. For example, suppose you know that if Johnny eats peanuts then he will have an allergic reaction, and you also know that Johnny is eating peanuts, then you should infer that Johnny will have an allergic reaction!\footnote{Note that the other direction isn't valid, i.e., if you know that Johnny is having an allergic reaction, it's not guaranteed that that's because Johnny ate peanuts - he might have eaten something else that he's allergic to.}
+Here's a brief illustration of how such a tension could come about. Suppose that there are three judges, J1, J2, and J3. Each judge is ``rational'', which means at the very least that they subscribe to a rule of inference philosophers call \textbf{modus ponens} (a latin name for affirming the antecedent). Modus ponens says that if you believe a conditional like `If A then B' is true and you also believe that `A' is true, then you should infer that `B' is true. For example, suppose you know that if Johnny eats peanuts then he will have an allergic reaction, and you also know that Johnny is eating peanuts, then you should infer that Johnny will have an allergic reaction!\footnote{Note that the other direction isn't valid, i.e., if you know that Johnny is having an allergic reaction, it's not guaranteed that that's because Johnny ate peanuts - he might have eaten something else that he's allergic to.}
 
 Now suppose that each of our judges has been called on to make a decision about a case. The case is concerned about a purported incidence of theft of a water bottle. The judges are asked to assess the truth of the following three claims:
 
@@ -936,7 +936,7 @@ Now suppose that each of our judges has been called on to make a decision about 
 
 \textbf{S2} If S1, then the defendant should go to jail.
 
-\textbf{S3} The defendant should go to jail.
+\textbf{S3} The defendant should go to jail.\footnote{Notice that if S1 and S2 are true, by a matter of logic S3 is forced to be true too.}
 
 Each judge makes their own decision about the case, which are then collected in the table below.
 
@@ -1169,13 +1169,20 @@ We will introduce the idea of a \textbf{cardinal utility}.\footnote{Supposedly t
 \hypertarget{creating-an-interval-scale}{%
 \section{Creating an Interval Scale}\label{creating-an-interval-scale}}
 
-Here is one way to capture information about how much one option might be preferred to another. Suppose we have just three options and Alice orders them like this: \(A\succ B \succ C\). We want to find how much more Alice prefers B to C, and how much less she prefers B to A. To do so, we create a new option, L. We can think of option L like a lottery that will have A and C as ``prizes''. But what should the odds be of winning C in lottery L compared to the odds of winning A? Suppose lottery L has 100 tickets. Given that Alice prefers A over C, it seems that A should be on all of the tickets. But what we want to find out is how B compares to A and C. So what we do is figure out at what point Alice would be indifferent between B and L, where L specifies the fraction of all tickets where A wins and the fraction where C wins. Let's see some examples to illustrate.
+\newthought{The Lottery Option Procedure} is one way to capture information about how much one option might be preferred to another. Suppose we have just three options and Alice orders them like this: \(A\succ B \succ C\). We want to find how much more Alice prefers B to C, and how much less she prefers B to A. To do so, we create a new option, L. We can think of option L like a lottery that will have A and C as ``prizes''. But what should the odds be of winning C in lottery L compared to the odds of winning A? Suppose lottery L has 100 tickets. Given that Alice prefers A over C, it seems that A should be on all of the tickets. But what we want to find out is how B compares to A and C. So what we do is figure out at what point Alice would be indifferent between B and L, where L specifies the fraction of all tickets where A wins and the fraction where C wins. Let's see some examples to illustrate.
 
-Let's say lottery L has 50\% tickets with A and 50\% tickets with C. We ask Alice which of the preferences she has: \(B\succ L\), \(L\succ B\), or \(B\sim L\)? If Alice says \(B\succ L\), then this means that she prefers getting B to a 50\% chance of getting A. That is, she prefers B more than ``half as much'' as A. But that still doesn't tell us how much more than ``half as much'' as A. So, in this case we would change the lottery L to a new lottery L' by \emph{increasing} the fraction of tickets that would go to A and then ask for her preference again, comparing B to L'. If instead Alice had said \(L\succ B\), then that means that she prefers a 50\% chance of getting A than getting B. Here we would change the lottery L to a new lottery L' by \emph{decreasing} the fraction of tickets for A. Finally, if instead Alice had said \(B\sim L\), then that means she is indifferent between getting B and a 50\% of getting A. Here we wouldn't have to change anything about the lottery.
+Let's say lottery L has 50\% tickets with A and 50\% tickets with C. We ask Alice which of the preferences she has: \(B\succ L\), \(L\succ B\), or \(B\sim L\)?
 
-Suppose we have gone through this process and we find the lottery where Alice's preference between B and L is indifferent, i.e.~\(B\sim L\). And let's suppose that L has 75\% of the tickets go to A and 25\% to C. The idea behind creating an interval scale from this information is to think that Alice's desirability of B is 75\% of whatever her desirability of A is. For example, let's suppose that Alice's utility of A is 1 and her utility of C is 0. Then her utility of B would be 0.75. If instead Alice's utility scale were 0 to 8, with C at 0 and A at 8, then her utility of B would be 6.
+\begin{itemize}
+\item
+  If Alice says \(B\succ L\), then this means that she prefers getting B to a 50\% chance of getting A. That is, she prefers B more than ``half as much'' as A. But that still doesn't tell us how much more than ``half as much'' as A. So, in this case we would change the lottery L to a new lottery L' by \emph{increasing} the fraction of tickets that would go to A and then ask for her preference again, comparing B to L'.
+\item
+  If instead Alice had said \(L\succ B\), then that means that she prefers a 50\% chance of getting A than getting B. Here we would change the lottery L to a new lottery L' by \emph{decreasing} the fraction of tickets for A.
+\item
+  (Indifference) Finally, if instead Alice had said \(B\sim L\), then that means she is indifferent between getting B and a 50\% of getting A. Here we wouldn't have to change anything about the lottery.
+\end{itemize}
 
-INSERT ILLUSTRATION
+Suppose we have gone through this process and we find the lottery where Alice's preference between B and L is indifferent, i.e.~\(B\sim L\). And let's suppose that L has 75\% of the tickets go to A and 25\% to C. The idea behind creating an interval scale from this information is to think that Alice's desirability of B is 75\% of whatever her desirability of A is. For example, let's suppose that Alice's utility of A is 1 and her utility of C is 0. Then her utility of B would be 0.75. If instead Alice's utility scale were 0 to 8, with C at 0 and A at 8, then her utility of B would be 6.\footnote{Exercise: draw this as a diagram.}
 
 So the introduction of a lottery option helps us make important progress on determining the magnitudes of utilities, but only \emph{relative} to the utilities of other options. That is, the lottery option procedure doesn't help us decide what the scale itself should be. It just helps us assign utilities given that we have some scale. To some extent this is a nice feature. Notice that, no matter what scale you pick, the lottery option procedure will always preserve the ordering given by the ordinal utilities, and moreover the resulting cardinal utilities will also preserve transitivity and completeness. We thus have an answer to our first question for how to represent the magnitude that one option is preferred to another.
 
@@ -1306,7 +1313,7 @@ One serious complication of this view, however, comes from the idea that people 
 
 So the trouble is, we want to be able to say both how welfare can be differential across individuals, but at the same time we want to be able to account for the fact that individuals could be wrong about what's good for them. Surely the right answer is somewhere in between. We don't expect utilities to be entirely subjective, nor entirely objective. Call this the subjective-objective \emph{tension} (as opposed to dilemma, which would suggest we have to pick one or the other).
 
-\texttt{r\ newthought("One\ of\ the\ advantages")} of the preference-based approach is that it needn't be purely subjectivist. In fact, one of its chief advantages is that we needn't wait for a resolution in the debate about how to balance the two sides of the subjective-objective tension. All that a preference-based approach demands is that some \emph{minimal} criteria be met about what preferences are \emph{for an individual}. Decision theory, as we're considering it, is about how an individual should decide \emph{given their preferences} (recall our discussion of instrumental rationality). It thereby sidesteps some of the issues regarding interpersonal comparisons. In the next chapter we'll look at what the minimal criteria are and arguments for and against them.
+\newthought{One of the advantages} of the preference-based approach is that it needn't be purely subjectivist. In fact, one of its chief advantages is that we needn't wait for a resolution in the debate about how to balance the two sides of the subjective-objective tension. All that a preference-based approach demands is that some \emph{minimal} criteria be met about what preferences are \emph{for an individual}. Decision theory, as we're considering it, is about how an individual should decide \emph{given their preferences} (recall our discussion of instrumental rationality). It thereby sidesteps some of the issues regarding interpersonal comparisons. In the previous chapter we looked at two minimal criteria for preferences (transitivity and completeness) and arguments for them (money pumps).
 
 \hypertarget{applications-and-challenges}{%
 \section{Applications and Challenges}\label{applications-and-challenges}}
@@ -1380,7 +1387,7 @@ Following the minimax regret rule, we see that Study has a maximum regret of 6 w
 
 If we think that the Independence of Irrelevant Alternatives principle is correct, then that speaks unfavourably to the minimax regret rule. It is not obvious, however, that we should accept IIA. Here are two arguments why we might not accept IIA.
 
-\texttt{r\ newthought("The\ first\ argument\ against\ IIA")} comes from empirical considerations. People seem to systematically behave at odds with IIA. A famous example is known as \emph{the decoy effect}.\footnote{CITE Kahnemann, CITE Ariely} Suppose you are deciding between two sandwiches, a small one (say a 6 inch loaf) vs a large (say 12 inch). The small is \$6 and the large is \$10. Between these two options, let's suppose that your preference is for the small sandwich - it's enough to fill you up and costs less than the large sandwich. Now imagine that the store announces a limited time medium sandwich, coming in at 9 inches and \$9. A lot of empirical work suggests that your disposition towards the large sandwich changes with the introduction of the medium sandwich, even if you don't actually have a preference for the medium sandwich. That is, in many cases people will opt for the large sandwich when the medium sandwich is present, but they prefer the small sandwich when it is not, even though the medium sandwich is not preferred. The medium sandwich is called the decoy.
+\newthought{The first argument against IIA} comes from empirical considerations. People seem to systematically behave at odds with IIA. A famous example is known as \emph{the decoy effect}.\footnote{CITE Kahnemann, CITE Ariely} Suppose you are deciding between two sandwiches, a small one (say a 6 inch loaf) vs a large (say 12 inch). The small is \$6 and the large is \$10. Between these two options, let's suppose that your preference is for the small sandwich - it's enough to fill you up and costs less than the large sandwich. Now imagine that the store announces a limited time medium sandwich, coming in at 9 inches and \$9. A lot of empirical work suggests that your disposition towards the large sandwich changes with the introduction of the medium sandwich, even if you don't actually have a preference for the medium sandwich. That is, in many cases people will opt for the large sandwich when the medium sandwich is present, but they prefer the small sandwich when it is not, even though the medium sandwich is not preferred. The medium sandwich is called the decoy.
 
 Once you see it, you'll start noticing the decoy effect in a lot of places, especially in advertising. The effect is not restricted to marketing, however. Its applications are broad, even in dating. Suppose you see Jordan and Taylor at a party and you have a romantic interest in each of them. You find both equally attractive. You know Jordan is a great piano player while Taylor is a great guitar player. You have a bit of a soft spot for piano players, so you're inclined to strike up a conversation with Jordan (i.e., you have slight preference for Jordan over Taylor). But just as you head in Jordan's direction, you hear Taylor strumming along to a tune with one of their guitar playing friends, Kennedy. It's clear that Taylor is a more talented player than Kennedy. Research suggests that because you can compare Taylor to Kennedy - Kennedy is the decoy in this case - your preference can switch from your interest in Jordan to Taylor. Kennedy is irrelevant - you have no romantic interest in Kennedy - but their mere presence can affect your preferences. Of course, you hope that you're not the decoy for the friend who invited you to the party.\footnote{CITE Dan Ariely}
 
@@ -2861,9 +2868,9 @@ Bob's betting rate is \(2/3\), which is a reflection of how confident he is that
 
 The odds that Bob would accept are another reflection of his degree of confidence. In fact, there is a handy way of linking up our notion of expected value with odds and probabilities.
 
-\newthought{A fair bet} is one in which the \emph{expected value} is zero. That is, if we weight the potential win by the probability of winning, and we weight the potential loss by the probability of losing, the odds should ``cancel out'': \[ (2/3)(\$1) + (1/3)(-\$2) = 0. \]
+\newthought{A fair bet} is one in which the \emph{expected value} is zero. That is, if we weight the potential win by the probability of winning, and we weight the potential loss by the probability of losing, the odds should ``cancel out'' or ``wash out'': \[ (2/3)(\$1) + (1/3)(-\$2) = 0. \]
 
-Here's a helpful visual way of understanding the idea of ``canceling out''. Notice first an inverse relationship between probabilities and payoffs when it comes to risks (especially in gambling): events with really high payoffs tend to have low probabilities, and likewise, the more probable an event is the lower the payoffs tend to be. If the amount of probability is like the width of a rectangle, and the payoff (or loss) is like the height of a rectangle, then a fair bet will be one in which the area of a rectangle that represents Bob winning will have the same amount of area that represents Bob lossing.
+Here's a helpful visual way of understanding the idea of a fair bet. Notice first an inverse relationship between probabilities and payoffs when it comes to risks (especially in gambling): events with really high payoffs tend to have low probabilities, and likewise, the more probable an event is the lower the payoffs tend to be. If the amount of probability is like the width of a rectangle, and the payoff (or loss) is like the height of a rectangle, then a fair bet will be one in which the area of a rectangle that represents Bob winning will have the same amount of area that represents Bob lossing.
 
 \begin{figure}
 \includegraphics{decisiontheory_files/figure-latex/unnamed-chunk-19-1} \caption[A bet that pays $\$1$ if Bob wins and costs $\$2$ if he loses, is fair when the purple and orange regions have equal area]{A bet that pays $\$1$ if Bob wins and costs $\$2$ if he loses, is fair when the purple and orange regions have equal area: when the probability of winning is $2/3$.}\label{fig:unnamed-chunk-19}
@@ -2898,24 +2905,55 @@ Notice how our visualization using rectangles will change for this new scenario,
                                       Pr(S) &= \frac{L}{W+L}.
      \end{aligned}
    \]
-  Notice that we have the formula for the fair betting rate again! It's helpful to memorize this formula so you don't have to do the derivation each time. But more important than that is knowing that there is a recipe for getting from bets to personal probabilities.
 \end{enumerate}
+
+Notice that we have the formula for the fair betting rate again! It's helpful to memorize this formula so you don't have to do the derivation each time. But more important than that is knowing that there is a recipe for getting from bets to personal probabilities.
 
 \hypertarget{advantageous-bets}{%
 \section{Advantageous Bets}\label{advantageous-bets}}
 
-The general recipe we just developed uses the idea of fair bets (or fair odds). The idea here is that a person would be willing to take either side of the bet. Using the language of preferences: the person is \emph{indifferent} between the two sides. What happens if betting rates aren't fair in the eyes of Bob? In that case Bob would no longer be indifferent, he would want to take one side.
+The general recipe we just developed uses the idea of fair bets (or fair odds). The idea here is that a person would be willing to take either side of the bet. Using the language of preferences: the person is \emph{indifferent} between the two options. What happens if betting rates aren't fair in the eyes of Bob? In that case Bob would no longer be indifferent, he would want to take one side!
 
-start with bets as money
+For example, let's suppose that Bob is confident that \(S\) will happen, say by three to two odds, i.e.~\(Pr(S)=3/5\). That means that, from Bob's perspective, for every \(\$2\) that Ally is willing to put in the stake, he is willing to put in \(\$3\). That is his fair bet.\footnote{Notice: \((3/5)(\$2) + (2/5)(-\$3) = 0\) } Now consider two scenarios:
 
-complications with utilities
+\begin{itemize}
+\item
+  (Scenario 1) Ally is willing to give Bob even odds, i.e., she is willing to put in \(\$3\) for every \(\$3\) that Bob puts in the stake (and as before, if \(S\) happens then Bob wins the stake). So for the same amount that Bob is willing to lose in \emph{his} fair bet, in this scenario he has the same probability of winning, but now the \emph{payoff} for winning is higher. From Bob's perspective, his expected value is a gain: \[ (3/5)(\$3) + (2/5)(-\$3) = 0.6 \]. So Ally's offer would favor Bob and is advantageous (in his eyes).
+\item
+  (Scenario 2) Ally is only will to put in \(\$1\) for every \(\$3\) that Bob puts in the stake (and as before, if \(S\) happens then Bob wins the stake). So in order to win \(\$2\) from Ally in this scenario, he would have to be willing to lose \(\$6\), which is twice the amount relative to his fair better rate! From Bob's perspective, his expected value is now a loss: \[ (3/5)(\$1) + (2/5)(-\$3) = -0.6 \]. So here Ally's offer would not be advantageous to Bob.
+\end{itemize}
+
+\newthought{There's an important lesson here.} Just because a person is willing to take a bet does not mean that they think it's a fair bet. Like in Scenario 1, Bob is willing to take bets that he perceives as advantageous to him. But in Scenario 2, he would rather be in Ally's shoes! So when we're measuring people's personal probabilities, we have to make sure that the bets that they are willing to take are ones that they think are fair (i.e.~the bet, from their perspective, isn't advantageous or disadvantageous).
+
+\newthought{There's complications though.} Recall that money doesn't perfectly track utility, it is at best a very rough estimate. In previous chapters we saw how gaining a dollar is not the same as losing a dollar. Moreover, the utility of gaining/losing a dollar depends on how much you already have.
+
+\newthought{Another complication} is that we're assuming that Bob is \emph{following} the expected utility strategy. As we saw in the discussion of paradoxes like the Allais paradox, we have some reason for thinking that people don't follow it. So our way of measuring personal probability isn't perfect, but it's still a significant advancement in measuring something that we initially thought was purely subjective.
+
+\newthought{But hold on.} It's not a defect of a camera when it won't take pictures in a dark room. Similarly, if someone isn't following the expected utility formula, that says something about the person, not the method by which we can measure personal probabilities.
+
+\newthought{Ought people to behave} according to the expected utility formula? According to the laws of probability and some assumptions that connect beliefs with actions: yes we should. The arguments here are known as \emph{Dutch Book} arguments. Before we get to these arguments, we need to briefly say at least informally what the laws (or axioms) of probability are.
+
+\hypertarget{the-axioms-of-probability}{%
+\section{The Axioms of Probability}\label{the-axioms-of-probability}}
+
+There are three standard axioms of probabilities. I'll present them informally here.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  (Non-negativity) Probabilities can't be less than zero, i.e., \(Pr(S)\geq 0\).
+\item
+  (Normality) If we sum up the probabilities of \emph{all} possible events, we get 1. For example, if \emph{all} the possible events for tomorrow are Rainy, Cloudy, and Sunny, then the probability that tomorrow is Rainy or Cloudy or Sunny is 1. Another example: if \emph{all} the possible winners in the race are numbered 1 through 7, then the probability that one of them wins is 1.
+\item
+  (Finite Additivity) For mutually exclusive events, their disjunction is additive. For example,
+\end{enumerate}
 
 ?show some bets that aren't worth taking to illustrate what's coming in the more technical chapter next?
 
 \hypertarget{probabilities-and-logic}{%
 \chapter{Probabilities and Logic}\label{probabilities-and-logic}}
 
-In this chapter we're going to learn what it means when we say that a probability function is a \emph{normalized measure over a possibility space}. There are three parts here: i) what is it for a function to be a measure, ii) what is a normalized measure, and iii) what is a possibility space.
+In this chapter we're going to approach probability more abstractly and make connections to logic. We're going to learn what it means when we say that a probability function is a \emph{normalized measure over a possibility space}. There are three parts here: i) what is it for a function to be a measure, ii) what is a normalized measure, and iii) what is a possibility space.
 
 \hypertarget{measures}{%
 \section{Measures}\label{measures}}

@@ -13,7 +13,7 @@
 
 <meta name="author" content="Bert Baumgaertner" />
 
-<meta name="date" content="2022-09-09" />
+<meta name="date" content="2022-09-15" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -113,6 +113,7 @@ MathJax.Hub.Config({
 <li class="has-sub"><a href="odds-probabilities-and-actions.html#odds-probabilities-and-actions"><span class="toc-section-number">8</span> Odds, Probabilities and Actions</a><ul>
 <li><a href="odds-probabilities-and-actions.html#odds-and-fair-betting-rates"><span class="toc-section-number">8.1</span> Odds and Fair Betting Rates</a></li>
 <li><a href="odds-probabilities-and-actions.html#advantageous-bets"><span class="toc-section-number">8.2</span> Advantageous Bets</a></li>
+<li><a href="odds-probabilities-and-actions.html#the-axioms-of-probability"><span class="toc-section-number">8.3</span> The Axioms of Probability</a></li>
 </ul></li>
 <li class="has-sub"><a href="probabilities-and-logic.html#probabilities-and-logic"><span class="toc-section-number">9</span> Probabilities and Logic</a><ul>
 <li><a href="probabilities-and-logic.html#measures"><span class="toc-section-number">9.1</span> Measures</a></li>
@@ -138,7 +139,7 @@ MathJax.Hub.Config({
 <h2><span class="header-section-number">8.1</span> Odds and Fair Betting Rates</h2>
 <p>Here’s a roughly general observation of people’s behaviour: the more confident someone is that some event is going to happen, the more willing they are to bet.</p>
 <p>Suppose <span class="math inline">\(S\)</span> is some event that Bob and Ally care about. The event might be a sports team winning a game, that it’s going to rain tomorrow, that the stock price of some company will be higher by next year, etc.</p>
-<p>Let’s say Bob is more than 50% confident that <span class="math inline">\(S\)</span> will happen. In fact, let’s suppose that Bob would accept a deal that would pay him <span class="math inline">\(\$1\)</span> if <span class="math inline">\(S\)</span> happens, but would cost him <span class="math inline">\(\$2\)</span> if it doesn’t. Let’s say Ally thinks Bob is wrong to be so confident and agrees to take Bob’s bet. In effect, this means that Ally is willing to put <span class="math inline">\(\$1\)</span> on the table for the chance of winning the <span class="math inline">\(\$2\)</span> that Bob is willing to put on the table. The <strong>stake</strong> is the sum of all the money on the table, in this case <span class="math inline">\(\$1 + \$2 = \$3\)</span>. Whoever ends up being right gets to take the stake.<label for="tufte-sn-76" class="margin-toggle sidenote-number">76</label><input type="checkbox" id="tufte-sn-76" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">76</span> Careful here. If Ally turns out to win because <span class="math inline">\(S\)</span> does not happen, she wins the stake (<span class="math inline">\(\$3\)</span>), but since she contributed <span class="math inline">\(\$1\)</span> to it the amount she <em>gains</em> is <span class="math inline">\(\$2\)</span>.</span></p>
+<p>Let’s say Bob is more than 50% confident that <span class="math inline">\(S\)</span> will happen. In fact, let’s suppose that Bob would accept a deal that would pay him <span class="math inline">\(\$1\)</span> if <span class="math inline">\(S\)</span> happens, but would cost him <span class="math inline">\(\$2\)</span> if it doesn’t. Let’s say Ally thinks Bob is wrong to be so confident and agrees to take Bob’s bet. In effect, this means that Ally is willing to put <span class="math inline">\(\$1\)</span> on the table for the chance of winning the <span class="math inline">\(\$2\)</span> that Bob is willing to put on the table. The <strong>stake</strong> is the sum of all the money on the table, in this case <span class="math inline">\(\$1 + \$2 = \$3\)</span>. Whoever ends up being right gets to take the stake.<label for="tufte-sn-78" class="margin-toggle sidenote-number">78</label><input type="checkbox" id="tufte-sn-78" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">78</span> Careful here. If Ally turns out to win because <span class="math inline">\(S\)</span> does not happen, she wins the stake (<span class="math inline">\(\$3\)</span>), but since she contributed <span class="math inline">\(\$1\)</span> to it the amount she <em>gains</em> is <span class="math inline">\(\$2\)</span>.</span></p>
 <p><span class="newthought">Bob’s fair betting rate</span> can be expressed by dividing his potential loss by the stake:</p>
 <p><span class="math display">\[
   \begin{aligned}
@@ -156,8 +157,8 @@ MathJax.Hub.Config({
   \end{aligned}
 \]</span></p>
 <p>The odds that Bob would accept are another reflection of his degree of confidence. In fact, there is a handy way of linking up our notion of expected value with odds and probabilities.</p>
-<p><span class="newthought">A fair bet</span> is one in which the <em>expected value</em> is zero. That is, if we weight the potential win by the probability of winning, and we weight the potential loss by the probability of losing, the odds should “cancel out”: <span class="math display">\[ (2/3)(\$1) + (1/3)(-\$2) = 0. \]</span></p>
-<p>Here’s a helpful visual way of understanding the idea of “canceling out”. Notice first an inverse relationship between probabilities and payoffs when it comes to risks (especially in gambling): events with really high payoffs tend to have low probabilities, and likewise, the more probable an event is the lower the payoffs tend to be. If the amount of probability is like the width of a rectangle, and the payoff (or loss) is like the height of a rectangle, then a fair bet will be one in which the area of a rectangle that represents Bob winning will have the same amount of area that represents Bob lossing.</p>
+<p><span class="newthought">A fair bet</span> is one in which the <em>expected value</em> is zero. That is, if we weight the potential win by the probability of winning, and we weight the potential loss by the probability of losing, the odds should “cancel out” or “wash out”: <span class="math display">\[ (2/3)(\$1) + (1/3)(-\$2) = 0. \]</span></p>
+<p>Here’s a helpful visual way of understanding the idea of a fair bet. Notice first an inverse relationship between probabilities and payoffs when it comes to risks (especially in gambling): events with really high payoffs tend to have low probabilities, and likewise, the more probable an event is the lower the payoffs tend to be. If the amount of probability is like the width of a rectangle, and the payoff (or loss) is like the height of a rectangle, then a fair bet will be one in which the area of a rectangle that represents Bob winning will have the same amount of area that represents Bob lossing.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-19"></span>
 <p class="caption marginnote shownote">
 Figure 8.1: A bet that pays <span class="math inline">\(\$1\)</span> if Bob wins and costs <span class="math inline">\(\$2\)</span> if he loses, is fair when the purple and orange regions have equal area: when the probability of winning is <span class="math inline">\(2/3\)</span>.
@@ -186,15 +187,32 @@ Figure 8.2: A bet that pays <span class="math inline">\(\$9\)</span> if Bob wins
           Pr(S)\times (W + L) &amp;= L \\
                                     Pr(S) &amp;= \frac{L}{W+L}.
    \end{aligned}
- \]</span>
-Notice that we have the formula for the fair betting rate again! It’s helpful to memorize this formula so you don’t have to do the derivation each time. But more important than that is knowing that there is a recipe for getting from bets to personal probabilities.</li>
+ \]</span></li>
 </ol>
+<p>Notice that we have the formula for the fair betting rate again! It’s helpful to memorize this formula so you don’t have to do the derivation each time. But more important than that is knowing that there is a recipe for getting from bets to personal probabilities.</p>
 </div>
 <div id="advantageous-bets" class="section level2">
 <h2><span class="header-section-number">8.2</span> Advantageous Bets</h2>
-<p>The general recipe we just developed uses the idea of fair bets (or fair odds). The idea here is that a person would be willing to take either side of the bet. Using the language of preferences: the person is <em>indifferent</em> between the two sides. What happens if betting rates aren’t fair in the eyes of Bob? In that case Bob would no longer be indifferent, he would want to take one side.</p>
-<p>start with bets as money</p>
-<p>complications with utilities</p>
+<p>The general recipe we just developed uses the idea of fair bets (or fair odds). The idea here is that a person would be willing to take either side of the bet. Using the language of preferences: the person is <em>indifferent</em> between the two options. What happens if betting rates aren’t fair in the eyes of Bob? In that case Bob would no longer be indifferent, he would want to take one side!</p>
+<p>For example, let’s suppose that Bob is confident that <span class="math inline">\(S\)</span> will happen, say by three to two odds, i.e. <span class="math inline">\(Pr(S)=3/5\)</span>. That means that, from Bob’s perspective, for every <span class="math inline">\(\$2\)</span> that Ally is willing to put in the stake, he is willing to put in <span class="math inline">\(\$3\)</span>. That is his fair bet.<label for="tufte-sn-79" class="margin-toggle sidenote-number">79</label><input type="checkbox" id="tufte-sn-79" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">79</span> Notice: <span class="math inline">\((3/5)(\$2) + (2/5)(-\$3) = 0\)</span> </span> Now consider two scenarios:</p>
+<ul>
+<li><p>(Scenario 1) Ally is willing to give Bob even odds, i.e., she is willing to put in <span class="math inline">\(\$3\)</span> for every <span class="math inline">\(\$3\)</span> that Bob puts in the stake (and as before, if <span class="math inline">\(S\)</span> happens then Bob wins the stake). So for the same amount that Bob is willing to lose in <em>his</em> fair bet, in this scenario he has the same probability of winning, but now the <em>payoff</em> for winning is higher. From Bob’s perspective, his expected value is a gain: <span class="math display">\[ (3/5)(\$3) + (2/5)(-\$3) = 0.6 \]</span>. So Ally’s offer would favor Bob and is advantageous (in his eyes).</p></li>
+<li><p>(Scenario 2) Ally is only will to put in <span class="math inline">\(\$1\)</span> for every <span class="math inline">\(\$3\)</span> that Bob puts in the stake (and as before, if <span class="math inline">\(S\)</span> happens then Bob wins the stake). So in order to win <span class="math inline">\(\$2\)</span> from Ally in this scenario, he would have to be willing to lose <span class="math inline">\(\$6\)</span>, which is twice the amount relative to his fair better rate! From Bob’s perspective, his expected value is now a loss: <span class="math display">\[ (3/5)(\$1) + (2/5)(-\$3) = -0.6 \]</span>. So here Ally’s offer would not be advantageous to Bob.</p></li>
+</ul>
+<p><span class="newthought">There’s an important lesson here.</span> Just because a person is willing to take a bet does not mean that they think it’s a fair bet. Like in Scenario 1, Bob is willing to take bets that he perceives as advantageous to him. But in Scenario 2, he would rather be in Ally’s shoes! So when we’re measuring people’s personal probabilities, we have to make sure that the bets that they are willing to take are ones that they think are fair (i.e. the bet, from their perspective, isn’t advantageous or disadvantageous).</p>
+<p><span class="newthought">There’s complications though.</span> Recall that money doesn’t perfectly track utility, it is at best a very rough estimate. In previous chapters we saw how gaining a dollar is not the same as losing a dollar. Moreover, the utility of gaining/losing a dollar depends on how much you already have.</p>
+<p><span class="newthought">Another complication</span> is that we’re assuming that Bob is <em>following</em> the expected utility strategy. As we saw in the discussion of paradoxes like the Allais paradox, we have some reason for thinking that people don’t follow it. So our way of measuring personal probability isn’t perfect, but it’s still a significant advancement in measuring something that we initially thought was purely subjective.</p>
+<p><span class="newthought">But hold on.</span> It’s not a defect of a camera when it won’t take pictures in a dark room. Similarly, if someone isn’t following the expected utility formula, that says something about the person, not the method by which we can measure personal probabilities.</p>
+<p><span class="newthought">Ought people to behave</span> according to the expected utility formula? According to the laws of probability and some assumptions that connect beliefs with actions: yes we should. The arguments here are known as <em>Dutch Book</em> arguments. Before we get to these arguments, we need to briefly say at least informally what the laws (or axioms) of probability are.</p>
+</div>
+<div id="the-axioms-of-probability" class="section level2">
+<h2><span class="header-section-number">8.3</span> The Axioms of Probability</h2>
+<p>There are three standard axioms of probabilities. I’ll present them informally here.</p>
+<ol style="list-style-type: decimal">
+<li><p>(Non-negativity) Probabilities can’t be less than zero, i.e., <span class="math inline">\(Pr(S)\geq 0\)</span>.</p></li>
+<li><p>(Normality) If we sum up the probabilities of <em>all</em> possible events, we get 1. For example, if <em>all</em> the possible events for tomorrow are Rainy, Cloudy, and Sunny, then the probability that tomorrow is Rainy or Cloudy or Sunny is 1. Another example: if <em>all</em> the possible winners in the race are numbered 1 through 7, then the probability that one of them wins is 1.</p></li>
+<li><p>(Finite Additivity) For mutually exclusive events, their disjunction is additive. For example,</p></li>
+</ol>
 <p>?show some bets that aren’t worth taking to illustrate what’s coming in the more technical chapter next?</p>
 
 </div>
