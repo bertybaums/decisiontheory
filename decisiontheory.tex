@@ -75,7 +75,7 @@
 % title / author / date
 \title{Decision Theory}
 \author{Bert Baumgaertner}
-\date{2022-09-15}
+\date{2022-09-29}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -1160,7 +1160,7 @@ There are three broad questions we would like to answer in this chapter.
   How do we interpret what the numbers mean? What are the numbers referring to in the real world? That is, what is their content?
 \end{enumerate}
 
-\newthought{These questions are not just philosophical}. There are important practical considerations at stake. For example, the World Health Organization (WHO) has to somehow measure the value of medical interventions. The unit they use in their assessments is called a QALY - quality-adjusted life-year. A QALY incorporates both the quality and quantity of life lived. One QALY amounts to living one year in perfect health, while zero QALY amounts to death. The QALY is not without controversy and the debate ranges from purely philosophical considerations to the deeply pragmatic constraints that policy-makers face.\^{}{[}Another example that we will look at below is how the concept of utility can motivate arguments concerning social welfare and taxation.
+\newthought{These questions are not just philosophical}. There are important practical considerations at stake. For example, the World Health Organization (WHO) has to somehow measure the value of medical interventions. The unit they use in their assessments is called a QALY - quality-adjusted life-year. A QALY incorporates both the quality and quantity of life lived. One QALY amounts to living one year in perfect health, while zero QALY amounts to death. The QALY is not without controversy and the debate ranges from purely philosophical considerations to the deeply pragmatic constraints that policy-makers face.\footnote{Another example that we will look at below is how the concept of utility can motivate arguments concerning social welfare and taxation.}
 
 We will introduce the idea of a \textbf{cardinal utility}.\footnote{Supposedly the first use of ``cardinal utility'' was in 1934 by John Hicks and Roy Allen.} The basic idea is to use what's called an \emph{interval} scale. In addition to being able to order things using numbers, the numbers are also meant to represent \emph{magnitudes}. Money is an example of an interval scale, to some approximation. We can use money not only to order things from most expensive to least expensive, but we can also say how much more expensive one thing is to another. One might think, however, that money is ultimately limited in how fine-grained it can be - perhaps it doesn't make much sense to speak of quantities that are smaller than a cent. Whether or not that's the case, cardinal utilities can be arbitrarily precise and are typically represented using real numbers (as opposed to whole numbers).\footnote{The ``real'' in ``real numbers'' doesn't mean something like ``actual numbers.'' The history of numbers and number systems is fascinating (see the Wikipedia entry for ``number''). The main thing for our purposes is just to know the difference between integer numbers and real numbers.}
 
@@ -1419,7 +1419,7 @@ Here's an example. Suppose a politician is deciding on extending the search and 
 \bottomrule
 \end{longtable}
 
-Unfortunately for the politician, there is no dominant option; dominance reasoning will not provide guidance for what to choose
+Unfortunately for the politician, there is no dominant option; dominance reasoning will not provide guidance for what to choose.
 The politician is not limited to the ordinal scale, however. We could instead use an interval (or quantitative) scale. By interpreting the numbers in the above table as cardinal numbers, we can then weight the values of the outcomes with how important each attribute is.
 
 \textbf{Weighting by additivity}
@@ -1527,7 +1527,7 @@ There is also a more technical meaning of what it is to have an expectation. Her
 \hypertarget{expected-utility-by-example}{%
 \section{Expected Utility by Example}\label{expected-utility-by-example}}
 
-Here is an example. Suppose you have a rash on your hand. In half of all cases the rash goes away by itself, for the other half it doesn't. So, if you do nothing, there's a 50/50 chance the rash gets better. There's an over the counter cream you can use that helps the rash get better, but it's not perfect: 85\% of the time the rash goes away, but there's a 15\% chance that it continues even when using the cream.\footnote{We have to be careful that we're conceiving of the ``rash gets better'' state as those aspects of the cream that are outside of our control. The state can't be those aspects of the action that correspond to the use of the cream, otherwise we violate the constraint that states and options have to be independent. We have to think of the ``rash gets better'' state as those properties related to the efficacy of the cream that are outside our control - like the sensitivity of your skin.}
+Here is an example. Suppose you have a rash on your hand. In half of all cases the rash goes away by itself, for the other half it doesn't. So, if you do nothing, there's a 50/50 chance the rash gets better. There's an over the counter cream you can use that helps the rash get better, but it's not perfect: 85\% of the time the rash goes away, but there's a 15\% chance that it continues even when using the cream.\footnote{Notice that we're not being as careful like we have in the past. Here the ``rash gets better'' state is at least \emph{somewhat} in our control (our choice affects the probabilities of the outcome). But there's also aspects of the cream that are outside of our control, like the sensitivity of your skin and the efficacy of the cream given your skin. It's arguably a feature that we don't have to be as careful, but we'll return to this point when we get to probabilities.}
 
 \begin{longtable}[]{@{}lcc@{}}
 \toprule
@@ -1560,8 +1560,8 @@ But utilities are not all that matter. We also have other information: the proba
 The rule for maximizing expected utility proceeds in two steps:
 
 \begin{verbatim}
--Step One: combine the utility and probability tables to calculate the expected utility of each option. 
--Step Two: select the option with the maximum expected utility. 
+- Step One: combine the utility and probability tables to calculate the expected utility of each option. 
+- Step Two: select the option with the maximum expected utility. 
 \end{verbatim}
 
 Let's go through these separately.
@@ -2920,7 +2920,7 @@ For example, let's suppose that Bob is confident that \(S\) will happen, say by 
 \item
   (Scenario 1) Ally is willing to give Bob even odds, i.e., she is willing to put in \(\$3\) for every \(\$3\) that Bob puts in the stake (and as before, if \(S\) happens then Bob wins the stake). So for the same amount that Bob is willing to lose in \emph{his} fair bet, in this scenario he has the same probability of winning, but now the \emph{payoff} for winning is higher. From Bob's perspective, his expected value is a gain: \[ (3/5)(\$3) + (2/5)(-\$3) = 0.6 \]. So Ally's offer would favor Bob and is advantageous (in his eyes).
 \item
-  (Scenario 2) Ally is only will to put in \(\$1\) for every \(\$3\) that Bob puts in the stake (and as before, if \(S\) happens then Bob wins the stake). So in order to win \(\$2\) from Ally in this scenario, he would have to be willing to lose \(\$6\), which is twice the amount relative to his fair better rate! From Bob's perspective, his expected value is now a loss: \[ (3/5)(\$1) + (2/5)(-\$3) = -0.6 \]. So here Ally's offer would not be advantageous to Bob.
+  (Scenario 2) Ally is only willing to put in \(\$1\) for every \(\$3\) that Bob puts in the stake (and as before, if \(S\) happens then Bob wins the stake). So in order to win \(\$2\) from Ally in this scenario, he would have to be willing to lose \(\$6\), which is twice the amount relative to his fair better rate! From Bob's perspective, his expected value is now a loss: \[ (3/5)(\$1) + (2/5)(-\$3) = -0.6 \]. So here Ally's offer would not be advantageous to Bob.
 \end{itemize}
 
 \newthought{There's an important lesson here.} Just because a person is willing to take a bet does not mean that they think it's a fair bet. Like in Scenario 1, Bob is willing to take bets that he perceives as advantageous to him. But in Scenario 2, he would rather be in Ally's shoes! So when we're measuring people's personal probabilities, we have to make sure that the bets that they are willing to take are ones that they think are fair (i.e.~the bet, from their perspective, isn't advantageous or disadvantageous).
@@ -2933,22 +2933,151 @@ For example, let's suppose that Bob is confident that \(S\) will happen, say by 
 
 \newthought{Ought people to behave} according to the expected utility formula? According to the laws of probability and some assumptions that connect beliefs with actions: yes we should. The arguments here are known as \emph{Dutch Book} arguments. Before we get to these arguments, we need to briefly say at least informally what the laws (or axioms) of probability are.
 
-\hypertarget{the-axioms-of-probability}{%
-\section{The Axioms of Probability}\label{the-axioms-of-probability}}
+\hypertarget{the-axioms-of-probability-and-dutchbooks}{%
+\section{The Axioms of Probability and Dutchbooks}\label{the-axioms-of-probability-and-dutchbooks}}
 
 There are three standard axioms of probabilities. I'll present them informally here.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  (Non-negativity) Probabilities can't be less than zero, i.e., \(Pr(S)\geq 0\).
+  (Non-negativity) Probabilities can't be less than zero, i.e., \(P(S)\geq 0\).
 \item
   (Normality) If we sum up the probabilities of \emph{all} possible events, we get 1. For example, if \emph{all} the possible events for tomorrow are Rainy, Cloudy, and Sunny, then the probability that tomorrow is Rainy or Cloudy or Sunny is 1. Another example: if \emph{all} the possible winners in the race are numbered 1 through 7, then the probability that one of them wins is 1.
 \item
-  (Finite Additivity) For mutually exclusive events, their disjunction is additive. For example,
+  (Finite Additivity) For mutually exclusive events, their disjunction is additive. For example, suppose there's a horse race with four horses: Gumption, Gallifray, Tungsten, and Shadow. If one horse wins, all the others lose (i.e., horse winnings are exclusive events). So, if the probability of Shadow winning is 0.1, and the probably of Tungsten winning is 0.2, then the probability of Shadow or Tungsten winning is 0.3.
 \end{enumerate}
 
-?show some bets that aren't worth taking to illustrate what's coming in the more technical chapter next?
+When we identify axioms of a theory, we can use those axioms to define other constraints or features of the theory. For example, we can define the probability for the negation of a proposition (i.e.~that an event will not occur), \(\neg X\) as:
+\[
+P(\neg X) = 1 - P(X)
+\]
+As we've seen above, that means that fixing the probability of a proposition automatically fixes the probability of its negation (and vice versa). For example, if \(P(X)=0.7\) then \(P(\neg X)=0.3\).
+
+This is a helpful feature. Suppose, for example, that we have a lottery with 100 tickets. Each ticket is picked out by a proposition, \(X_1, X_2, \ldots, X_{100}\). The probability of wining a given ticket, \(X_i\) is
+\[
+P(X_i)=\frac{1}{100}=0.01
+\]
+Since we have fixed the probability that \(X_i\) is true, this automatically fixes the probability that it is false, or equivalently, that \(\neg X_i\) is true. Formally,
+\[
+P(\neg X_i) = 1-0.01 = 0.99
+\]
+
+This next claim builds on some logic that we will get to shortly, but it's worth making explicit now as it will play a central role in the argument in the next section. Consider the exhaustive disjunction of all mutually exclusive propositions (e.g., we think about ALL the lottery tickets, and the rule is that when you win with ticket \(X_i\) that means the other tickets did not win). This exhaustive and mutually exclusive disjunction will be a tautology. In our lottery example:
+\[
+P(X_1 \vee X_2 \vee \ldots \vee X_{100}) = 1
+\]
+
+In short, even if there is more than one event that we're consider, the probabilities of all events have to sum to 1.
+
+\newthought{The Dutchbook Argument} says that you should accept the above three axioms of probability because if you don't then you allow for the possibility of guaranteed loses of ``fair bets'' - bets that rationality suggests would not be fair at all, but you would be unable to provide reasons for not accepting them.\footnote{The person that does accept the three axioms of probability can say why the bets are not fair because they violate one or more of the axioms.}
+
+The Dutchbook argument can be stated formally, but it's enough for our purposes to illustrate the argument using the popular example of horse racing. The following table lists all the names of four horses in a race, including the odds and the implied probability of each horse winning. In addition, the table lists the cost of a bet and the corresponding payout if the horse wins.
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+Horse & Odds & Implied.Prob & Bet & Payout\tabularnewline
+\midrule
+\endhead
+Gumption & 1:1 & 0.5 & \$100 & \$100\tabularnewline
+Gallifray & 3:1 & 0.25 & \$50 & \$150\tabularnewline
+Tungsten & 4:1 & 0.2 & \$40 & \$160\tabularnewline
+Shadow & 9:1 & 0.1 & \$20 & \$180\tabularnewline
+\bottomrule
+\end{longtable}
+
+TOTALS 1.05 \$210 \$200
+
+Here's what to notice from this table. Suppose you're the bookie and you get one person to bet for each horse. No matter which horse ends up winning, you as the bookie will pay out \$200 from the stake (the sum of the bets you received). But if we look at the total that makes up the stake, that total is \$210. The means as the bookie you are \emph{guaranteed} to make \$10 on the race.
+
+In point of fact, this is how real races are typically organized - and this is a way for you to calculate how much is being ``skimmed off the top''. For the most part this isn't really an issue because we're willing to let some amount of money to go to those who are organizing the event. But let's put aside those types of considerations and think instead of a set of bets that you and your friends would set up that is regarded as fair, i.e., that there is no way for someone to scheme and guarantee that they win some money. Each of you in the group has the chance of losing or winning and no one is ``skimming off the top''.
+
+Looking at the table again with this in mind, which of the probability axioms is being violated? Recall that the probability of the exhaustive and mutually exclusive disjunction of the options should sum to 1, but the total in the above table is 1.05. This is a violation of Normality.
+
+\newthought{A violation of Normality} where the sum of probabilities is larger than 1 is good for a bookie because it guarantees they earn money.
+
+\newthought{But a violation of Normality} where the sum of probabilities is smaller than 1 is bad for the bookie, but good for the gamblers! Suppose, for example, that Shadow withdraws from the race. Now the implied probabilities sum up to 0.95. If now a gambler bets on all the remaining horses (but saves \$20 because they don't bet on Shadow), the gambler is guaranteed to make a profit of \$10. As you can imagine, this rarely happens in real life, as bookies are quick to adjust their betting offers to reflect these sorts of changes.
+
+The point of the Dutchbook argument is to get you to appreciate that if you think about probabilities in a way that does not respect the three axioms, you are at risk of being put in a position where you are guaranteed to lose. Of course lots of decisions under uncertainty have the possibility of losing - that's simply the nature of risk. But those decisions also typically offer the possibilities of gains - that's why we might be interested in such decisions in the first place. What the Dutchbook argument says is that if you violate any of the three axioms, then included in the decisions you should be willing to accept are decisions where there is a guaranteed loss. It is thought that no coherent account of rationality should find this acceptable. Moreover, such situations are easily avoided by someone who accepts the probability axioms, because the axioms provide them with a reason to reject such decision offers.
+
+If we're convinced by the Dutchbook argument, which means we agree that we should be striving to think about probabilities as prescribed by the axioms, then this puts serious pressure on the idea that Prospect Theory is a viable approach to capturing a more ``human'' kind of rationality. Recall that in response to weighting effects, where people treat outcomes with low probabilities differently than outcomes with high probabilities, Prospect Theory proposed a different function to capture how people reason across these contexts. Such a function explicitly deviates from probability theory. Perhaps as a purely descriptive theory that attempts to capture the systematic ways that people go wrong, this is fine. But it would be misleading to think of that account as closer to ``human'' rationality. After all, we have the capacity to acknowledge the Dutchbook argument. To this extent, at least when we are sober and closer to the better versions of ourselves, we have the capacity to reason according to probability theory.
+
+\hypertarget{application}{%
+\section{Application}\label{application}}
+
+Examples from gambling help establish connections between probabilities and our levels of confidence through the idea of odds. In many real world applications, however, the probabilities of outcomes are not as neat as they are in the case of gambling. Nevertheless, it is possible to get some approximations; that is a large part of what the field of statistics is about. We will not go into such details here. But it is worth showing how we can connect some of the concepts so far, and motivate by example what will spell out more abstractly in the next chapter.
+
+Let's use an example where we estimate some probabilities from frequency data, something that has important ties with medicine and epidemiology. In the context of health it is common to represent data in the form of what is called a \emph{two by two table} (or 2x2 table). The idea is to use the rows to represent ``the exposed'' options, like smoking or not smoking, or like using a hand cream or not using a hand cream. The columns represent ``the diseased'' and ``not diseased'' which in our case is ``rash continues'' and ``rash gets better''.\footnote{In the smoking scenario the columns could be ``hypertension'' and''without hypertension'' for example.}
+
+Here's an example of what such data might look like. We're supposing that each cell represents the number of participants in a study that met the pair of conditions. For example, there are 223 subjects that used the hand cream and had the rash get better. There are 107 subjects that didn't use the hand cream, but the rash got better anyway. In total there are 330 subjects who's rash got better. The cells under ``Rash Continues'' is read similarly. Notice that the cell in the most bottom right corner is the total number of subjects in this study: 426.
+
+\begin{longtable}[]{@{}lccc@{}}
+\toprule
+& Rash Gets Better (R) & Rash Continues (nR) & Total\tabularnewline
+\midrule
+\endhead
+Used Cream (C) & 223 & 75 & 298\tabularnewline
+Didn't Use (nC) & 107 & 21 & 128\tabularnewline
+Total & 330 & 96 & 426\tabularnewline
+\bottomrule
+\end{longtable}
+
+Suppose we asked what the probability is that someone in our sample used the hand cream.\^{}\{Note that this question is restricted to the sample, the subjects that were in the study. If we want to make claims about the larger population (people not in the sample), we'd have to deploy some inferential statistical tools that we have not covered.{]} To calculate that, we would take the total number of people that use the hand cream (298) and divide that number by the total number of subjects (426). This gives us \(298/426=0.6995\) (rounded to four decimal places). Similarly, we can calculate the probability that a subject had their rash continue by taking that number (96) and dividing it by the total number of subjects (426). This gives us \(96/426=0.2254\). The other two probabilities are calculated similarly: take the total from the row or column, and divide by the total number of subjects (426).
+
+The strategy we are deploying in the case of two by two tables has its equivalent in the strategies we are about to discuss using \emph{truth tables}, and important tool in logic. We turn to that topic next.
+
+\hypertarget{exercises-7}{%
+\section*{Exercises}\label{exercises-7}}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Suppose your friend has a coin with heads on one side and tails on the other. You do not know, however, whether the coin is a fair coin. All you are told is what the supposed odds are for heads and tails. Recall that if odds in favor are n:m, then odds \emph{against} are just the inverse, m:n.~In addition, recall that rewards are calculated by using odds against. Your friend presents you with the following table with partial information (the odds are odds against):
+\end{enumerate}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+Face & Odds & Implied.Prob & Bet & Payout\tabularnewline
+\midrule
+\endhead
+Heads & 1:3 & X & \$12 & Z\tabularnewline
+Tails & 4:1 & Y & \$5 & W\tabularnewline
+a. What & is X? & & &\tabularnewline
+a. What & is Y? & & &\tabularnewline
+a. What & is rewa & rd Z? & &\tabularnewline
+a. What & is rewa & rd W? & &\tabularnewline
+a. Is i & t more l & ikely that the c & oin wil & l flip heads or tails?\tabularnewline
+a. What & is the & total of the imp & lied pr & obabilities (X+Y)?\tabularnewline
+a. Is y & our frie & nd offering you & a fair & bet? Why or why not?\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Suppose this time we have a coin with a substantial flat edge so that sometimes it spins and stays on the edge without falling over. The coin is a fair coin in that heads and tails are equally likely, but now there is also a positive probability that the coin could land and stay on its edge. Suppose that the probabilities are given by the table below. Using this information, what are the odds supposed to be if you want to make sure that the wagers are fair? And consequently, what should the rewards be as part of the payouts?
+\end{enumerate}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+Face & Odds & Implied.Prob & Bet & Payout\tabularnewline
+\midrule
+\endhead
+Heads & X & 0.4 & \$12 & Z\tabularnewline
+Tails & Y & 0.4 & \$5 & W\tabularnewline
+Edge & V & 0.2 & \$10 & U\tabularnewline
+a. What & is X? & & &\tabularnewline
+a. What & is Y? & & &\tabularnewline
+a. What & is V? & & &\tabularnewline
+a. What & is rewa & rd Z? & &\tabularnewline
+a. What & is rewa & rd W? & &\tabularnewline
+a. What & is rewa & rd U? & &\tabularnewline
+\bottomrule
+\end{longtable}
 
 \hypertarget{probabilities-and-logic}{%
 \chapter{Probabilities and Logic}\label{probabilities-and-logic}}
@@ -3331,8 +3460,8 @@ This is an important result, one that we will use often. Here's a different way 
  Pr(\text{A}\vee\text{B}) = Pr(\text{A}) + Pr(\text{B}) - Pr(\text{A}\wedge\text{B}) 
 \]
 
-\hypertarget{exercises-7}{%
-\section{Exercises}\label{exercises-7}}
+\hypertarget{exercises-8}{%
+\section{Exercises}\label{exercises-8}}
 
 \hypertarget{proporitions-to-probabilities}{%
 \subsection{Proporitions to Probabilities}\label{proporitions-to-probabilities}}
