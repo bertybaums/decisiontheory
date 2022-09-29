@@ -1,3 +1,87 @@
 # Conditional Probabilities and Likelihoods
 
+Assuming you have a driver's licence and the roads are relatively clear, the chances of crashing your car are pretty low. But if you're drink, the chances of crash are much higher. Probabilities change depending on the conditions.
 
+We already have notation for symbolize this idea. We use $P(A | B)$ to represent the probability that $A$ is true *given* that $B$ is true. For example, to say the probability of $A$ given $B$ is 30%, we write:
+$$ P(A | B) = .3 $$
+When we condition probabilities in this way, we call them *conditional probabilities*. Conditional probabilities play a central role in the remaining material, so let's spend some time learning how to calculate them.
+
+
+## Calculating Conditional Probability
+
+```{r echo=FALSE, fig.show='hold', fig.margin=TRUE, fig.cap="Conditional probability in a fair die roll"}
+die1 <- readPNG("img/die/die1.png") %>% rasterGrob()
+die2 <- readPNG("img/die/die2.png") %>% rasterGrob()
+die3 <- readPNG("img/die/die3.png") %>% rasterGrob()
+die4 <- readPNG("img/die/die4.png") %>% rasterGrob()
+die5 <- readPNG("img/die/die5.png") %>% rasterGrob()
+die6 <- readPNG("img/die/die6.png") %>% rasterGrob()
+rect1 <- geom_rect(aes(xmin = 0, ymin = 0, xmax = 3, ymax = 1), 
+                   size = 1, fill = "darkorange")
+rect2 <- geom_rect(aes(xmin = 1.05, ymin = 0.05, xmax = 2.95, ymax = .95), 
+                   size = 1, fill = "darkviolet")
+p <- ggplot() + 
+  theme_void() + coord_fixed() +
+  xlim(0, 3) + ylim(0, 2) +
+  rect1 +
+  annotation_custom(die1, xmin = 0, xmax = 1, ymin = 1, ymax = 2) +
+  annotation_custom(die3, xmin = 1, xmax = 2, ymin = 1, ymax = 2) +
+  annotation_custom(die5, xmin = 2, xmax = 3, ymin = 1, ymax = 2) +
+  annotation_custom(die2, xmin = 0, xmax = 1, ymin = 0, ymax = 1) +
+  annotation_custom(die4, xmin = 1, xmax = 2, ymin = 0, ymax = 1) +
+  annotation_custom(die6, xmin = 2, xmax = 3, ymin = 0, ymax = 1)
+p
+p$layers <- append(p$layers, rect2, 3)
+p
+```
+
+Suppose I roll a fair, six-sided die behind a screen. You can't see the result, but I tell you it's an even number. What's the probability it's also a "high" number: either a $4$, $5$, or $6$?
+
+Maybe you figured the correct answer: $2/3$. But why is that correct? Because, out of the three even numbers ($2$, $4$, and $6$), two of them are high ($4$ and $6$). And since the die is fair, we expect it to land on a high number $2/3$ of the times it lands on an even number.
+
+This hints at a formula for $P(A | B)$.
+
+Conditional Probability
+
+:   
+    $$ P(A | B) = \frac{P(A \wedge B)}{P(B)}. $$
+
+In the die-roll example, we considered how many of the $B$ possibilities were also $A$ possibilities. Which means we divided $P(A \wedge B)$ by $P(B)$.
+
+In fact, this formula is our official definition for the concept of conditional probability. When we write the sequence of symbols $P(A | B)$, it's really just shorthand for the fraction $P(A \wedge B) / P(B)$.
+
+```{r condprob, echo=FALSE, fig.margin=TRUE, fig.cap="Conditional probability is the size of the $A \\wedge B$ region compared to the entire $B$ region."}
+x <- seq(-.75, .75, 0.01)
+upper <- function(x) {
+  a <- sqrt(1.5^2 - (x[x < 0] - .75)^2)
+  b <- sqrt(1.5^2 - (x[x >= 0] + .75)^2)
+  c(a,b)
+}
+ggplot() + 
+  coord_fixed() + theme_void() +
+  xlim(-3,3) + ylim(-2,2) +
+  geom_circle(aes(x0 = -.75, y0 = 0, r = 1.5), fill = bookorange) +  
+  geom_circle(aes(x0 = .75, y0 = 0, r = 1.5), fill = bookblue) +  
+  geom_ribbon(aes(x = x, ymin = upper(x), ymax = -upper(x)), 
+              fill = bookpurple, colour = "black") +
+  geom_text(aes(x = c(-2.25, 2.25), y = c(1, 1), label = c("A", "B")), 
+            fontface = "italic", size = 7) +
+  theme(panel.border = element_rect(colour = "black", fill = NA, size = 1))
+```
+
+In terms of an Euler diagram (Figure \@ref(fig:condprob)), the definition of conditional probability compares the size of the purple $A \wedge B$ region to the size of the whole $B$ region, purple and blue together. If you don't mind getting a little colourful with your algebra:
+$$
+  P(A | B) = \frac{\color{bookpurple}{\blacksquare}}{\color{bookpurple}{\blacksquare} + \color{bookblue}{\blacksquare}}.
+$$
+So the definition works because, informally speaking, $P(A \wedge B)/P(B)$ is the proportion of the $B$ outcomes that are also $A$ outcomes.
+
+`r newthought("Dividing")`  by zero is a common pitfall with conditional probability. Notice how the definition of $P(A | B)$ depends on $P(B)$ being larger than zero. If $P(B) = 0$, then the formula
+```{marginfigure}
+The comedian Steven Wright once quipped that "black holes are where God divided by zero."
+```
+$$ P(A | B) = \frac{P(A \wedge B)}{P(B)} $$
+doesn't even make any sense. There is no number that results from the division on the right hand side.[^alternatesystems]
+
+[^alternatesystems]: There are alternative mathematical systems of probability, where conditional probability is defined differently to avoid this problem. But in this book we'll stick to the standard system. In this system, there's just no such thing as "the probability of $A$ given $B$" when $B$ has zero probability.
+
+In such cases we say that $P(A | B)$ is *undefined*. It's not zero, or some special number. It just isn't a number.
