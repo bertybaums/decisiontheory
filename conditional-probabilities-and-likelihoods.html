@@ -43,6 +43,13 @@ MathJax.Hub.Config({
 <body>
 
 
+<div style="display: none;">
+$$
+  \definecolor{bookorange}{RGB}{255,140,0}
+  \definecolor{bookblue}{RGB}{0,92,169}
+  \definecolor{bookpurple}{RGB}{148,0,211}
+$$
+</div>
 
 <div class="row">
 <div class="col-sm-12">
@@ -123,7 +130,9 @@ MathJax.Hub.Config({
 <li><a href="probabilities-and-logic.html#possibilities-and-truth-tables"><span class="toc-section-number">9.3</span> Possibilities and Truth Tables</a></li>
 <li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.4</span> Exercises</a></li>
 </ul></li>
-<li><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a></li>
+<li class="has-sub"><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a><ul>
+<li><a href="conditional-probabilities-and-likelihoods.html#calculating-conditional-probability"><span class="toc-section-number">10.1</span> Calculating Conditional Probability</a></li>
+</ul></li>
 <li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
 <li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
 </ul>
@@ -134,7 +143,52 @@ MathJax.Hub.Config({
 <div class="col-sm-12">
 <div id="conditional-probabilities-and-likelihoods" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Conditional Probabilities and Likelihoods</h1>
+<p>Assuming you have a driver’s licence and the roads are relatively clear, the chances of crashing your car are pretty low. But if you’re drink, the chances of crash are much higher. Probabilities change depending on the conditions.</p>
+<p>We already have notation for symbolize this idea. We use <span class="math inline">\(P(A | B)\)</span> to represent the probability that <span class="math inline">\(A\)</span> is true <em>given</em> that <span class="math inline">\(B\)</span> is true. For example, to say the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is 30%, we write:
+<span class="math display">\[ P(A | B) = .3 \]</span>
+When we condition probabilities in this way, we call them <em>conditional probabilities</em>. Conditional probabilities play a central role in the remaining material, so let’s spend some time learning how to calculate them.</p>
+<div id="calculating-conditional-probability" class="section level2">
+<h2><span class="header-section-number">10.1</span> Calculating Conditional Probability</h2>
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<img src="decisiontheory_files/figure-html/unnamed-chunk-22-1.png" alt="Conditional probability in a fair die roll" width="672"  /><img src="decisiontheory_files/figure-html/unnamed-chunk-22-2.png" alt="Conditional probability in a fair die roll" width="672"  />
+<!--
+<p class="caption marginnote">-->Figure 10.1: Conditional probability in a fair die roll<!--</p>-->
+<!--</div>--></span>
+</p>
+<p>Suppose I roll a fair, six-sided die behind a screen. You can’t see the result, but I tell you it’s an even number. What’s the probability it’s also a “high” number: either a <span class="math inline">\(4\)</span>, <span class="math inline">\(5\)</span>, or <span class="math inline">\(6\)</span>?</p>
+<p>Maybe you figured the correct answer: <span class="math inline">\(2/3\)</span>. But why is that correct? Because, out of the three even numbers (<span class="math inline">\(2\)</span>, <span class="math inline">\(4\)</span>, and <span class="math inline">\(6\)</span>), two of them are high (<span class="math inline">\(4\)</span> and <span class="math inline">\(6\)</span>). And since the die is fair, we expect it to land on a high number <span class="math inline">\(2/3\)</span> of the times it lands on an even number.</p>
+<p>This hints at a formula for <span class="math inline">\(P(A | B)\)</span>.</p>
+<dl>
+<dt>Conditional Probability</dt>
+<dd><p><span class="math display">\[ P(A | B) = \frac{P(A \wedge B)}{P(B)}. \]</span></p>
+</dd>
+</dl>
+<p>In the die-roll example, we considered how many of the <span class="math inline">\(B\)</span> possibilities were also <span class="math inline">\(A\)</span> possibilities. Which means we divided <span class="math inline">\(P(A \wedge B)\)</span> by <span class="math inline">\(P(B)\)</span>.</p>
+<p>In fact, this formula is our official definition for the concept of conditional probability. When we write the sequence of symbols <span class="math inline">\(P(A | B)\)</span>, it’s really just shorthand for the fraction <span class="math inline">\(P(A \wedge B) / P(B)\)</span>.</p>
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span style="display:block;" id="fig:condprob"></span>
+<img src="decisiontheory_files/figure-html/condprob-1.png" alt="Conditional probability is the size of the $A \wedge B$ region compared to the entire $B$ region." width="672"  />
+<!--
+<p class="caption marginnote">-->Figure 10.2: Conditional probability is the size of the <span class="math inline">\(A \wedge B\)</span> region compared to the entire <span class="math inline">\(B\)</span> region.<!--</p>-->
+<!--</div>--></span>
+</p>
+<p>In terms of an Euler diagram (Figure <a href="conditional-probabilities-and-likelihoods.html#fig:condprob">10.2</a>), the definition of conditional probability compares the size of the purple <span class="math inline">\(A \wedge B\)</span> region to the size of the whole <span class="math inline">\(B\)</span> region, purple and blue together. If you don’t mind getting a little colourful with your algebra:
+<span class="math display">\[
+  P(A | B) = \frac{\color{bookpurple}{\blacksquare}}{\color{bookpurple}{\blacksquare} + \color{bookblue}{\blacksquare}}.
+\]</span>
+So the definition works because, informally speaking, <span class="math inline">\(P(A \wedge B)/P(B)\)</span> is the proportion of the <span class="math inline">\(B\)</span> outcomes that are also <span class="math inline">\(A\)</span> outcomes.</p>
+<p><span class="newthought">Dividing</span> by zero is a common pitfall with conditional probability. Notice how the definition of <span class="math inline">\(P(A | B)\)</span> depends on <span class="math inline">\(P(B)\)</span> being larger than zero. If <span class="math inline">\(P(B) = 0\)</span>, then the formula
+<label for="tufte-mn-5" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-5" class="margin-toggle"><span class="marginnote"><span style="display: block;">The comedian Steven Wright once quipped that “black holes are where God divided by zero.”</span></span>
+<span class="math display">\[ P(A | B) = \frac{P(A \wedge B)}{P(B)} \]</span>
+doesn’t even make any sense. There is no number that results from the division on the right hand side.<label for="tufte-sn-83" class="margin-toggle sidenote-number">83</label><input type="checkbox" id="tufte-sn-83" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">83</span> There are alternative mathematical systems of probability, where conditional probability is defined differently to avoid this problem. But in this book we’ll stick to the standard system. In this system, there’s just no such thing as “the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span>” when <span class="math inline">\(B\)</span> has zero probability.</span></p>
+<p>In such cases we say that <span class="math inline">\(P(A | B)\)</span> is <em>undefined</em>. It’s not zero, or some special number. It just isn’t a number.</p>
 
+</div>
 </div>
 <p style="text-align: center;">
 <a href="probabilities-and-logic.html"><button class="btn btn-default">Previous</button></a>

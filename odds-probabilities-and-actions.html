@@ -43,6 +43,13 @@ MathJax.Hub.Config({
 <body>
 
 
+<div style="display: none;">
+$$
+  \definecolor{bookorange}{RGB}{255,140,0}
+  \definecolor{bookblue}{RGB}{0,92,169}
+  \definecolor{bookpurple}{RGB}{148,0,211}
+$$
+</div>
 
 <div class="row">
 <div class="col-sm-12">
@@ -123,7 +130,9 @@ MathJax.Hub.Config({
 <li><a href="probabilities-and-logic.html#possibilities-and-truth-tables"><span class="toc-section-number">9.3</span> Possibilities and Truth Tables</a></li>
 <li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.4</span> Exercises</a></li>
 </ul></li>
-<li><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a></li>
+<li class="has-sub"><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a><ul>
+<li><a href="conditional-probabilities-and-likelihoods.html#calculating-conditional-probability"><span class="toc-section-number">10.1</span> Calculating Conditional Probability</a></li>
+</ul></li>
 <li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
 <li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
 </ul>
@@ -198,8 +207,8 @@ Figure 8.2: A bet that pays <span class="math inline">\(\$9\)</span> if Bob wins
 <p>The general recipe we just developed uses the idea of fair bets (or fair odds). The idea here is that a person would be willing to take either side of the bet. Using the language of preferences: the person is <em>indifferent</em> between the two options. What happens if betting rates aren’t fair in the eyes of Bob? In that case Bob would no longer be indifferent, he would want to take one side!</p>
 <p>For example, let’s suppose that Bob is confident that <span class="math inline">\(S\)</span> will happen, say by three to two odds, i.e. <span class="math inline">\(Pr(S)=3/5\)</span>. That means that, from Bob’s perspective, for every <span class="math inline">\(\$2\)</span> that Ally is willing to put in the stake, he is willing to put in <span class="math inline">\(\$3\)</span>. That is his fair bet.<label for="tufte-sn-80" class="margin-toggle sidenote-number">80</label><input type="checkbox" id="tufte-sn-80" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">80</span> Notice: <span class="math inline">\((3/5)(\$2) + (2/5)(-\$3) = 0\)</span> </span> Now consider two scenarios:</p>
 <ul>
-<li><p>(Scenario 1) Ally is willing to give Bob even odds, i.e., she is willing to put in <span class="math inline">\(\$3\)</span> for every <span class="math inline">\(\$3\)</span> that Bob puts in the stake (and as before, if <span class="math inline">\(S\)</span> happens then Bob wins the stake). So for the same amount that Bob is willing to lose in <em>his</em> fair bet, in this scenario he has the same probability of winning, but now the <em>payoff</em> for winning is higher. From Bob’s perspective, his expected value is a gain: <span class="math display">\[ (3/5)(\$3) + (2/5)(-\$3) = 0.6 \]</span>. So Ally’s offer would favor Bob and is advantageous (in his eyes).</p></li>
-<li><p>(Scenario 2) Ally is only willing to put in <span class="math inline">\(\$1\)</span> for every <span class="math inline">\(\$3\)</span> that Bob puts in the stake (and as before, if <span class="math inline">\(S\)</span> happens then Bob wins the stake). So in order to win <span class="math inline">\(\$2\)</span> from Ally in this scenario, he would have to be willing to lose <span class="math inline">\(\$6\)</span>, which is twice the amount relative to his fair better rate! From Bob’s perspective, his expected value is now a loss: <span class="math display">\[ (3/5)(\$1) + (2/5)(-\$3) = -0.6 \]</span>. So here Ally’s offer would not be advantageous to Bob.</p></li>
+<li><p>(Scenario 1) Ally is willing to give Bob even odds, i.e., she is willing to put in <span class="math inline">\(\$3\)</span> for every <span class="math inline">\(\$3\)</span> that Bob puts in the stake (and as before, if <span class="math inline">\(S\)</span> happens then Bob wins the stake). So for the same amount that Bob is willing to lose in <em>his</em> fair bet, in this scenario he has the same probability of winning, but now the <em>payoff</em> for winning is higher. From Bob’s perspective, his expected value is a gain: <span class="math display">\[ (3/5)(\$3) + (2/5)(-\$3) = 0.6 \]</span> So Ally’s offer would favor Bob and is advantageous (in his eyes).</p></li>
+<li><p>(Scenario 2) Ally is only willing to put in <span class="math inline">\(\$1\)</span> for every <span class="math inline">\(\$3\)</span> that Bob puts in the stake (and as before, if <span class="math inline">\(S\)</span> happens then Bob wins the stake). So in order to win <span class="math inline">\(\$2\)</span> from Ally in this scenario, he would have to be willing to lose <span class="math inline">\(\$6\)</span>, which is twice the amount relative to his fair better rate! From Bob’s perspective, his expected value is now a loss: <span class="math display">\[ (3/5)(\$1) + (2/5)(-\$3) = -0.6 \]</span> So here Ally’s offer would not be advantageous to Bob.</p></li>
 </ul>
 <p><span class="newthought">There’s an important lesson here.</span> Just because a person is willing to take a bet does not mean that they think it’s a fair bet. Like in Scenario 1, Bob is willing to take bets that he perceives as advantageous to him. But in Scenario 2, he would rather be in Ally’s shoes! So when we’re measuring people’s personal probabilities, we have to make sure that the bets that they are willing to take are ones that they think are fair (i.e. the bet, from their perspective, isn’t advantageous or disadvantageous).</p>
 <p><span class="newthought">There’s complications though.</span> Recall that money doesn’t perfectly track utility, it is at best a very rough estimate. In previous chapters we saw how gaining a dollar is not the same as losing a dollar. Moreover, the utility of gaining/losing a dollar depends on how much you already have.</p>

@@ -85,6 +85,10 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
+
+\definecolor{bookorange}{RGB}{255,140,0}
+\definecolor{bookblue}{RGB}{0,92,169}
+\definecolor{bookpurple}{RGB}{148,0,211}
 \usepackage{tikz}
 \usepackage{pgfplots}
 
@@ -2918,9 +2922,9 @@ For example, let's suppose that Bob is confident that \(S\) will happen, say by 
 
 \begin{itemize}
 \item
-  (Scenario 1) Ally is willing to give Bob even odds, i.e., she is willing to put in \(\$3\) for every \(\$3\) that Bob puts in the stake (and as before, if \(S\) happens then Bob wins the stake). So for the same amount that Bob is willing to lose in \emph{his} fair bet, in this scenario he has the same probability of winning, but now the \emph{payoff} for winning is higher. From Bob's perspective, his expected value is a gain: \[ (3/5)(\$3) + (2/5)(-\$3) = 0.6 \]. So Ally's offer would favor Bob and is advantageous (in his eyes).
+  (Scenario 1) Ally is willing to give Bob even odds, i.e., she is willing to put in \(\$3\) for every \(\$3\) that Bob puts in the stake (and as before, if \(S\) happens then Bob wins the stake). So for the same amount that Bob is willing to lose in \emph{his} fair bet, in this scenario he has the same probability of winning, but now the \emph{payoff} for winning is higher. From Bob's perspective, his expected value is a gain: \[ (3/5)(\$3) + (2/5)(-\$3) = 0.6 \] So Ally's offer would favor Bob and is advantageous (in his eyes).
 \item
-  (Scenario 2) Ally is only willing to put in \(\$1\) for every \(\$3\) that Bob puts in the stake (and as before, if \(S\) happens then Bob wins the stake). So in order to win \(\$2\) from Ally in this scenario, he would have to be willing to lose \(\$6\), which is twice the amount relative to his fair better rate! From Bob's perspective, his expected value is now a loss: \[ (3/5)(\$1) + (2/5)(-\$3) = -0.6 \]. So here Ally's offer would not be advantageous to Bob.
+  (Scenario 2) Ally is only willing to put in \(\$1\) for every \(\$3\) that Bob puts in the stake (and as before, if \(S\) happens then Bob wins the stake). So in order to win \(\$2\) from Ally in this scenario, he would have to be willing to lose \(\$6\), which is twice the amount relative to his fair better rate! From Bob's perspective, his expected value is now a loss: \[ (3/5)(\$1) + (2/5)(-\$3) = -0.6 \] So here Ally's offer would not be advantageous to Bob.
 \end{itemize}
 
 \newthought{There's an important lesson here.} Just because a person is willing to take a bet does not mean that they think it's a fair bet. Like in Scenario 1, Bob is willing to take bets that he perceives as advantageous to him. But in Scenario 2, he would rather be in Ally's shoes! So when we're measuring people's personal probabilities, we have to make sure that the bets that they are willing to take are ones that they think are fair (i.e.~the bet, from their perspective, isn't advantageous or disadvantageous).
@@ -3563,6 +3567,56 @@ Linda is 31 years old, single, outspoken, and very bright. She majored in philos
 
 \hypertarget{conditional-probabilities-and-likelihoods}{%
 \chapter{Conditional Probabilities and Likelihoods}\label{conditional-probabilities-and-likelihoods}}
+
+Assuming you have a driver's licence and the roads are relatively clear, the chances of crashing your car are pretty low. But if you're drink, the chances of crash are much higher. Probabilities change depending on the conditions.
+
+We already have notation for symbolize this idea. We use \(P(A | B)\) to represent the probability that \(A\) is true \emph{given} that \(B\) is true. For example, to say the probability of \(A\) given \(B\) is 30\%, we write:
+\[ P(A | B) = .3 \]
+When we condition probabilities in this way, we call them \emph{conditional probabilities}. Conditional probabilities play a central role in the remaining material, so let's spend some time learning how to calculate them.
+
+\hypertarget{calculating-conditional-probability}{%
+\section{Calculating Conditional Probability}\label{calculating-conditional-probability}}
+
+\begin{marginfigure}
+\includegraphics{decisiontheory_files/figure-latex/unnamed-chunk-22-1} \includegraphics{decisiontheory_files/figure-latex/unnamed-chunk-22-2} \caption[Conditional probability in a fair die roll]{Conditional probability in a fair die roll}\label{fig:unnamed-chunk-22}
+\end{marginfigure}
+
+Suppose I roll a fair, six-sided die behind a screen. You can't see the result, but I tell you it's an even number. What's the probability it's also a ``high'' number: either a \(4\), \(5\), or \(6\)?
+
+Maybe you figured the correct answer: \(2/3\). But why is that correct? Because, out of the three even numbers (\(2\), \(4\), and \(6\)), two of them are high (\(4\) and \(6\)). And since the die is fair, we expect it to land on a high number \(2/3\) of the times it lands on an even number.
+
+This hints at a formula for \(P(A | B)\).
+
+\begin{description}
+\item[Conditional Probability]
+\[ P(A | B) = \frac{P(A \wedge B)}{P(B)}. \]
+\end{description}
+
+In the die-roll example, we considered how many of the \(B\) possibilities were also \(A\) possibilities. Which means we divided \(P(A \wedge B)\) by \(P(B)\).
+
+In fact, this formula is our official definition for the concept of conditional probability. When we write the sequence of symbols \(P(A | B)\), it's really just shorthand for the fraction \(P(A \wedge B) / P(B)\).
+
+\begin{marginfigure}
+\includegraphics{decisiontheory_files/figure-latex/condprob-1} \caption[Conditional probability is the size of the $A \wedge B$ region compared to the entire $B$ region]{Conditional probability is the size of the $A \wedge B$ region compared to the entire $B$ region.}\label{fig:condprob}
+\end{marginfigure}
+
+In terms of an Euler diagram (Figure \ref{fig:condprob}), the definition of conditional probability compares the size of the purple \(A \wedge B\) region to the size of the whole \(B\) region, purple and blue together. If you don't mind getting a little colourful with your algebra:
+\[
+  P(A | B) = \frac{\color{bookpurple}{\blacksquare}}{\color{bookpurple}{\blacksquare} + \color{bookblue}{\blacksquare}}.
+\]
+So the definition works because, informally speaking, \(P(A \wedge B)/P(B)\) is the proportion of the \(B\) outcomes that are also \(A\) outcomes.
+
+\newthought{Dividing} by zero is a common pitfall with conditional probability. Notice how the definition of \(P(A | B)\) depends on \(P(B)\) being larger than zero. If \(P(B) = 0\), then the formula
+
+\begin{marginfigure}
+The comedian Steven Wright once quipped that ``black holes are where God
+divided by zero.''
+\end{marginfigure}
+
+\[ P(A | B) = \frac{P(A \wedge B)}{P(B)} \]
+doesn't even make any sense. There is no number that results from the division on the right hand side.\footnote{There are alternative mathematical systems of probability, where conditional probability is defined differently to avoid this problem. But in this book we'll stick to the standard system. In this system, there's just no such thing as ``the probability of \(A\) given \(B\)'' when \(B\) has zero probability.}
+
+In such cases we say that \(P(A | B)\) is \emph{undefined}. It's not zero, or some special number. It just isn't a number.
 
 \hypertarget{base-rates-priors-and-bayes-rule}{%
 \chapter{Base Rates, Priors, and Bayes Rule}\label{base-rates-priors-and-bayes-rule}}
