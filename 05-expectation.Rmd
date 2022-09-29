@@ -13,7 +13,7 @@ There is also a more technical meaning of what it is to have an expectation. Her
 
 ## Expected Utility by Example
 
-Here is an example. Suppose you have a rash on your hand. In half of all cases the rash goes away by itself, for the other half it doesn't. So, if you do nothing, there's a 50/50 chance the rash gets better. There's an over the counter cream you can use that helps the rash get better, but it's not perfect: 85\% of the time the rash goes away, but there's a 15\% chance that it continues even when using the cream.^[We have to be careful that we're conceiving of the "rash gets better" state as those aspects of the cream that are outside of our control. The state can't be those aspects of the action that correspond to the use of the cream, otherwise we violate the constraint that states and options have to be independent. We have to think of the "rash gets better" state as those properties related to the efficacy of the cream that are outside our control - like the sensitivity of your skin.]
+Here is an example. Suppose you have a rash on your hand. In half of all cases the rash goes away by itself, for the other half it doesn't. So, if you do nothing, there's a 50/50 chance the rash gets better. There's an over the counter cream you can use that helps the rash get better, but it's not perfect: 85\% of the time the rash goes away, but there's a 15\% chance that it continues even when using the cream.^[Notice that we're not being as careful like we have in the past. Here the "rash gets better" state is at least *somewhat* in our control (our choice affects the probabilities of the outcome). But there's also aspects of the cream that are outside of our control, like the sensitivity of your skin and the efficacy of the cream given your skin. It's arguably a feature that we don't have to be as careful, but we'll return to this point when we get to probabilities.]
 
 
                              Rash gets better               Rash continues
@@ -40,8 +40,8 @@ But utilities are not all that matter. We also have other information: the proba
 
 The rule for maximizing expected utility proceeds in two steps: 
 
-    -Step One: combine the utility and probability tables to calculate the expected utility of each option. 
-    -Step Two: select the option with the maximum expected utility. 
+    - Step One: combine the utility and probability tables to calculate the expected utility of each option. 
+    - Step Two: select the option with the maximum expected utility. 
 
 Let's go through these separately.
 

@@ -255,7 +255,7 @@ Here's an example. Suppose a politician is deciding on extending the search and 
 
 
 
-Unfortunately for the politician, there is no dominant option; dominance reasoning will not provide guidance for what to choose 
+Unfortunately for the politician, there is no dominant option; dominance reasoning will not provide guidance for what to choose. 
 The politician is not limited to the ordinal scale, however. We could instead use an interval (or quantitative) scale. By interpreting the numbers in the above table as cardinal numbers, we can then weight the values of the outcomes with how important each attribute is. 
 
 **Weighting by additivity**
