@@ -144,7 +144,7 @@ In short, even if there is more than one event that we're consider, the probabil
 
 The Dutchbook argument can be stated formally, but it's enough for our purposes to illustrate the argument using the popular example of horse racing. The following table lists all the names of four horses in a race, including the odds and the implied probability of each horse winning. In addition, the table lists the cost of a bet and the corresponding payout if the horse wins.
 
-```{r twobytwo}
+```{r, echo=FALSE}
 df <- data.frame(
     Horse = c("Gumption", "Gallifray", "Tungsten", "Shadow", " "," TOTALS"),
     Odds= c("1:1", "3:1", "4:1", "9:1", " ", " "),
@@ -180,7 +180,7 @@ Let's use an example where we estimate some probabilities from frequency data, s
 
 Here's an example of what such data might look like. We're supposing that each cell represents the number of participants in a study that met the pair of conditions. For example, there are 223 subjects that used the hand cream and had the rash get better. There are 107 subjects that didn't use the hand cream, but the rash got better anyway. In total there are 330 subjects who's rash got better. The cells under "Rash Continues" is read similarly. Notice that the cell in the most bottom right corner is the total number of subjects in this study: 426.
 
-```{r dutchbook}
+```{r dutchbook, echo=FALSE}
 df <- data.frame(
   O = c("Used Cream (C) ", " Didn't Use (nC) ", " Total"),  
   R = c(223, 107, 330),
@@ -196,4 +196,48 @@ Suppose we asked what the probability is that someone in our sample used the han
 
 The strategy we are deploying in the case of two by two tables has its equivalent in the strategies we are about to discuss using *truth tables*, and important tool in logic. We turn to that topic next.
 
+## Exercises {-}
+
+1. Suppose your friend has a coin with heads on one side and tails on the other. You do not know, however, whether the coin is a fair coin. All you are told is what the supposed odds are for heads and tails. Recall that if odds in favor are n:m, then odds *against* are just the inverse, m:n. In addition, recall that rewards are calculated by using odds against. Your friend presents you with the following table with partial information (the odds are odds against):
+
+```{r biasedcoin, echo=FALSE}
+df <- data.frame(
+  Face = c("Heads", "Tails"),  
+  Odds = c("1:3", "4:1"),
+  Implied.Prob = c("X", "Y"),
+  Bet = c("$12", "$5"),
+  Payout = c("Z", "W")
+)
+knitr::kable(df, align = "c")
+```
+
+    a. What is X?
+    a. What is Y?
+    a. What is reward Z?
+    a. What is reward W?
+    a. Is it more likely that the coin will flip heads or tails?
+    a. What is the total of the implied probabilities (X+Y)?
+    a. Is your friend offering you a fair bet? Why or why not?
+
+2. Suppose this time we have a coin with  a substantial flat edge so that sometimes it spins and stays on the edge without falling over. The coin is a fair coin in that heads and tails are equally likely, but now there is also a positive probability that the coin could land and stay on its edge. Suppose that the probabilities are given by the table below. Using this information, what are the odds supposed to be if you want to make sure that the wagers are fair? And consequently, what should the rewards be as part of the payouts?
+
+
+```{r coinedge, echo=FALSE}
+df <- data.frame(
+  Face = c("Heads", "Tails", "Edge"),  
+  Odds = c("X", "Y", "V"),
+  Implied.Prob = c(0.4,0.4,0.2),
+  Bet = c("$12", "$5", "$10"),
+  Payout = c("Z", "W", "U")
+)
+knitr::kable(df, align = "c")
+```
  
+    a. What is X?
+    a. What is Y?
+    a. What is V?
+    a. What is reward Z?
+    a. What is reward W?
+    a. What is reward U?
+
+

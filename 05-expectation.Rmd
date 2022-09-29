@@ -2,7 +2,6 @@
 # Expected Utilities
 
 
-
 <!-- CONSIDER A BUILD UP FOR THE NEXT CHAPTERS THAT INVITE MORE THAN JUST THE CDT AND EDT DEBATE. HERE, CONSIDER KENNY EASWARAN'S PAPER "A classification of Newcomb problems and decision theories". There is a great plot on where we think the intervention is. -->
 
 We developed the lottery option procedure to help us build interval scales for people's preferences, which lets us both order preferences and say how much more one thing is preferred to another.^[Recall how the lottery option procedure worked: given options A$\succ$B$\succ$C, where A and C make up a lottery L, what percent of L's tickets need to be A in order for the person to be indifferent between A and B? The percent of A tickets is the percent of B's desirability of A.] But we noted a curiousity about this procedure. Saying that you prefer a lottery is quite a different thing than saying you prefer a particular outcome, like a book. It seems intuitive enough to think about selecting book B rather than another: we purchase it, put it beside our bed, read it, etc. But what does it mean to act on or choose a lottery? Yes, you can purchase a ticket. But you can't *choose* the *winning* ticket in the sense that your choice guarantees the ticket is a winning one. Whether your ticket wins or loses is the outcome of some chancy process. How can we make better sense of this?
