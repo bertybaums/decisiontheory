@@ -392,7 +392,7 @@ We've covered a lot of ground. Beware of simply trying to memorize the following
 1. What is the probability of each of the following propositions?
     ```{marginfigure}
     Numerous exercises have been borrowed or adapted from Weisberg's  *Odds and Ends*, Chapter 5. I will admit that I lost track which exercises have come from where.
-```
+    ```
     a.  $A \wedge (B \wedge \neg A)$
     b.  $\neg (A \wedge \neg A)$
 
