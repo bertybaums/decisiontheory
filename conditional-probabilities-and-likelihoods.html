@@ -13,7 +13,7 @@
 
 <meta name="author" content="Bert Baumgaertner" />
 
-<meta name="date" content="2022-09-29" />
+<meta name="date" content="2022-10-13" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -128,10 +128,14 @@ $$
 <li><a href="probabilities-and-logic.html#measures"><span class="toc-section-number">9.1</span> Measures</a></li>
 <li><a href="probabilities-and-logic.html#normalized-measures"><span class="toc-section-number">9.2</span> Normalized Measures</a></li>
 <li><a href="probabilities-and-logic.html#possibilities-and-truth-tables"><span class="toc-section-number">9.3</span> Possibilities and Truth Tables</a></li>
-<li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.4</span> Exercises</a></li>
+<li><a href="probabilities-and-logic.html#independence"><span class="toc-section-number">9.4</span> Independence</a></li>
+<li><a href="probabilities-and-logic.html#summary-2"><span class="toc-section-number">9.5</span> Summary</a></li>
+<li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.6</span> Exercises</a></li>
 </ul></li>
 <li class="has-sub"><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a><ul>
 <li><a href="conditional-probabilities-and-likelihoods.html#calculating-conditional-probability"><span class="toc-section-number">10.1</span> Calculating Conditional Probability</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#application-monty-hall-problem"><span class="toc-section-number">10.2</span> Application: Monty Hall Problem</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#likelihoods"><span class="toc-section-number">10.3</span> Likelihoods</a></li>
 </ul></li>
 <li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
 <li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
@@ -144,16 +148,17 @@ $$
 <div id="conditional-probabilities-and-likelihoods" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Conditional Probabilities and Likelihoods</h1>
 <p>Assuming you have a driver’s licence and the roads are relatively clear, the chances of crashing your car are pretty low. But if you’re drink, the chances of crash are much higher. Probabilities change depending on the conditions.</p>
-<p>We already have notation for symbolize this idea. We use <span class="math inline">\(P(A | B)\)</span> to represent the probability that <span class="math inline">\(A\)</span> is true <em>given</em> that <span class="math inline">\(B\)</span> is true. For example, to say the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is 30%, we write:
+<p>We already have notation for symbolizing this idea. We use <span class="math inline">\(P(A | B)\)</span> to represent the probability that <span class="math inline">\(A\)</span> is true <em>given</em> that <span class="math inline">\(B\)</span> is true. For example, to say the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is 30%, we write:
 <span class="math display">\[ P(A | B) = .3 \]</span>
 When we condition probabilities in this way, we call them <em>conditional probabilities</em>. Conditional probabilities play a central role in the remaining material, so let’s spend some time learning how to calculate them.</p>
 <div id="calculating-conditional-probability" class="section level2">
 <h2><span class="header-section-number">10.1</span> Calculating Conditional Probability</h2>
+<p><label for="tufte-mn-6" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-6" class="margin-toggle"><span class="marginnote"><span style="display: block;">Most of this presentation is a light edit of Weisberg’s introduction to calculating conditional probability (6.1).</span></span></p>
 <p>
 <span class="marginnote shownote">
 <!--
-<div class="figure">--><span style="display:block;" id="fig:unnamed-chunk-22"></span>
-<img src="decisiontheory_files/figure-html/unnamed-chunk-22-1.png" alt="Conditional probability in a fair die roll" width="672"  /><img src="decisiontheory_files/figure-html/unnamed-chunk-22-2.png" alt="Conditional probability in a fair die roll" width="672"  />
+<div class="figure">--><span style="display:block;" id="fig:unnamed-chunk-24"></span>
+<img src="decisiontheory_files/figure-html/unnamed-chunk-24-1.png" alt="Conditional probability in a fair die roll" width="672"  /><img src="decisiontheory_files/figure-html/unnamed-chunk-24-2.png" alt="Conditional probability in a fair die roll" width="672"  />
 <!--
 <p class="caption marginnote">-->Figure 10.1: Conditional probability in a fair die roll<!--</p>-->
 <!--</div>--></span>
@@ -183,10 +188,33 @@ When we condition probabilities in this way, we call them <em>conditional probab
 \]</span>
 So the definition works because, informally speaking, <span class="math inline">\(P(A \wedge B)/P(B)\)</span> is the proportion of the <span class="math inline">\(B\)</span> outcomes that are also <span class="math inline">\(A\)</span> outcomes.</p>
 <p><span class="newthought">Dividing</span> by zero is a common pitfall with conditional probability. Notice how the definition of <span class="math inline">\(P(A | B)\)</span> depends on <span class="math inline">\(P(B)\)</span> being larger than zero. If <span class="math inline">\(P(B) = 0\)</span>, then the formula
-<label for="tufte-mn-5" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-5" class="margin-toggle"><span class="marginnote"><span style="display: block;">The comedian Steven Wright once quipped that “black holes are where God divided by zero.”</span></span>
+<label for="tufte-mn-7" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-7" class="margin-toggle"><span class="marginnote"><span style="display: block;">The comedian Steven Wright once quipped that “black holes are where God divided by zero.”</span></span>
 <span class="math display">\[ P(A | B) = \frac{P(A \wedge B)}{P(B)} \]</span>
-doesn’t even make any sense. There is no number that results from the division on the right hand side.<label for="tufte-sn-83" class="margin-toggle sidenote-number">83</label><input type="checkbox" id="tufte-sn-83" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">83</span> There are alternative mathematical systems of probability, where conditional probability is defined differently to avoid this problem. But in this book we’ll stick to the standard system. In this system, there’s just no such thing as “the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span>” when <span class="math inline">\(B\)</span> has zero probability.</span></p>
+doesn’t even make any sense. There is no number that results from the division on the right hand side.<label for="tufte-sn-88" class="margin-toggle sidenote-number">88</label><input type="checkbox" id="tufte-sn-88" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">88</span> There are alternative mathematical systems of probability, where conditional probability is defined differently to avoid this problem. But we’ll stick to the standard system. In this system, there’s just no such thing as “the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span>” when <span class="math inline">\(B\)</span> has zero probability.</span></p>
 <p>In such cases we say that <span class="math inline">\(P(A | B)\)</span> is <em>undefined</em>. It’s not zero, or some special number. It just isn’t a number.</p>
+</div>
+<div id="application-monty-hall-problem" class="section level2">
+<h2><span class="header-section-number">10.2</span> Application: Monty Hall Problem</h2>
+<p>Here we’ll show how the concept of conditional probability allows us to solve the Monty Hall problem in the introduction. Here’s the problem description:</p>
+<blockquote>
+<p>On the show there are three doors (A, B, and C), one of which with a prize behind it. You get to pick one of the doors. Let’s say you pick A. The host now opens one of the other two doors that you did not pick. But of course, the host doesn’t want to give away the game, so the door they open will be empty. After opening one of the two doors (B or C) the host asks, do you want to switch your choice or stick with your current choice of A?</p>
+</blockquote>
+<p>The intuitive answer, one that many mathematicians and statisticians gave at the time, is that you should be indifferent between switching and staying with your choice of door A. Why? Because, the (incorrect) reasoning goes, there’s two doors (A and whichever one the host didn’t open) and an even chance between them of where the prize is. Notice that this question is about an <em>unconditional</em> probability.</p>
+<p>The problem with this reasoning is that it ignores the events that proceeded. The reasoning would be apt if the game show had you picking between just two doors from the very start, and just because the host reveals what’s behind the door you didn’t pick, they ask you if you want to change your mind. But that’s not what’s going on the in the Monty Hall problem. The real question is: should you switch your choice from A <em>given that the host opened a non-prize door after your initial choice</em>? Notice that this question is about a <em>conditional</em> probability.</p>
+<p>If the prize is behind door A (the door you initially picked), then the host has a choice between opening up door B or door C. But if the prize isn’t behind door A, then the host is constrained. If the prize is behind door B, then the host will open C. If the prize is behind C, then the host will open B. What we’re reasoning about here are <em>paths</em> of possible events.</p>
+<p>The first kind of event is random, it’s just about the location of the prize behind one of the three doors. So the probability of the prize being behind door A is 1/3, and similarly for doors B and C. In other words, your initial guess of door A has a 1/3 chance of being right. The second kind of event is the host’s reveal of a non-prize door, which is <em>not</em> random <em>if</em> your choice of door A is <em>incorrect</em>, and is random if your choice is correct.</p>
+</div>
+<div id="likelihoods" class="section level2">
+<h2><span class="header-section-number">10.3</span> Likelihoods</h2>
+<ul>
+<li>order matters for conditional probabilities</li>
+<li>in the context of hypotheses and evidence, the order matters too!</li>
+</ul>
+<!-- 
+Use two lotteries (or slot machines) as examples.
+
+-->
+<!-- Look at Lindley's presentation of exchangeability? (Maybe save this until the learning chapter? Or maybe do one iteration of it here, then return to it again.) -->
 
 </div>
 </div>

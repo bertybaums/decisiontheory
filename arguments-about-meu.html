@@ -13,7 +13,7 @@
 
 <meta name="author" content="Bert Baumgaertner" />
 
-<meta name="date" content="2022-09-29" />
+<meta name="date" content="2022-10-13" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -128,10 +128,14 @@ $$
 <li><a href="probabilities-and-logic.html#measures"><span class="toc-section-number">9.1</span> Measures</a></li>
 <li><a href="probabilities-and-logic.html#normalized-measures"><span class="toc-section-number">9.2</span> Normalized Measures</a></li>
 <li><a href="probabilities-and-logic.html#possibilities-and-truth-tables"><span class="toc-section-number">9.3</span> Possibilities and Truth Tables</a></li>
-<li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.4</span> Exercises</a></li>
+<li><a href="probabilities-and-logic.html#independence"><span class="toc-section-number">9.4</span> Independence</a></li>
+<li><a href="probabilities-and-logic.html#summary-2"><span class="toc-section-number">9.5</span> Summary</a></li>
+<li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.6</span> Exercises</a></li>
 </ul></li>
 <li class="has-sub"><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a><ul>
 <li><a href="conditional-probabilities-and-likelihoods.html#calculating-conditional-probability"><span class="toc-section-number">10.1</span> Calculating Conditional Probability</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#application-monty-hall-problem"><span class="toc-section-number">10.2</span> Application: Monty Hall Problem</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#likelihoods"><span class="toc-section-number">10.3</span> Likelihoods</a></li>
 </ul></li>
 <li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
 <li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
@@ -349,7 +353,7 @@ $$
 </tr>
 </tbody>
 </table>
-<p>The <strong>Sure Thing Principle</strong> says that when you compare two options, like Gambles 1 and 2, you can ignore the states on which they agree (in italics) and compare them only on the states in which they disagree (boldfaced). In this case, the Sure Thing Principle says that when comparing Gambles 1 and 2, we need don’t need to consider tickets 12-100, we can just look at the states of ticket 1 and tickets 2-11. The same goes for comparing gambles 3 and 4.</p>
+<p>The <strong>Sure Thing Principle</strong> says that when you compare two options, like Gambles 1 and 2, you can ignore the states on which they agree (in italics) and compare them only on the states in which they disagree (boldfaced). In this case, the Sure Thing Principle says that when comparing Gambles 1 and 2, we don’t need to consider tickets 12-100, we can just look at the states of ticket 1 and tickets 2-11. The same goes for comparing gambles 3 and 4.</p>
 <p>If we ignore the last column, as the Sure Thing Principle says we can, we’ll notice that the comparison between gambles 1 and 2 is <em>exactly</em> the same as the comparison between gambles 3 and 4. That is, from the perspective of ticket 1 and tickets 2-11, Gamble 1 is the same as Gamble 3, and Gamble 2 is the same as Gamble 4.</p>
 <p>The Maximize Expected Utility rule entails the Sure Thing Principle. That is, any violation of the Sure Thing Principle will also be a violation of Maximize Expected Utility. Or put differently again, if you like MEU, then you also should like the Sure Thing Principle. In the above Allais table, the Sure Thing Principle effectively says that the comparison between gambles 1 and 2 is the same comparison as gambles 3 and 4. By these lights, the recommendation by MEU is correct. That means that our intuition that Gamble 4<span class="math inline">\(\succ\)</span>Gamble 3 but Gamble 1<span class="math inline">\(\succ\)</span>Gamble 2 is mistaken. The Allais paradox, according to this analysis, is starting off on the wrong foot.</p>
 <p>A similar analysis of the Ellsberg paradox tells us that our intuition that Gamble 4<span class="math inline">\(\succ\)</span>Gamble 3 and Gamble 1<span class="math inline">\(\succ\)</span>Gamble 2 must be mistaken. In this case, the state that the Sure Thing Principle says we can ignore is when the ball is yellow. By doing so, we see that the comparison between gambles 1 and 2 is the same as the comparison between gambles 3 and 4.</p>
@@ -403,6 +407,7 @@ Notice that even though this sequence continues indefinitely and is infinite, ea
 </div>
 <div id="the-two-envelope-paradox" class="section level3">
 <h3><span class="header-section-number">6.4.5</span> The Two Envelope Paradox</h3>
+<p>(Intentionally omitted - this is bonus material.)</p>
 </div>
 </div>
 <div id="arguments-against-descriptive-meu" class="section level2">
@@ -446,7 +451,7 @@ Notice that even though this sequence continues indefinitely and is infinite, ea
 <tr class="header">
 <th></th>
 <th align="center">Tickets 1-33</th>
-<th align="center">Tickets 34-00</th>
+<th align="center">Tickets 34-99</th>
 <th align="center">Ticket 100</th>
 </tr>
 </thead>
@@ -471,7 +476,7 @@ Notice that even though this sequence continues indefinitely and is infinite, ea
 <tr class="header">
 <th></th>
 <th align="center">Tickets 1-33</th>
-<th align="center">Tickets 34-00</th>
+<th align="center">Tickets 34-99</th>
 <th align="center">Ticket 100</th>
 </tr>
 </thead>
@@ -584,11 +589,11 @@ Notice that even though this sequence continues indefinitely and is infinite, ea
 <li><p>Prospect 3: $6,000 with 0.1%</p></li>
 <li><p>Prospect 4: $3,000 with 0.2%</p></li>
 </ul>
-<p>In a classic experiment of 66 participants, 86% said they preferred Prospect 2 over Prospect 1, whereas 73% preferred Prospect 3 over Prospect 4. From the perspective of MEU, this is puzzling becasue Prospects 1 and 2 have the same expected utility, as do Prospects 3 and 4. Moreover, the relationship between 1 and 2 is that Prospect 2 has twice the chance of getting half the amount in Prospect 1, and that is also true of how 4 relates to 3. So at the very least we would expect that if people prefer Prospect 2 over 1, then for the same reason theoretical considerations would lead us to predict a preference for 4 over 3. And yet, that’s not what we find empirically.</p>
+<p>In a classic experiment of 66 participants, 86% said they preferred Prospect 2 over Prospect 1, whereas 73% preferred Prospect 3 over Prospect 4. From the perspective of MEU, this is puzzling because Prospects 1 and 2 have the same expected utility, as do Prospects 3 and 4. Moreover, the relationship between 1 and 2 is that Prospect 2 has twice the chance of getting half the amount in Prospect 1, and that is also true of how 4 relates to 3. So at the very least we would expect that if people prefer Prospect 2 over 1, then for the same reason theoretical considerations would lead us to predict a preference for 4 over 3. And yet, that’s not what we find empirically.</p>
 <p>What explains why people prefer 2 over 1, but 3 over 4? The most agreed upon hypothesis is that we are typically poor at reasoning with low probabilities. While it is relatively straightforward to perceive that 90% is twice as much as 45%, the percentages of Prospects 3 and 4 are so low that we don’t pay much attention to their relative sizes. Sure, we might think, strictly speaking 0.2% is twice as high as 0.1%, but both are so low in terms of chances of winning that we treat them as being similar enough. Contrast that with the comparison of $6,000 and $3,000, where it is very easy to appreciate that one is twice the amount as the other. In brief, our inability to distinguish or appreciate differences in small probabilities is thought to explain what goes wrong here.</p>
 <p>Prospect Theory takes seriously this feature of human reasoning. On the one hand, people typically underestimate moderate and large probabilities, but overestimate small probabilities. To incorporate this in a theory of decision making, Prospect Theory adds a weighting function to the probability function. That is, whereas MEU takes probabilities at their face value, the weighting function will manipulate lower probabilities to make them seem higher than they are, and make moderate and high probabilities seem lower than they are.</p>
 <p>In our characterization of the relationship between MEU and Prospect Theory, we said that MEU might not be committed to a particular utility function. That is, there doesn’t seem to be anything inconsistent with letting MEU be open to the kind of asymmetric function that Prospect Theory proposes. The same cannot be said when it comes to probabilities. Here Prospect Theory seems to be making adjustments that are at the very least in tension with the spirit of MEU. The tension can be seen by asking ourselves, are humans making a mistake when they are reasoning with probabilities?</p>
-<p>We have to be very careful here about how we think of the word ‘mistake’.. It is not intended to signal a normative-descriptive divide. Our bridge building example will be helpful here. When a bridge collapses, we can try to figure out what the cause was. Was there a mistake in the design of the bridge, in which case the cause of the collapse was in the engineering (the theory)? Or was there a mistake in the construction of the bridge, in which case the cause of the collapse was in the application of the design or poor materials (the experiments or observations).</p>
+<p>We have to be very careful here about how we think of the word ‘mistake’. It is not intended to signal a normative-descriptive divide. Our bridge building example will be helpful here. When a bridge collapses, we can try to figure out what the cause was. Was there a mistake in the design of the bridge, in which case the cause of the collapse was in the engineering (the theory)? Or was there a mistake in the construction of the bridge, in which case the cause of the collapse was in the application of the design or poor materials (the experiments or observations).</p>
 <p>Prospect theory says that the cause of the collapse was in the engineering. What humans do is systematic and should be taken as an expression of rationality. We need to therefore update our theory of rational decision making in order to make it account for humans. MEU, on the other hand, says that the cause of the collapse was in the application. When humans are tired or drunk, for example, they don’t always choose the same options as they would when they are clear and sober. There are lots of instances where people are arational or irrational. MEU sees weighting effects as an example of  expressing rationality.</p>
 <p>In short, Prospect Theory says to take the experiments seriously and update the theory. MEU says to take the theory seriously and recognize that the experiments are done when humans are not at their best, or even approximations of it. What should we decide?</p>
 <p>Let us take a step back and consider what we want out of a theory of decision making. There are at least two things we might care about. On the one hand, we might care about making predictions about how humans make decisions. On the other hand, we might care about having a theory that we can use as a guide to making decisions.</p>

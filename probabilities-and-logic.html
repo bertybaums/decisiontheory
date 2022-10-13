@@ -13,7 +13,7 @@
 
 <meta name="author" content="Bert Baumgaertner" />
 
-<meta name="date" content="2022-09-29" />
+<meta name="date" content="2022-10-13" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -128,10 +128,14 @@ $$
 <li><a href="probabilities-and-logic.html#measures"><span class="toc-section-number">9.1</span> Measures</a></li>
 <li><a href="probabilities-and-logic.html#normalized-measures"><span class="toc-section-number">9.2</span> Normalized Measures</a></li>
 <li><a href="probabilities-and-logic.html#possibilities-and-truth-tables"><span class="toc-section-number">9.3</span> Possibilities and Truth Tables</a></li>
-<li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.4</span> Exercises</a></li>
+<li><a href="probabilities-and-logic.html#independence"><span class="toc-section-number">9.4</span> Independence</a></li>
+<li><a href="probabilities-and-logic.html#summary-2"><span class="toc-section-number">9.5</span> Summary</a></li>
+<li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.6</span> Exercises</a></li>
 </ul></li>
 <li class="has-sub"><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a><ul>
 <li><a href="conditional-probabilities-and-likelihoods.html#calculating-conditional-probability"><span class="toc-section-number">10.1</span> Calculating Conditional Probability</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#application-monty-hall-problem"><span class="toc-section-number">10.2</span> Application: Monty Hall Problem</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#likelihoods"><span class="toc-section-number">10.3</span> Likelihoods</a></li>
 </ul></li>
 <li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
 <li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
@@ -143,7 +147,7 @@ $$
 <div class="col-sm-12">
 <div id="probabilities-and-logic" class="section level1">
 <h1><span class="header-section-number">Chapter 9</span> Probabilities and Logic</h1>
-<p>In this chapter we’re going to approach probability more abstractly and make connections to logic. We’re going to learn what it means when we say that a probability function is a <em>normalized measure over a possibility space</em>. There are three parts here: i) what is it for a function to be a measure, ii) what is a normalized measure, and iii) what is a possibility space.</p>
+<p>In this chapter we’re going to approach probability more abstractly and make connections to logic. We’re going to learn what it means when we say that a probability function is a <em>normalized measure over a possibility space</em>. There are three parts here: i) what is it for a function to be a measure, ii) what is a normalized measure, and iii) what is a possibility space. We will then use principles of logic to motivate several rules for going about calculating probabilities.</p>
 <div id="measures" class="section level2">
 <h2><span class="header-section-number">9.1</span> Measures</h2>
 <p>A function is a mapping from an input to an output. There can be many inputs that are mapped to one output, but to be a function the mapping cannot assign more than one output to an input. We typically think of functions as having numbers as inputs and outputs, but that doesn’t have to be the case. In fact, as we’ll see, probability functions will have a number as an output, but have non-numbers as inputs.</p>
@@ -371,10 +375,10 @@ $$
 <p>Although this example is simple, it turns out to be a really fruitful way of modeling lots of other examples that have the same structure. For example, philosophers love logic and thinking about the world in terms of statements or propositions that are either true or false. Suppose we have three different propositions: P, Q, and R.</p>
 <ul>
 <li>P - "Bert drinks beer on Fridays.’’</li>
-<li>Q - "Bert drinks wine on Fridays.’’</li>
-<li>R - "Bert drinks Scotch whisky on Fridays.’’</li>
+<li>Q - "Mandy drinks wine on Fridays.’’</li>
+<li>R - "Florian drinks Scotch whisky on Fridays.’’</li>
 </ul>
-<p>For simplicity, let’s assume that P is true if on the majority of Fridays I have a beer, and is false otherwise. Similarly for Q and R. In the real world each of these propositions has a unique truth value. Our interest here, however, is not just what is true, but the space of possibilities. In this case, each proposition has the possibility of being true (T) or false (F). Following the coin flip example, there are in total eight possibilities. We can organize the possibilities in what logicians call a truth table.</p>
+<p>For simplicity, let’s assume that P is true if on the majority of Fridays Bert drinks beer, and is false otherwise. Similarly for Q and R. In the real world each of these propositions has a unique truth value. Our interest here, however, is not just what is true, but the space of possibilities. In this case, each proposition has the possibility of being true (T) or false (F). Following the coin flip example, there are in total eight possibilities. We can organize the possibilities in what logicians call a truth table.</p>
 <table>
 <thead>
 <tr class="header">
@@ -435,7 +439,7 @@ $$
 </tr>
 </tbody>
 </table>
-<p>These eight possibilities provide the foundation for creating a probability function. What we first need to do is make sure that we have a measure. Let’s say we give the following numbers to each row in the truth table. Where the numbers come from is not important to illustrate the point. But we can imagine, at least roughly speaking, that the universe of the function is all Fridays, and the outputs represent the fraction of times I reported what I had to drink. Notice that if we sum up the output values, we get 1. So, we have a measure, and it’s a normalized measure.</p>
+<p>These eight possibilities provide the foundation for creating a probability function. What we first need to do is make sure that we have a measure. Let’s say we give the following numbers to each row in the truth table. Where the numbers come from is not important to illustrate the point. But we can imagine, at least roughly speaking, that the universe of the function is all Fridays, and the outputs represent the fraction of times Bert, Mandy, and Florian reported what they had to drink. Notice that if we sum up the output values, we get 1. So, we have a measure, and it’s a normalized measure.</p>
 <table>
 <thead>
 <tr class="header">
@@ -584,8 +588,8 @@ $$
 </tr>
 </tbody>
 </table>
-<p>Notice that this is an inclusive interpretation of ‘or’ which means that disjunction assumes by default that when both component sentences are true then the whole sentence is true. For example, if you are asked, “Do you want ketchup or mustard on your burger” there’s nothing contradictory about saying that you want both. It’s easy enough to express the exclusive version ‘or’ by say something like ‘P or Q, and not both’. Formally we would write ‘(P<span class="math inline">\(\vee\)</span>Q) <span class="math inline">\(\wedge\)</span> <span class="math inline">\(\neg\)</span>(P<span class="math inline">\(\wedge\)</span>Q)’.</p>
-<p>We can use the truth table definitions of conjunction, disjunction, and negation to determine the possible truth values of a complex sentence. Consider for example the sentence ‘(P<span class="math inline">\(\vee\)</span>R) <span class="math inline">\(\wedge\)</span> <span class="math inline">\(\neg\)</span>Q’ which can be interpreted as “On Fridays Bert drinks beer or he drinks Scotch whisky, but he doesn’t drink wine.’’ (Note that”but’’ expresses "and’’ with the addition of some flare to highlight a contrast.) Using the rules for <span class="math inline">\(\wedge\)</span>, <span class="math inline">\(\vee\)</span>, and <span class="math inline">\(\neg\)</span> we get the table below. Notice that the whole complex sentence is a conjunction, where the left conjunct is made out of a disjunction (P<span class="math inline">\(\vee\)</span>R), and the right conjunct is made out of a negation (<span class="math inline">\(\neg\)</span>Q). So we have to work from the smallest parts up to the larger parts, which means that we first evaluate ‘(P<span class="math inline">\(\vee\)</span>R)’, then we evaluate ‘<span class="math inline">\(\neg\)</span>Q’, and then we can do the column of truth values under ‘<span class="math inline">\(\wedge\)</span>’ (which have been boldfaced to indicate these truth values are under the main connective).</p>
+<p>Notice that this is an inclusive interpretation of ‘or’ which means that disjunction assumes by default that when both component sentences are true then the whole sentence is true. For example, if you are asked, “Do you want ketchup or mustard on your burger” there’s nothing contradictory about saying that you want both. It’s easy enough to express the exclusive version ‘or’ by say something like ‘P or Q, and not both’.<label for="tufte-sn-85" class="margin-toggle sidenote-number">85</label><input type="checkbox" id="tufte-sn-85" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">85</span> Formally we would write ‘(P<span class="math inline">\(\vee\)</span>Q) <span class="math inline">\(\wedge\)</span> <span class="math inline">\(\neg\)</span>(P<span class="math inline">\(\wedge\)</span>Q)’.</span></p>
+<p>We can use the truth table definitions of conjunction, disjunction, and negation to determine the possible truth values of a complex sentence. Consider for example the sentence ‘(P<span class="math inline">\(\vee\)</span>R) <span class="math inline">\(\wedge\)</span> <span class="math inline">\(\neg\)</span>Q’ which can be interpreted as "On Fridays Bert drinks beer or Florian drinks Scotch whisky, but Mandy doesn’t drink wine.’‘<label for="tufte-sn-86" class="margin-toggle sidenote-number">86</label><input type="checkbox" id="tufte-sn-86" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">86</span> Note that “but’’ expresses”and’’ with the addition of some flare to highlight a contrast.</span> Using the rules for <span class="math inline">\(\wedge\)</span>, <span class="math inline">\(\vee\)</span>, and <span class="math inline">\(\neg\)</span> we get the table below. Notice that the whole complex sentence is a conjunction, where the left conjunct is made out of a disjunction (P<span class="math inline">\(\vee\)</span>R), and the right conjunct is made out of a negation (<span class="math inline">\(\neg\)</span>Q). So we have to work from the smallest parts up to the larger parts, which means that we first evaluate’(P<span class="math inline">\(\vee\)</span>R)‘, then we evaluate’<span class="math inline">\(\neg\)</span>Q’, and then we can do the column of truth values under ‘<span class="math inline">\(\wedge\)</span>’ (which have been boldfaced to indicate these truth values are under the main connective).</p>
 <table>
 <thead>
 <tr class="header">
@@ -656,7 +660,7 @@ $$
 </tbody>
 </table>
 <p>Notice that the complex sentence is true on rows 2, 5, and 6. So as an example, if P is true but Q and R are false, then P<span class="math inline">\(\vee\)</span>R) <span class="math inline">\(\wedge\)</span> <span class="math inline">\(\neg\)</span>Q is true (this is row two).</p>
-<p>If we want to calculate what the probability is that ‘(P<span class="math inline">\(\vee\)</span>R) <span class="math inline">\(\wedge\)</span> <span class="math inline">\(\neg\)</span>Q’ is true, all we need to do is add up the probabilities that correspond to each row. This would be <span class="math inline">\(0.001+0.08+0.1 = 0.181\)</span>. That is, there is an 18.1% chance that on Fridays Bert drinks beer or Scotch whisky, but doesn’t drink wine.</p>
+<p>If we want to calculate what the probability is that ‘(P<span class="math inline">\(\vee\)</span>R) <span class="math inline">\(\wedge\)</span> <span class="math inline">\(\neg\)</span>Q’ is true, all we need to do is add up the probabilities that correspond to each row. This would be <span class="math inline">\(0.001+0.08+0.1 = 0.181\)</span>. That is, there is an 18.1% chance that on Fridays Bert drinks beer or Florian drinks Scotch whisky, but Mandy doesn’t drink wine.</p>
 <p>It is worth pointing out several features about probabilities that correspond to some important logical concepts: tautologies, equivalence, entailment, and inconsistency. In fact, these will be directly connected to the axioms that are typically used to define probabilities. So it’s worth paying special attention here, as we’ll use these results frequently going forward.</p>
 <div id="tautologies" class="section level3">
 <h3><span class="header-section-number">9.3.1</span> Tautologies</h3>
@@ -753,10 +757,10 @@ $$
 <p>Entailment is an important concept to logicians because it preserves truth. That is, if the premises of an argument are true and you proceed through a sequence of inferences, where each inferential step is a valid one, that there is never a loss of truth. You’ll never go from true premises to a false conclusion in a valid argument.</p>
 <p>Something similar is the case if we think of probabilities instead of truth. If A entails B, then the probability of B is at least as high as the probability of A. We have this feature because when A entails B, that means that B has to be true in all the possibilities where A is (if that weren’t the case, we’d have a counterexample). So if B is true in at least all the same places where A is, then the probability of B has to be at least as great as A.</p>
 </div>
-<div id="inconsistency" class="section level3">
-<h3><span class="header-section-number">9.3.3</span> Inconsistency</h3>
-<p>A standard light switch is either on or off – it’s not both on and off at the same time. Now imagine that you have two light switches arranged so that when one is on it automatically turns the other one off (and vice versa). In this arrangment, the light switches are never both on at the same time, nor both off at the same time.</p>
-<p>Similarily, when we say that two propositions are inconsistent, we mean that whenever one is true the other is false, and when one is false the other is true. Consider ‘<span class="math inline">\(\neg\)</span>(P <span class="math inline">\(\wedge\)</span> Q)’ and ‘P <span class="math inline">\(\wedge\)</span> Q’. When we complete the truth tables for these, we see that they have opposite truth values on each row.</p>
+<div id="inconsistency-or-mutual-exclusivity" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> Inconsistency (or Mutual Exclusivity)</h3>
+<p>A standard light switch is either on or off – it’s not both on and off at the same time. Now imagine that you have two light switches arranged so that when one is on it automatically turns the other one off (and vice versa). In this arrangement, the light switches are never both on at the same time, nor both off at the same time.</p>
+<p>Similarly, when we say that two propositions are inconsistent, we mean that whenever one is true the other is false, and when one is false the other is true. Consider ‘<span class="math inline">\(\neg\)</span>(P <span class="math inline">\(\wedge\)</span> Q)’ and ‘P <span class="math inline">\(\wedge\)</span> Q’. When we complete the truth tables for these, we see that they have opposite truth values on each row.</p>
 <table>
 <thead>
 <tr class="header">
@@ -793,7 +797,7 @@ $$
 </tr>
 </tbody>
 </table>
-<p>Whenever two propositions are inconsistent, then the probability of the disjunction of those two propositions is the sum of each of them. For example, suppose that A and B are inconsistent. Then <span class="math inline">\(Pr\)</span>(A<span class="math inline">\(\vee\)</span>B) = <span class="math inline">\(Pr\)</span>(A) + <span class="math inline">\(Pr\)</span>(B).</p>
+<p>Whenever two propositions are inconsistent, then the probability of the disjunction of those two propositions is the sum of each of them. For example, suppose that A and B are inconsistent (that is, suppose they are <em>mutually exclusive</em>). Then <span class="math inline">\(Pr\)</span>(A<span class="math inline">\(\vee\)</span>B) = <span class="math inline">\(Pr\)</span>(A) + <span class="math inline">\(Pr\)</span>(B).</p>
 </div>
 <div id="logic-probabilities" class="section level3">
 <h3><span class="header-section-number">9.3.4</span> Logic Probabilities</h3>
@@ -866,10 +870,58 @@ Pr(\text{A}) + Pr(\text{B}) = Pr(\text{A}\wedge\text{B}) + Pr(\text{A}\vee\text{
 \]</span></p>
 </div>
 </div>
+<div id="independence" class="section level2">
+<h2><span class="header-section-number">9.4</span> Independence</h2>
+<p>There’s one additional concept that we’ll make use of going forward, but it isn’t really a concept of deductive logic. Recall that two propositions are exclusive (inconsistent) when they cannot be true at the same time. So, if we flip a fair coin, landing Heads on the first toss, <span class="math inline">\(H_1\)</span> is exclusive of landing Tails on the first toss, <span class="math inline">\(T_1\)</span>. But landing Heads on the first toss, <span class="math inline">\(H_1\)</span> is not inconsistent with landing Tails <em>on the second</em> toss, <span class="math inline">\(T_2\)</span>. In fact, if the coin is fair and nothing about the first toss influences the outcome of the second toss, then we say that the two tosses are <em>independent</em>.</p>
+<p><span class="newthought">Independence</span> is an important concept of inductive logic. It says that the truth of one proposition <em>does not change the probability</em> of another proposition being true. It’s important not to confuse independence with exclusivity.<label for="tufte-sn-87" class="margin-toggle sidenote-number">87</label><input type="checkbox" id="tufte-sn-87" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">87</span> Note that if A and B are exclusive, then finding out that A is true <em>does</em> change the probability that B is true, in fact we know it would ahve to be false! Hence, A and B are not independent.</span></p>
+<p>Independence allows us to introduce a rule for how to <em>multiply</em> probabilities. For example, suppose we have a sequence of independent tosses of our fair coin. How many possible sequences are there of two tosses? We can express them using our logic of propositions:</p>
+<ul>
+<li><span class="math inline">\(H_1 \,\&amp;\, H_2\)</span>,</li>
+<li><span class="math inline">\(T_1 \,\&amp;\, T_2\)</span>,</li>
+<li><span class="math inline">\(H_1 \,\&amp;\, T_2\)</span>,</li>
+<li><span class="math inline">\(T_1 \,\&amp;\, H_2\)</span>.</li>
+</ul>
+<p>How do we calculate the probability of these complex propositions? For example, how do we figure out the number <span class="math inline">\(Pr(H_1 \,\&amp;\, H_2)\)</span> is equal to?</p>
+<p>Because the coin is fair, we know <span class="math inline">\(Pr(H_1) = 1/2\)</span> and <span class="math inline">\(Pr(H_2) = 1/2\)</span>. The probability of heads on any given toss is always <span class="math inline">\(1/2\)</span>, no matter what came before. To get the probability of <span class="math inline">\(H_1 \,\&amp;\, H_2\)</span> we compute:
+<span class="math display">\[
+  \begin{aligned}
+    Pr(H_1 \,\&amp;\, H_2) &amp;= Pr(H_1) \times Pr(H_2)\\
+                       &amp;= 1/2 \times 1/2\\
+                       &amp;= 1/4.
+  \end{aligned}
+\]</span>
+And this is indeed correct, but <em>only because the coin is fair and thus the tosses are independent</em>. In general, we have the following as general rule of probability.</p>
+<dl>
+<dt>The Multiplication Rule</dt>
+<dd><p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(Pr(A \,\&amp;\, B) = Pr(A) \times Pr(B)\)</span>.</p>
+</dd>
+</dl>
+<p>Since our coin tosses are independent, we can multiply to calculate <span class="math inline">\(Pr(H_1 \,\&amp;\, H_2) = 1/4\)</span>. And the same reasoning applies to all four possible sequences:
+<span class="math display">\[
+  \begin{aligned}
+    Pr(H_1 \,\&amp;\, H_2) &amp;= 1/4,\\
+    Pr(T_1 \,\&amp;\, T_2) &amp;= 1/4,\\
+    Pr(H_1 \,\&amp;\, T_2) &amp;= 1/4,\\
+    Pr(T_1 \,\&amp;\, H_2) &amp;= 1/4.
+  \end{aligned}
+\]</span>
+<span class="newthought">It’s Crucial</span> to recognize that the multiplication rule only applies to independent propositions. You’ll get the wrong answer if you’re not careful about this. We’ll show shortly the kinds of mistakes one might make and how to deal with propositions that aren’t independent.</p>
+</div>
+<div id="summary-2" class="section level2">
+<h2><span class="header-section-number">9.5</span> Summary</h2>
+<p>We’ve covered a lot of ground. Beware of simply trying to memorize the following key takeaways. Knowing <em>why</em> we have the following rules will be massively helpful in avoiding common errors of probabilistic reasoning (some of which we already saw with the Dutchbook argument).</p>
+<ul>
+<li><span class="math inline">\(Pr(T) = 1\)</span> for every tautology <span class="math inline">\(T\)</span>.</li>
+<li><span class="math inline">\(Pr(C) = 0\)</span> for every contradiction <span class="math inline">\(C\)</span>.</li>
+<li><span class="math inline">\(Pr(A) = Pr(B)\)</span> if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are logically equivalent.</li>
+<li><span class="math inline">\(Pr(A \vee B) = Pr(A) + Pr(B)\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive (i.e. inconsistent).</li>
+<li><span class="math inline">\(Pr(A \wedge B) = Pr(A) \times Pr(B)\)</span>, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent.</li>
+</ul>
+</div>
 <div id="exercises-8" class="section level2">
-<h2><span class="header-section-number">9.4</span> Exercises</h2>
-<div id="proporitions-to-probabilities" class="section level3">
-<h3><span class="header-section-number">9.4.1</span> Proporitions to Probabilities</h3>
+<h2><span class="header-section-number">9.6</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Proportions to Probabilities</p>
 <p>Consider again our table about the proportion of distilleries that are ownen by multinational companies (these are the first four rows):</p>
 <table>
 <thead>
@@ -905,10 +957,47 @@ Pr(\text{A}) + Pr(\text{B}) = Pr(\text{A}\wedge\text{B}) + Pr(\text{A}\vee\text{
 </tr>
 </tbody>
 </table>
-<p>We said that we can’t determine what proportion of mainland distilleries are owned by multinational companies just by looking at the proportions for each region. Explain what information you would need and how you would go about figuring this out.</p>
-</div>
-<div id="the-conjunction-fallacy" class="section level3">
-<h3><span class="header-section-number">9.4.2</span> The Conjunction Fallacy</h3>
+<p>We said that we can’t determine what proportion of mainland distilleries are owned by multinational companies just by looking at the proportions for each region. Explain what information you would need and how you would go about figuring this out.</p></li>
+<li>What is the probability of each of the following propositions?
+<label for="tufte-mn-5" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-5" class="margin-toggle"><span class="marginnote"><span style="display: block;">Numerous exercises have been borrowed or adapted from Weisberg’s <em>Odds and Ends</em>, Chapter 5. I will admit that I lost track which exercises have come from where.</span></span>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(A \wedge (B \wedge \neg A)\)</span></li>
+<li><span class="math inline">\(\neg (A \wedge \neg A)\)</span></li>
+</ol></li>
+<li><p>Give an example of each of the following.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Two statements that are mutually exclusive.</li>
+<li>Two statements that are independent.</li>
+</ol></li>
+<li><p>For each of the following, say whether it is true or false.</p>
+<ol style="list-style-type: lower-alpha">
+<li>If propositions are independent, then they must be mutually exclusive.</li>
+<li>Independent propositions usually aren’t mutually exclusive.</li>
+<li>If propositions are mutually exclusive, then they must be independent.</li>
+<li>Mutually exclusive propositions usually aren’t independent.</li>
+</ol></li>
+<li><p>Assume <span class="math inline">\(Pr(A \wedge B)=1/3\)</span> and <span class="math inline">\(Pr(A \wedge \neg B)=1/5\)</span>. Answer each of the following:</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is <span class="math inline">\(Pr((A \wedge B) \vee (A \wedge \neg B))\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(A)\)</span>?</li>
+<li>Are <span class="math inline">\((A \wedge B)\)</span> and <span class="math inline">\((A \wedge \neg B)\)</span> independent?</li>
+</ol></li>
+<li><p>Suppose <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, and <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> are mutually exclusive. Assume <span class="math inline">\(Pr(A) = 1/3, Pr(B) = 1/6, Pr(C) = 1/9\)</span>, and answer each of the following:</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is <span class="math inline">\(Pr(A \wedge C)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr((A \wedge B) \vee C)\)</span>?</li>
+<li>Must <span class="math inline">\(Pr(A \wedge B) = 0\)</span>?</li>
+</ol></li>
+<li><p>Suppose a fair, six-sided die is rolled two times. What is is the probability of it landing on the same number each time?</p>
+<p>Hint: calculate the probability of it landing on a <em>different</em> number each time. To do this, first count the number of possible ways the two rolls could turn out. Then count how many of these are “no-repeats.”</p></li>
+<li><p>The Addition Rule can be extended to three propositions. If <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> are all mutually exclusive with one another, then
+<span class="math display">\[ Pr(A \vee B \vee C) = Pr(A) + Pr(B) + Pr(C).\]</span>
+Explain why this rule is correct. Would the same idea extend to four mutually exclusive propositions? To five?</p>
+<p>(Hint: there’s more than one way to do this. You can use an Euler diagram. Or you can derive the new rule from the original one, by thinking of <span class="math inline">\(A \vee B \vee C\)</span> as a disjunction of <span class="math inline">\(A \vee B\)</span> and <span class="math inline">\(C\)</span>.)</p></li>
+<li><p>You have a biased coin, where each toss has a <span class="math inline">\(3/5\)</span> chance of landing heads. But each toss is independent of the others. Suppose you’re going to flip the coin <span class="math inline">\(1,000\)</span> times. The first 998 tosses all land tails. What is the probability at least one of the last two flips will be tails?</p></li>
+<li><p>There are <span class="math inline">\(3\)</span> empty buckets lined up. Someone takes <span class="math inline">\(4\)</span> apples and places each one in a bucket. The placement of each apple is random and independent of the others. What is the probability that the first two buckets end up with no apples?</p></li>
+<li><p>Suppose three cards are stacked in order: jack on top, queen in the middle, king on the bottom. If we shuffle them randomly, what is the probability the queen will still be in the middle when we’re done? Assume shuffling makes every possible ordering of the cards equally likely. Hint: how many ways are there to assign each card a place in the stack? How many of these have the queen in the middle?</p></li>
+<li><p>The Conjunction Fallacy</p>
 <p>Suppose ‘A’ means ‘Linda is a feminist’ and ‘B’ means `Linda is a bank teller’. Consider the truth table for A and B, with corresponding probabilities (Pr) for each assignment of truth values:</p>
 <table>
 <thead>
@@ -941,48 +1030,46 @@ Pr(\text{A}) + Pr(\text{B}) = Pr(\text{A}\wedge\text{B}) + Pr(\text{A}\vee\text{
 </tr>
 </tbody>
 </table>
-<ol style="list-style-type: decimal">
-<li><p>Are A and B inconsistent? Why or why not?</p></li>
-<li><p>Are A and B equivalent? Why or why not?</p></li>
-<li><p>What is <span class="math inline">\(p(A)\)</span>?</p></li>
-<li><p>What is <span class="math inline">\(p(B)\)</span>?</p></li>
-<li><p>What is <span class="math inline">\(p(A\wedge B)\)</span>?</p></li>
-</ol>
-</div>
-<div id="atomic-vs-conjunctions" class="section level3">
-<h3><span class="header-section-number">9.4.3</span> Atomic vs Conjunctions</h3>
+<ul>
+<li>Are A and B inconsistent? Why or why not?</li>
+<li>Are A and B equivalent? Why or why not?</li>
+<li>What is <span class="math inline">\(Pr(A)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(B)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(A\wedge B)\)</span>?</li>
+</ul></li>
+<li><p>Atomic vs Conjunctions</p>
 <p>Which of the following is true regarding the general relationship between the probability of a single proposition <span class="math inline">\(X\)</span> and the probability of a conjunction that has <span class="math inline">\(X\)</span> as a component?</p>
-<div class="line-block">a) <span class="math inline">\(p(X)\geq p(X\wedge Y)\)</span><br />
-b) <span class="math inline">\(p(X)\leq p(X\wedge Y)\)</span><br />
-   c) <span class="math inline">\(p(X) = p(X\wedge Y)\)</span><br />
-   d) None of the above. It depends on the probabilities given to <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</div>
-</div>
-<div id="disjunction" class="section level3">
-<h3><span class="header-section-number">9.4.4</span> Disjunction</h3>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Pr(X)\geq Pr(X\wedge Y)\)</span></li>
+<li><span class="math inline">\(Pr(X)\leq Pr(X\wedge Y)\)</span></li>
+<li><span class="math inline">\(Pr(X) = Pr(X\wedge Y)\)</span></li>
+<li>None of the above. It depends on the probabilities given to <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
+</ol></li>
+<li><p>Disjunction</p>
 <p>Consider the case of disjunction now. Which of the following is true regarding the general relationship between the probability of a single proposition <span class="math inline">\(X\)</span> and the probability of a disjunction that has <span class="math inline">\(X\)</span> as a component?</p>
-<div class="line-block">a) <span class="math inline">\(p(X)\geq p(X\vee Y)\)</span><br />
-  b) <span class="math inline">\(p(X)\leq p(X\vee Y)\)</span><br />
-  c) <span class="math inline">\(p(X) = p(X\vee Y)\)</span><br />
-  d) None of the above. It depends on the probabilities given to <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</div>
-</div>
-<div id="conjunctions-and-disjunctions" class="section level3">
-<h3><span class="header-section-number">9.4.5</span> Conjunctions and Disjunctions</h3>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Pr(X)\geq Pr(X\vee Y)\)</span></li>
+<li><span class="math inline">\(Pr(X)\leq Pr(X\vee Y)\)</span></li>
+<li><span class="math inline">\(Pr(X) = Pr(X\vee Y)\)</span></li>
+<li>None of the above. It depends on the probabilities given to <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
+</ol></li>
+<li><p>Conjunctions and Disjunctions</p>
 <p>Let’s compare conjunctions and disjunctions. Which of the following is true regarding the general relationship between the probability of a conjunction and the probability of a disjunction?</p>
-<div class="line-block">a) <span class="math inline">\(p(X\wedge Y)\geq p(X\vee Y)\)</span><br />
-b) <span class="math inline">\(p(X\wedge Y)\leq p(X\vee Y)\)</span><br />
-c) <span class="math inline">\(p(X\wedge Y) = p(X\vee Y)\)</span><br />
-d) None of the above. It depends on the probabilities given to <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</div>
-</div>
-<div id="linda-again" class="section level3">
-<h3><span class="header-section-number">9.4.6</span> Linda (again)</h3>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Pr(X\wedge Y)\geq Pr(X\vee Y)\)</span></li>
+<li><span class="math inline">\(Pr(X\wedge Y)\leq Pr(X\vee Y)\)</span></li>
+<li><span class="math inline">\(Pr(X\wedge Y) = Pr(X\vee Y)\)</span></li>
+<li>None of the above. It depends on the probabilities given to <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
+</ol></li>
+<li><p>Linda (again)</p>
 <p>Linda is 31 years old, single, outspoken, and very bright. She majored in philosophy. As a student, she was deeply concerned with issues of discrimination and social justice, and also participated in anti-nuclear demonstrations. Which of the following is most probable?</p>
-<ol style="list-style-type: decimal">
+<ol style="list-style-type: lower-alpha">
 <li>Linda is a bank teller</li>
 <li>Linda is a bank teller and not a feminist</li>
 <li>Linda is a bank teller and a feminist</li>
+</ol></li>
 </ol>
 
-</div>
 </div>
 </div>
 <p style="text-align: center;">

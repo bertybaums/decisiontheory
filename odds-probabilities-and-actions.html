@@ -13,7 +13,7 @@
 
 <meta name="author" content="Bert Baumgaertner" />
 
-<meta name="date" content="2022-09-29" />
+<meta name="date" content="2022-10-13" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -128,10 +128,14 @@ $$
 <li><a href="probabilities-and-logic.html#measures"><span class="toc-section-number">9.1</span> Measures</a></li>
 <li><a href="probabilities-and-logic.html#normalized-measures"><span class="toc-section-number">9.2</span> Normalized Measures</a></li>
 <li><a href="probabilities-and-logic.html#possibilities-and-truth-tables"><span class="toc-section-number">9.3</span> Possibilities and Truth Tables</a></li>
-<li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.4</span> Exercises</a></li>
+<li><a href="probabilities-and-logic.html#independence"><span class="toc-section-number">9.4</span> Independence</a></li>
+<li><a href="probabilities-and-logic.html#summary-2"><span class="toc-section-number">9.5</span> Summary</a></li>
+<li><a href="probabilities-and-logic.html#exercises-8"><span class="toc-section-number">9.6</span> Exercises</a></li>
 </ul></li>
 <li class="has-sub"><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a><ul>
 <li><a href="conditional-probabilities-and-likelihoods.html#calculating-conditional-probability"><span class="toc-section-number">10.1</span> Calculating Conditional Probability</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#application-monty-hall-problem"><span class="toc-section-number">10.2</span> Application: Monty Hall Problem</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#likelihoods"><span class="toc-section-number">10.3</span> Likelihoods</a></li>
 </ul></li>
 <li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
 <li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
@@ -241,8 +245,8 @@ P(\neg X_i) = 1-0.01 = 0.99
 <span class="math display">\[
 P(X_1 \vee X_2 \vee \ldots \vee X_{100}) = 1
 \]</span></p>
-<p>In short, even if there is more than one event that we’re consider, the probabilities of all events have to sum to 1.</p>
-<p><span class="newthought">The Dutchbook Argument</span> says that you should accept the above three axioms of probability because if you don’t then you allow for the possibility of guaranteed loses of ``fair bets’’ - bets that rationality suggests would not be fair at all, but you would be unable to provide reasons for not accepting them.<label for="tufte-sn-81" class="margin-toggle sidenote-number">81</label><input type="checkbox" id="tufte-sn-81" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">81</span> The person that does accept the three axioms of probability can say why the bets are not fair because they violate one or more of the axioms.</span></p>
+<p>In short, even if there is more than one event that we’re considering, the probabilities of all events have to sum to 1.<label for="tufte-sn-81" class="margin-toggle sidenote-number">81</label><input type="checkbox" id="tufte-sn-81" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">81</span> We’are assuming that the events are mutually exclusive and exhaustive.</span></p>
+<p><span class="newthought">The Dutchbook Argument</span> says that you should accept the above three axioms of probability because if you don’t then you allow for the possibility of guaranteed loses of ``fair bets’’ - bets that rationality suggests would not be fair at all, but you would be unable to provide reasons for not accepting them.<label for="tufte-sn-82" class="margin-toggle sidenote-number">82</label><input type="checkbox" id="tufte-sn-82" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">82</span> The person that does accept the three axioms of probability can say why the bets are not fair because they violate one or more of the axioms.</span></p>
 <p>The Dutchbook argument can be stated formally, but it’s enough for our purposes to illustrate the argument using the popular example of horse racing. The following table lists all the names of four horses in a race, including the odds and the implied probability of each horse winning. In addition, the table lists the cost of a bet and the corresponding payout if the horse wins.</p>
 <table>
 <thead>
@@ -310,7 +314,7 @@ P(X_1 \vee X_2 \vee \ldots \vee X_{100}) = 1
 <div id="application" class="section level2">
 <h2><span class="header-section-number">8.4</span> Application</h2>
 <p>Examples from gambling help establish connections between probabilities and our levels of confidence through the idea of odds. In many real world applications, however, the probabilities of outcomes are not as neat as they are in the case of gambling. Nevertheless, it is possible to get some approximations; that is a large part of what the field of statistics is about. We will not go into such details here. But it is worth showing how we can connect some of the concepts so far, and motivate by example what will spell out more abstractly in the next chapter.</p>
-<p>Let’s use an example where we estimate some probabilities from frequency data, something that has important ties with medicine and epidemiology. In the context of health it is common to represent data in the form of what is called a <em>two by two table</em> (or 2x2 table). The idea is to use the rows to represent “the exposed” options, like smoking or not smoking, or like using a hand cream or not using a hand cream. The columns represent “the diseased” and “not diseased” which in our case is “rash continues” and “rash gets better”.<label for="tufte-sn-82" class="margin-toggle sidenote-number">82</label><input type="checkbox" id="tufte-sn-82" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">82</span> In the smoking scenario the columns could be “hypertension’’ and”without hypertension’’ for example.</span></p>
+<p>Let’s use an example where we estimate some probabilities from frequency data, something that has important ties with medicine and epidemiology. In the context of health it is common to represent data in the form of what is called a <em>two by two table</em> (or 2x2 table). The idea is to use the rows to represent “the exposed” options, like smoking or not smoking, or like using a hand cream or not using a hand cream. The columns represent “the diseased” and “not diseased” which in our case is “rash continues” and “rash gets better”.<label for="tufte-sn-83" class="margin-toggle sidenote-number">83</label><input type="checkbox" id="tufte-sn-83" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">83</span> In the smoking scenario the columns could be “hypertension’’ and”without hypertension’’ for example.</span></p>
 <p>Here’s an example of what such data might look like. We’re supposing that each cell represents the number of participants in a study that met the pair of conditions. For example, there are 223 subjects that used the hand cream and had the rash get better. There are 107 subjects that didn’t use the hand cream, but the rash got better anyway. In total there are 330 subjects who’s rash got better. The cells under “Rash Continues” is read similarly. Notice that the cell in the most bottom right corner is the total number of subjects in this study: 426.</p>
 <table>
 <thead>
@@ -342,7 +346,7 @@ P(X_1 \vee X_2 \vee \ldots \vee X_{100}) = 1
 </tr>
 </tbody>
 </table>
-<p>Suppose we asked what the probability is that someone in our sample used the hand cream.^{Note that this question is restricted to the sample, the subjects that were in the study. If we want to make claims about the larger population (people not in the sample), we’d have to deploy some inferential statistical tools that we have not covered.] To calculate that, we would take the total number of people that use the hand cream (298) and divide that number by the total number of subjects (426). This gives us <span class="math inline">\(298/426=0.6995\)</span> (rounded to four decimal places). Similarly, we can calculate the probability that a subject had their rash continue by taking that number (96) and dividing it by the total number of subjects (426). This gives us <span class="math inline">\(96/426=0.2254\)</span>. The other two probabilities are calculated similarly: take the total from the row or column, and divide by the total number of subjects (426).</p>
+<p>Suppose we asked what the probability is that someone in our sample used the hand cream.<label for="tufte-sn-84" class="margin-toggle sidenote-number">84</label><input type="checkbox" id="tufte-sn-84" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">84</span> Note that this question is restricted to the sample, the subjects that were in the study. If we want to make claims about the larger population (people not in the sample), we’d have to deploy some inferential statistical tools that we have not covered.</span> To calculate that, we would take the total number of people that use the hand cream (298) and divide that number by the total number of subjects (426). This gives us <span class="math inline">\(298/426=0.6995\)</span> (rounded to four decimal places). Similarly, we can calculate the probability that a subject had their rash continue by taking that number (96) and dividing it by the total number of subjects (426). This gives us <span class="math inline">\(96/426=0.2254\)</span>. The other two probabilities are calculated similarly: take the total from the row or column, and divide by the total number of subjects (426).</p>
 <p>The strategy we are deploying in the case of two by two tables has its equivalent in the strategies we are about to discuss using <em>truth tables</em>, and important tool in logic. We turn to that topic next.</p>
 </div>
 <div id="exercises-7" class="section level2 unnumbered">
