@@ -3,7 +3,7 @@
 
 
 
-In this chapter we're going to approach probability more abstractly and make connections to logic. We're going to learn what it means when we say that a probability function is a *normalized measure over a possibility space*. There are three parts here: i) what is it for a function to be a measure, ii) what is a normalized measure, and iii) what is a possibility space. 
+In this chapter we're going to approach probability more abstractly and make connections to logic. We're going to learn what it means when we say that a probability function is a *normalized measure over a possibility space*. There are three parts here: i) what is it for a function to be a measure, ii) what is a normalized measure, and iii) what is a possibility space. We will then use principles of logic to motivate several rules for going about calculating probabilities. 
 
 ## Measures
 
