@@ -138,7 +138,7 @@ This next claim builds on some logic that we will get to shortly, but it's worth
 P(X_1 \vee X_2 \vee \ldots \vee X_{100}) = 1
 \]
 
-In short, even if there is more than one event that we're consider, the probabilities of all events have to sum to 1. 
+In short, even if there is more than one event that we're considering, the probabilities of all events have to sum to 1.^[We'are assuming that the events are mutually exclusive and exhaustive.] 
 
 `r newthought("The Dutchbook Argument")` says that you should accept the above three axioms of probability because if you don't then you allow for the possibility of guaranteed loses of ``fair bets'' - bets that rationality suggests would not be fair at all, but you would be unable to provide reasons for not accepting them.^[The person that does accept the three axioms of probability can say why the bets are not fair because they violate one or more of the axioms.]
 
@@ -192,7 +192,7 @@ knitr::kable(df, align = "c")
 ```
 
 
-Suppose we asked what the probability is that someone in our sample used the hand cream.^{Note that this question is restricted to the sample, the subjects that were in the study. If we want to make claims about the larger population (people not in the sample), we'd have to deploy some inferential statistical tools that we have not covered.] To calculate that, we would take the total number of people that use the hand cream (298) and divide that number by the total number of subjects (426). This gives us $298/426=0.6995$ (rounded to four decimal places). Similarly, we can calculate the probability that a subject had their rash continue by taking that number (96) and dividing it by the total number of subjects (426). This gives us $96/426=0.2254$. The other two probabilities are calculated similarly: take the total from the row or column, and divide by the total number of subjects (426).
+Suppose we asked what the probability is that someone in our sample used the hand cream.^[Note that this question is restricted to the sample, the subjects that were in the study. If we want to make claims about the larger population (people not in the sample), we'd have to deploy some inferential statistical tools that we have not covered.] To calculate that, we would take the total number of people that use the hand cream (298) and divide that number by the total number of subjects (426). This gives us $298/426=0.6995$ (rounded to four decimal places). Similarly, we can calculate the probability that a subject had their rash continue by taking that number (96) and dividing it by the total number of subjects (426). This gives us $96/426=0.2254$. The other two probabilities are calculated similarly: take the total from the row or column, and divide by the total number of subjects (426).
 
 The strategy we are deploying in the case of two by two tables has its equivalent in the strategies we are about to discuss using *truth tables*, and important tool in logic. We turn to that topic next.
 

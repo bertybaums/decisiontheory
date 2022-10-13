@@ -46,7 +46,10 @@ library(ggplot2)
 library(dplyr)
 library(png)
 library(grid)
-library(ggforce)
+#library(ggforce)
+#library(igraph)
+#library(ggraph)
+
 
 bookorange <-  rgb(255, 140, 0, maxColorValue = 255)
 bookpurple <- rgb(148, 0, 211, maxColorValue = 255)

@@ -185,7 +185,7 @@ Gamble 2          **\$0**      **\$5M**            *\$1M*
 Gamble 3          **\$1M**     **\$1M**            *\$0*
 Gamble 4          **\$0**      **\$5M**            *\$0*
 
-The **Sure Thing Principle** says that when you compare two options, like Gambles 1 and 2, you can ignore the states on which they agree (in italics) and compare them only on the states in which they disagree (boldfaced). In this case, the Sure Thing Principle says that when comparing Gambles 1 and 2, we need don't need to consider tickets 12-100, we can just look at the states of ticket 1 and tickets 2-11. The same goes for comparing gambles 3 and 4. 
+The **Sure Thing Principle** says that when you compare two options, like Gambles 1 and 2, you can ignore the states on which they agree (in italics) and compare them only on the states in which they disagree (boldfaced). In this case, the Sure Thing Principle says that when comparing Gambles 1 and 2, we don't need to consider tickets 12-100, we can just look at the states of ticket 1 and tickets 2-11. The same goes for comparing gambles 3 and 4. 
 
 If we ignore the last column, as the Sure Thing Principle says we can, we'll notice that the comparison between gambles 1 and 2 is *exactly* the same as the comparison between gambles 3 and 4. That is, from the perspective of ticket 1 and tickets 2-11, Gamble 1 is the same as Gamble 3, and Gamble 2 is the same as Gamble 4.
 
@@ -260,6 +260,7 @@ Note that the success of Jeffrey's response depends on there being some limit on
 
 ### The Two Envelope Paradox
 
+(Intentionally omitted - this is bonus material.)
 
 
 ## Arguments Against Descriptive MEU
@@ -291,7 +292,7 @@ MEU does not take into account the range of possible outcomes, except insofar as
 In fact, up to a certain point, it seems humans prefer a lesser expectation if it is more certain than a higher expectation that is less certain. For example, in the table below Gamble 1 has an expectation of \$2,400 for sure, while Gamble 2 has an expectation of \$2,409. While MEU recommends Gamble 2, humans typically prefer Gamble 1.
 
 
-              Tickets 1-33        Tickets 34-00       Ticket 100
+              Tickets 1-33        Tickets 34-99       Ticket 100
 -----------  ----------------    -----------------  --------------
 Gamble 1         \$2,400             \$2,400           \$2,400
 Gamble 2         \$2,500            \$2,400             \$0
@@ -300,7 +301,7 @@ To make the case that it really is risk aversion that seems to be driving the de
 
 
 
-              Tickets 1-33        Tickets 34-00       Ticket 100
+              Tickets 1-33        Tickets 34-99       Ticket 100
 -----------  ----------------    -----------------  --------------
 Gamble 1         \$2,400             \$2,400           \$2,400
 Gamble 2         \$2,500            \$2,400             \$0
@@ -374,7 +375,7 @@ Consider the following prospects.
 
 - Prospect 4: \$3,000 with 0.2\%
 
-In a classic experiment of 66 participants, 86\% said they preferred Prospect 2 over Prospect 1, whereas 73\% preferred Prospect 3 over Prospect 4. From the perspective of MEU, this is puzzling becasue Prospects 1 and 2 have the same expected utility, as do Prospects 3 and 4. Moreover, the relationship between 1 and 2 is that Prospect 2 has twice the chance of getting half the amount in Prospect 1, and that is also true of how 4 relates to 3. So at the very least we would expect that if people prefer Prospect 2 over 1, then for the same reason theoretical considerations would lead us to predict a preference for 4 over 3. And yet, that's not what we find empirically.
+In a classic experiment of 66 participants, 86\% said they preferred Prospect 2 over Prospect 1, whereas 73\% preferred Prospect 3 over Prospect 4. From the perspective of MEU, this is puzzling because Prospects 1 and 2 have the same expected utility, as do Prospects 3 and 4. Moreover, the relationship between 1 and 2 is that Prospect 2 has twice the chance of getting half the amount in Prospect 1, and that is also true of how 4 relates to 3. So at the very least we would expect that if people prefer Prospect 2 over 1, then for the same reason theoretical considerations would lead us to predict a preference for 4 over 3. And yet, that's not what we find empirically.
 
 What explains why people prefer 2 over 1, but 3 over 4? The most agreed upon hypothesis is that we are typically poor at reasoning with low probabilities. While it is relatively straightforward to perceive that 90\% is twice as much as 45\%, the percentages of Prospects 3 and 4 are so low that we don't pay much attention to their relative sizes. Sure, we might think, strictly speaking 0.2\% is twice as high as 0.1\%, but both are so low in terms of chances of winning that we treat them as being similar enough. Contrast that with the comparison of \$6,000 and \$3,000, where it is very easy to appreciate that one is twice the amount as the other. In brief, our inability to distinguish or appreciate differences in small probabilities is thought to explain what goes wrong here.
 
@@ -383,7 +384,7 @@ Prospect Theory takes seriously this feature of human reasoning. On the one hand
 
 In our characterization of the relationship between MEU and Prospect Theory, we said that MEU might not be committed to a particular utility function. That is, there doesn't seem to be anything inconsistent with letting MEU be open to the kind of asymmetric function that Prospect Theory proposes. The same cannot be said when it comes to probabilities. Here Prospect Theory seems to be making adjustments that are at the very least in tension with the spirit of MEU. The tension can be seen by asking ourselves, are humans making a mistake when they are reasoning with probabilities?
 
-We have to be very careful here about how we think of the word 'mistake'.. It is not intended to signal a normative-descriptive divide. Our bridge building example will be helpful here. When a bridge collapses, we can try to figure out what the cause was. Was there a mistake in the design of the bridge, in which case the cause of the collapse was in the engineering (the theory)? Or was there a mistake in the construction of the bridge, in which case the cause of the collapse was in the application of the design or poor materials (the experiments or observations). 
+We have to be very careful here about how we think of the word 'mistake'. It is not intended to signal a normative-descriptive divide. Our bridge building example will be helpful here. When a bridge collapses, we can try to figure out what the cause was. Was there a mistake in the design of the bridge, in which case the cause of the collapse was in the engineering (the theory)? Or was there a mistake in the construction of the bridge, in which case the cause of the collapse was in the application of the design or poor materials (the experiments or observations). 
 
 Prospect theory says that the cause of the collapse was in the engineering. What humans do is systematic and should be taken as an expression of rationality. We need to therefore update our theory of rational decision making in order to make it account for humans. MEU, on the other hand, says that the cause of the collapse was in the application. When humans are tired or drunk, for example, they don't always choose the same options as they would when they are clear and sober. There are lots of instances where people are arational or irrational. MEU sees weighting effects as an example of \emph{not} expressing rationality. 
 

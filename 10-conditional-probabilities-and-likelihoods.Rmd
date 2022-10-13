@@ -2,12 +2,16 @@
 
 Assuming you have a driver's licence and the roads are relatively clear, the chances of crashing your car are pretty low. But if you're drink, the chances of crash are much higher. Probabilities change depending on the conditions.
 
-We already have notation for symbolize this idea. We use $P(A | B)$ to represent the probability that $A$ is true *given* that $B$ is true. For example, to say the probability of $A$ given $B$ is 30%, we write:
+We already have notation for symbolizing this idea. We use $P(A | B)$ to represent the probability that $A$ is true *given* that $B$ is true. For example, to say the probability of $A$ given $B$ is 30%, we write:
 $$ P(A | B) = .3 $$
 When we condition probabilities in this way, we call them *conditional probabilities*. Conditional probabilities play a central role in the remaining material, so let's spend some time learning how to calculate them.
 
 
 ## Calculating Conditional Probability
+
+```{marginfigure}
+Most of this presentation is a light edit of Weisberg's introduction to calculating conditional probability (6.1).
+```
 
 ```{r echo=FALSE, fig.show='hold', fig.margin=TRUE, fig.cap="Conditional probability in a fair die roll"}
 die1 <- readPNG("img/die/die1.png") %>% rasterGrob()
@@ -82,6 +86,35 @@ The comedian Steven Wright once quipped that "black holes are where God divided 
 $$ P(A | B) = \frac{P(A \wedge B)}{P(B)} $$
 doesn't even make any sense. There is no number that results from the division on the right hand side.[^alternatesystems]
 
-[^alternatesystems]: There are alternative mathematical systems of probability, where conditional probability is defined differently to avoid this problem. But in this book we'll stick to the standard system. In this system, there's just no such thing as "the probability of $A$ given $B$" when $B$ has zero probability.
+[^alternatesystems]: There are alternative mathematical systems of probability, where conditional probability is defined differently to avoid this problem. But we'll stick to the standard system. In this system, there's just no such thing as "the probability of $A$ given $B$" when $B$ has zero probability.
 
 In such cases we say that $P(A | B)$ is *undefined*. It's not zero, or some special number. It just isn't a number.
+
+## Application: Monty Hall Problem
+
+Here we'll show how the concept of conditional probability allows us to solve the Monty Hall problem in the introduction. Here's the problem description: 
+
+> On the show there are three doors (A, B, and C), one of which with a prize behind it. You get to pick one of the doors. Let's say you pick A. The host now opens one of the other two doors that you did not pick. But of course, the host doesn't want to give away the game, so the door they open will be empty. After opening one of the two doors (B or C) the host asks, do you want to switch your choice or stick with your current choice of A? 
+
+The intuitive answer, one that many mathematicians and statisticians gave at the time, is that you should be indifferent between switching and staying with your choice of door A. Why? Because, the (incorrect) reasoning goes, there's two doors (A and whichever one the host didn't open) and an even chance between them of where the prize is. Notice that this question is about an *unconditional* probability.
+
+The problem with this reasoning is that it ignores the events that proceeded. The reasoning would be apt if the game show had you picking between just two doors from the very start, and just because the host reveals what's behind the door you didn't pick, they ask you if you want to change your mind. But that's not what's going on the in the Monty Hall problem. The real question is: should you switch your choice from A *given that the host opened a non-prize door after your initial choice*? Notice that this question is about a *conditional* probability. 
+
+If the prize is behind door A (the door you initially picked), then the host has a choice between opening up door B or door C. But if the prize isn't behind door A, then the host is constrained. If the prize is behind door B, then the host will open C. If the prize is behind C, then the host will open B. What we're reasoning about here are *paths* of possible events.
+
+The first kind of event is random, it's just about the location of the prize behind one of the three doors. So the probability of the prize being behind door A is 1/3, and similarly for doors B and C. In other words, your initial guess of door A has a 1/3 chance of being right. The second kind of event is the host's reveal of a non-prize door, which is *not* random *if* your choice of door A is *incorrect*, and is random if your choice is correct. 
+
+## Likelihoods
+
+- order matters for conditional probabilities
+- in the context of hypotheses and evidence, the order matters too! 
+
+
+
+<!-- 
+Use two lotteries (or slot machines) as examples.
+
+-->
+
+<!-- Look at Lindley's presentation of exchangeability? (Maybe save this until the learning chapter? Or maybe do one iteration of it here, then return to it again.) -->
+

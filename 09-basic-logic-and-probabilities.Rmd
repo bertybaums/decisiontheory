@@ -105,11 +105,11 @@ If we were to flip the coin four times, there would 16 possibilities. Each time 
 Although this example is simple, it turns out to be a really fruitful way of modeling lots of other examples that have the same structure. For example, philosophers love logic and thinking about the world in terms of statements or propositions that are either true or false. Suppose we have three different propositions: P, Q, and R. 
 
 - P - "Bert drinks beer on Fridays.''
-- Q - "Bert drinks wine on Fridays.''
-- R - "Bert drinks Scotch whisky on Fridays.''
+- Q - "Mandy drinks wine on Fridays.''
+- R - "Florian drinks Scotch whisky on Fridays.''
 
 
-For simplicity, let's assume that P is true if on the majority of Fridays I have a beer, and is false otherwise. Similarly for Q and R. In the real world each of these propositions has a unique truth value. Our interest here, however, is not just what is true, but the space of possibilities. In this case, each proposition has the possibility of being true (T) or false (F). Following the coin flip example, there are in total eight possibilities. We can organize the possibilities in what logicians call a truth table. 
+For simplicity, let's assume that P is true if on the majority of Fridays Bert drinks beer, and is false otherwise. Similarly for Q and R. In the real world each of these propositions has a unique truth value. Our interest here, however, is not just what is true, but the space of possibilities. In this case, each proposition has the possibility of being true (T) or false (F). Following the coin flip example, there are in total eight possibilities. We can organize the possibilities in what logicians call a truth table. 
 
 
             P         Q         R
@@ -124,7 +124,7 @@ For simplicity, let's assume that P is true if on the majority of Fridays I have
              T            T       T
 
 
-These eight possibilities provide the foundation for creating a probability function. What we first need to do is make sure that we have a measure. Let's say we give the following numbers to each row in the truth table. Where the numbers come from is not important to illustrate the point. But we can imagine, at least roughly speaking, that the universe of the function is all Fridays, and the outputs represent the fraction of times I reported what I had to drink. Notice that if we sum up the output values, we get 1. So, we have a measure, and it's a normalized measure.
+These eight possibilities provide the foundation for creating a probability function. What we first need to do is make sure that we have a measure. Let's say we give the following numbers to each row in the truth table. Where the numbers come from is not important to illustrate the point. But we can imagine, at least roughly speaking, that the universe of the function is all Fridays, and the outputs represent the fraction of times Bert, Mandy, and Florian reported what they had to drink. Notice that if we sum up the output values, we get 1. So, we have a measure, and it's a normalized measure.
 
  Probability    P         Q         R
 -------------  --------- ---------  --------
@@ -173,10 +173,10 @@ For disjunction the truth value of the whole sentence is given by the following 
   F   T       T
   F   F       F
 
-Notice that this is an inclusive interpretation of 'or' which means that disjunction assumes by default that when both component sentences are true then the whole sentence is true. For example, if you are asked, "Do you want ketchup or mustard on your burger" there's nothing contradictory about saying that you want both. It's easy enough to express the exclusive version 'or' by say something like 'P or Q, and not both'. Formally we would write '(P$\vee$Q) $\wedge$ $\neg$(P$\wedge$Q)'.
+Notice that this is an inclusive interpretation of 'or' which means that disjunction assumes by default that when both component sentences are true then the whole sentence is true. For example, if you are asked, "Do you want ketchup or mustard on your burger" there's nothing contradictory about saying that you want both. It's easy enough to express the exclusive version 'or' by say something like 'P or Q, and not both'.^[Formally we would write '(P$\vee$Q) $\wedge$ $\neg$(P$\wedge$Q)'.]
 
 
-We can use the truth table definitions of conjunction, disjunction, and negation to determine the possible truth values of a complex sentence. Consider for example the sentence '(P$\vee$R) $\wedge$ $\neg$Q' which can be interpreted as "On Fridays Bert drinks beer or he drinks Scotch whisky, but he doesn't drink wine.'' (Note that "but'' expresses "and'' with the addition of some flare to highlight a contrast.) Using the rules for $\wedge$, $\vee$, and $\neg$ we get the table below. Notice that the whole complex sentence is a conjunction, where the left conjunct is made out of a disjunction (P$\vee$R), and the right conjunct is made out of a negation ($\neg$Q). So we have to work from the smallest parts up to the larger parts, which means that we first evaluate '(P$\vee$R)', then we evaluate '$\neg$Q', and then we can do the column of truth values under '$\wedge$' (which have been boldfaced to indicate these truth values are under the main connective). 
+We can use the truth table definitions of conjunction, disjunction, and negation to determine the possible truth values of a complex sentence. Consider for example the sentence '(P$\vee$R) $\wedge$ $\neg$Q' which can be interpreted as "On Fridays Bert drinks beer or Florian drinks Scotch whisky, but Mandy doesn't drink wine.''^[Note that "but'' expresses "and'' with the addition of some flare to highlight a contrast.] Using the rules for $\wedge$, $\vee$, and $\neg$ we get the table below. Notice that the whole complex sentence is a conjunction, where the left conjunct is made out of a disjunction (P$\vee$R), and the right conjunct is made out of a negation ($\neg$Q). So we have to work from the smallest parts up to the larger parts, which means that we first evaluate '(P$\vee$R)', then we evaluate '$\neg$Q', and then we can do the column of truth values under '$\wedge$' (which have been boldfaced to indicate these truth values are under the main connective). 
 
 
  Probability    P         Q          R          (P$\vee$R) $\wedge$ $\neg$Q
@@ -192,7 +192,7 @@ We can use the truth table definitions of conjunction, disjunction, and negation
 
 Notice that the complex sentence is true on rows 2, 5, and 6. So as an example, if P is true but Q and R are false, then P$\vee$R) $\wedge$ $\neg$Q is true (this is row two). 
 
-If we want to calculate what the probability is that '(P$\vee$R) $\wedge$ $\neg$Q' is true, all we need to do is add up the probabilities that correspond to each row. This would be $0.001+0.08+0.1 = 0.181$. That is, there is an 18.1\% chance that on Fridays Bert drinks beer or Scotch whisky, but doesn't drink wine. 
+If we want to calculate what the probability is that '(P$\vee$R) $\wedge$ $\neg$Q' is true, all we need to do is add up the probabilities that correspond to each row. This would be $0.001+0.08+0.1 = 0.181$. That is, there is an 18.1\% chance that on Fridays Bert drinks beer or Florian drinks Scotch whisky, but Mandy doesn't drink wine. 
 
 
 It is worth pointing out several features about probabilities that correspond to some important logical concepts: tautologies, equivalence, entailment, and inconsistency. In fact, these will be directly connected to the axioms that are typically used to define probabilities. So it's worth paying special attention here, as we'll use these results frequently going forward.
@@ -254,11 +254,11 @@ Entailment is an important concept to logicians because it preserves truth. That
 Something similar is the case if we think of probabilities instead of truth. If A entails B, then the probability of B is at least as high as the probability of A. We have this feature because when A entails B, that means that B has to be true in all the possibilities where A is (if that weren't the case, we'd have a counterexample). So if B is true in at least all the same places where A is, then the probability of B has to be at least as great as A.
 
 
-### Inconsistency
+### Inconsistency (or Mutual Exclusivity)
 
-A standard light switch is either on or off -- it's not both on and off at the same time. Now imagine that you have two light switches arranged so that when one is on it automatically turns the other one off (and vice versa). In this arrangment, the light switches are never both on at the same time, nor both off at the same time.
+A standard light switch is either on or off -- it's not both on and off at the same time. Now imagine that you have two light switches arranged so that when one is on it automatically turns the other one off (and vice versa). In this arrangement, the light switches are never both on at the same time, nor both off at the same time.
 
-Similarily, when we say that two propositions are inconsistent, we mean that whenever one is true the other is false, and when one is false the other is true. Consider '$\neg$(P $\wedge$ Q)' and 'P $\wedge$ Q'. When we complete the truth tables for these, we see that they have opposite truth values on each row.
+Similarly, when we say that two propositions are inconsistent, we mean that whenever one is true the other is false, and when one is false the other is true. Consider '$\neg$(P $\wedge$ Q)' and 'P $\wedge$ Q'. When we complete the truth tables for these, we see that they have opposite truth values on each row.
 
     P       Q       $\neg$(P $\wedge$ Q)      P $\wedge$  Q
   -----   -----   ------------------------   --------------------------
@@ -267,7 +267,7 @@ Similarily, when we say that two propositions are inconsistent, we mean that whe
     F       T               T$~~~~~~~~~~$                           F
     F       F               T$~~~~~~~~~~$                           F
 
-Whenever two propositions are inconsistent, then the probability of the disjunction of those two propositions is the sum of each of them. For example, suppose that A and B are inconsistent. Then $Pr$(A$\vee$B) = $Pr$(A) + $Pr$(B). 
+Whenever two propositions are inconsistent, then the probability of the disjunction of those two propositions is the sum of each of them. For example, suppose that A and B are inconsistent (that is, suppose they are *mutually exclusive*). Then $Pr$(A$\vee$B) = $Pr$(A) + $Pr$(B). 
 
 
 ### Logic Probabilities
@@ -317,81 +317,174 @@ This is an important result, one that we will use often. Here's a different way 
 \]
 
 
+## Independence
+
+There's one additional concept that we'll make use of going forward, but it isn't really a concept of deductive logic. Recall that two propositions are exclusive (inconsistent) when they cannot be true at the same time. So, if we flip a fair coin, landing Heads on the first toss, $H_1$ is exclusive of landing Tails on the first toss, $T_1$. But landing Heads on the first toss, $H_1$ is not inconsistent with landing Tails *on the second* toss, $T_2$. In fact, if the coin is fair and nothing about the first toss influences the outcome of the second toss, then we say that the two tosses are *independent*. 
+
+`r newthought("Independence")` is an important concept of inductive logic. It says that the truth of one proposition *does not change the probability* of another proposition being true. It's important not to confuse independence with exclusivity.^[Note that if A and B are exclusive, then finding out that A is true *does* change the probability that B is true, in fact we know it would ahve to be false! Hence, A and B are not independent.]
+
+Independence allows us to introduce a rule for how to *multiply* probabilities. For example, suppose we have a sequence of independent tosses of our fair coin. How many possible sequences are there of two tosses? We can express them using our logic of propositions: 
+
+- $H_1 \,\&\, H_2$,
+- $T_1 \,\&\, T_2$,
+- $H_1 \,\&\, T_2$,
+- $T_1 \,\&\, H_2$.
+
+How do we calculate the probability of these complex propositions? For example, how do we figure out the number $Pr(H_1 \,\&\, H_2)$ is equal to?
+
+Because the coin is fair, we know $Pr(H_1) = 1/2$ and $Pr(H_2) = 1/2$. The probability of heads on any given toss is always $1/2$, no matter what came before. To get the probability of $H_1 \,\&\, H_2$ we compute:
+$$
+  \begin{aligned}
+    Pr(H_1 \,\&\, H_2) &= Pr(H_1) \times Pr(H_2)\\
+                       &= 1/2 \times 1/2\\
+                       &= 1/4.
+  \end{aligned}
+$$
+And this is indeed correct, but *only because the coin is fair and thus the tosses are independent*. In general, we have the following as general rule of probability.
+
+The Multiplication Rule
+
+:    If $A$ and $B$ are independent, then $Pr(A \,\&\, B) = Pr(A) \times Pr(B)$.
+
+Since our coin tosses are independent, we can multiply to calculate $Pr(H_1 \,\&\, H_2) = 1/4$. And the same reasoning applies to all four possible sequences:
+$$
+  \begin{aligned}
+    Pr(H_1 \,\&\, H_2) &= 1/4,\\
+    Pr(T_1 \,\&\, T_2) &= 1/4,\\
+    Pr(H_1 \,\&\, T_2) &= 1/4,\\
+    Pr(T_1 \,\&\, H_2) &= 1/4.
+  \end{aligned}
+$$
+`r newthought("It's Crucial")` to recognize that the multiplication rule only applies to independent propositions. You'll get the wrong answer if you're not careful about this. We'll show shortly the kinds of mistakes one might make and how to deal with propositions that aren't independent.
 
 
+## Summary
+
+We've covered a lot of ground. Beware of simply trying to memorize the following key takeaways. Knowing *why* we have the following rules will be massively helpful in avoiding common errors of probabilistic reasoning (some of which we already saw with the Dutchbook argument).
+
+- $Pr(T) = 1$ for every tautology $T$.
+- $Pr(C) = 0$ for every contradiction $C$.
+- $Pr(A) = Pr(B)$ if $A$ and $B$ are logically equivalent.
+- $Pr(A \vee B) = Pr(A) + Pr(B)$, if $A$ and $B$ are mutually exclusive (i.e. inconsistent).
+- $Pr(A \wedge B) = Pr(A) \times Pr(B)$, if $A$ and $B$ are independent.
 
 
 ## Exercises
 
-### Proporitions to Probabilities
-
-Consider again our table about the proportion of distilleries that are ownen by multinational companies (these are the first four rows):
-
-   Input             Output (proportion owned by corps.)
--------------     --------------------------------------
- Highlands            0.6
- Speyside            0.4
- Lowlands            0.3
- Campbeltown         0
- Islay                0.25
- Islands             0.4
-
-We said that we can't determine what proportion of mainland distilleries are owned by multinational companies just by looking at the proportions for each region. Explain what information you would need and how you would go about figuring this out.
-
-### The Conjunction Fallacy
-
-Suppose 'A' means 'Linda is a feminist' and 'B' means `Linda is a bank teller'. Consider the truth table for A and B, with corresponding probabilities (Pr) for each assignment of truth values:
-
- Pr       A       B
-------  -----    ----- 
- 0.5     T        T
- 0.2     F        T
- 0.25    T        F
- 0.05    F        F
-
-1. Are A and B inconsistent? Why or why not?
-
-2.  Are A and B equivalent? Why or why not?
-
-3. What is $p(A)$?
-
-4.  What is $p(B)$?
-
-5.  What is $p(A\wedge B)$?
-
-### Atomic vs Conjunctions
-
-Which of the following is true regarding the general relationship between the probability of a single proposition $X$ and the probability of a conjunction that has $X$ as a component?
-
-| a) $p(X)\geq p(X\wedge Y)$
-| b) $p(X)\leq p(X\wedge Y)$
-|	 c) $p(X) = p(X\wedge Y)$
-|	 d) None of the above. It depends on the probabilities given to $X$ and $Y$.
-
-### Disjunction
-
-Consider the case of disjunction now. Which of the following is true regarding the general relationship between the probability of a single proposition $X$ and the probability of a disjunction that has $X$ as a component?
-
-| a) $p(X)\geq p(X\vee Y)$ 
-|	b) $p(X)\leq p(X\vee Y)$
-|	c) $p(X) = p(X\vee Y)$ 
-|	d) None of the above. It depends on the probabilities given to $X$ and $Y$.
-
-### Conjunctions and Disjunctions
-
- Let's compare conjunctions and disjunctions. Which of the following is true regarding the general relationship between the probability of a conjunction and the probability of a disjunction?
-
-| a) $p(X\wedge Y)\geq p(X\vee Y)$
-| b) $p(X\wedge Y)\leq p(X\vee Y)$
-| c) $p(X\wedge Y) = p(X\vee Y)$
-| d)  None of the above. It depends on the probabilities given to $X$ and $Y$.
 
 
-### Linda (again)
+1. Proportions to Probabilities
+
+    Consider again our table about the proportion of distilleries that are ownen by multinational companies (these are the first four rows):
+
+       Input             Output (proportion owned by corps.)
+    -------------     --------------------------------------
+     Highlands            0.6
+     Speyside            0.4
+     Lowlands            0.3
+     Campbeltown         0
+     Islay                0.25
+     Islands             0.4
+
+    We said that we can't determine what proportion of mainland distilleries are owned by multinational companies just by looking at the proportions for each region. Explain what information you would need and how you would go about figuring this out.
+    
+    
+1. What is the probability of each of the following propositions?
+    ```{marginfigure}
+    Numerous exercises have been borrowed or adapted from Weisberg's  *Odds and Ends*, Chapter 5. I will admit that I lost track which exercises have come from where.
+```
+    a.  $A \wedge (B \wedge \neg A)$
+    b.  $\neg (A \wedge \neg A)$
+
+1. Give an example of each of the following.
+
+    a. Two statements that are mutually exclusive.
+    b. Two statements that are independent.
+
+1.  For each of the following, say whether it is true or false.
+
+    a. If propositions are independent, then they must be mutually exclusive.
+    b. Independent propositions usually aren't mutually exclusive.
+    c. If propositions are mutually exclusive, then they must be independent.
+    d. Mutually exclusive propositions usually aren't independent.
+    
+1. Assume $Pr(A \wedge B)=1/3$ and $Pr(A \wedge \neg B)=1/5$. Answer each of the following:
+
+    a.  What is $Pr((A \wedge B) \vee (A \wedge \neg B))$?
+    b.  What is $Pr(A)$?
+    c.  Are $(A \wedge B)$ and $(A \wedge \neg B)$ independent?
+
+1. Suppose $A$ and $B$ are independent, and $A$ and $C$ are mutually exclusive. Assume $Pr(A) = 1/3, Pr(B) = 1/6, Pr(C) = 1/9$, and answer each of the following:
+
+    a.  What is $Pr(A \wedge C)$?
+    b.  What is $Pr((A \wedge B) \vee C)$?
+    c.  Must $Pr(A \wedge B) = 0$?
+
+1. Suppose a fair, six-sided die is rolled two times. What is is the probability of it landing on the same number each time?
+
+    Hint: calculate the probability of it landing on a *different* number each time. To do this, first count the number of possible ways the two rolls could turn out. Then count how many of these are "no-repeats."
+
+1. The Addition Rule can be extended to three propositions. If $A$, $B$, and $C$ are all mutually exclusive with one another, then
+    $$ Pr(A \vee B \vee C) = Pr(A) + Pr(B) + Pr(C).$$
+    Explain why this rule is correct. Would the same idea extend to four mutually exclusive propositions? To five?
+    
+    (Hint: there's more than one way to do this. You can use an Euler diagram. Or you can derive the new rule from the original one, by thinking of $A \vee B \vee C$ as a disjunction of $A \vee B$ and $C$.)
+
+1.  You have a biased coin, where each toss has a $3/5$ chance of landing heads. But each toss is independent of the others. Suppose you're going to flip the coin $1,000$ times. The first 998 tosses all land tails. What is the probability at least one of the last two flips will be tails?
+
+1.  There are $3$ empty buckets lined up. Someone takes $4$ apples and places each one in a bucket. The placement of each apple is random and independent of the others. What is the probability that the first two buckets end up with no apples?
+
+1.  Suppose three cards are stacked in order: jack on top, queen in the middle, king on the bottom. If we shuffle them randomly, what is the probability the queen will still be in the middle when we're done? Assume shuffling makes every possible ordering of the cards equally likely. Hint: how many ways are there to assign each card a place in the stack? How many of these have the queen in the middle?
+
+1. The Conjunction Fallacy
+
+    Suppose 'A' means 'Linda is a feminist' and 'B' means `Linda is a bank teller'. Consider the truth table for A and B, with corresponding probabilities (Pr) for each assignment of truth values:
+
+     Pr       A       B
+    ------  -----    ----- 
+     0.5     T        T
+     0.2     F        T
+     0.25    T        F
+     0.05    F        F
+
+    - Are A and B inconsistent? Why or why not?
+    - Are A and B equivalent? Why or why not?
+    - What is $Pr(A)$?
+    - What is $Pr(B)$?
+    - What is $Pr(A\wedge B)$?
+
+1. Atomic vs Conjunctions
+
+    Which of the following is true regarding the general relationship between the probability of a single proposition $X$ and the probability of a conjunction that has $X$ as a component?
+
+    a. $Pr(X)\geq Pr(X\wedge Y)$
+    a. $Pr(X)\leq Pr(X\wedge Y)$
+    a. $Pr(X) = Pr(X\wedge Y)$
+    a. None of the above. It depends on the probabilities given to $X$ and $Y$.
+
+1.  Disjunction
+
+    Consider the case of disjunction now. Which of the following is true regarding the general relationship between the probability of a single proposition $X$ and the probability of a disjunction that has $X$ as a component?
+
+    a. $Pr(X)\geq Pr(X\vee Y)$ 
+    a. $Pr(X)\leq Pr(X\vee Y)$
+    a. $Pr(X) = Pr(X\vee Y)$ 
+    a. None of the above. It depends on the probabilities given to $X$ and $Y$.
+
+1. Conjunctions and Disjunctions
+
+    Let's compare conjunctions and disjunctions. Which of the following is true regarding the general relationship between the probability of a conjunction and the probability of a disjunction?
+
+    a. $Pr(X\wedge Y)\geq Pr(X\vee Y)$
+    a. $Pr(X\wedge Y)\leq Pr(X\vee Y)$
+    a. $Pr(X\wedge Y) = Pr(X\vee Y)$
+    a. None of the above. It depends on the probabilities given to $X$ and $Y$.
 
 
- Linda is 31 years old, single, outspoken, and very bright. She majored in philosophy. As a student, she was deeply concerned with issues of discrimination and social justice, and also participated in anti-nuclear demonstrations. Which of the following is most probable?
+1. Linda (again)
+
+    Linda is 31 years old, single, outspoken, and very bright. She majored in philosophy. As a student, she was deeply concerned with issues of discrimination and social justice, and also participated in anti-nuclear demonstrations. Which of the following is most probable?
  
- 1. Linda is a bank teller
- 2. Linda is a bank teller and not a feminist
- 3. Linda is a bank teller and a feminist
+    a. Linda is a bank teller
+    a. Linda is a bank teller and not a feminist
+    a. Linda is a bank teller and a feminist

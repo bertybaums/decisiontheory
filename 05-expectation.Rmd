@@ -478,7 +478,7 @@ So there is much conceptual work left for us to do. We'll think about probabilit
 1. Casey has a phone that's worth $\$300$. The probability that she'll damage it and need to replace it is $1/5$. Casey is offered an insurance policy that costs $\$60$ to replace her phone.
 
     a. What is the expected monetary value of buying the insurance?
-    b. What is the epxected monetary value of declining the insurance?
+    b. What is the expected monetary value of declining the insurance?
     
 1. Zack has a laptop worth $\$1,000$. Given his past, there's a $1/5$ chance he's going to spill coffee on it and will need to replace it. At what cost for an insurance policy would Zack be indifferent between buying and declining the insurance?
 
