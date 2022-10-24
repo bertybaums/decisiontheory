@@ -239,6 +239,8 @@ In order to test whether two sentences are equivalent, we build a truth table an
     F       F               T$~~~~~~~~~~$                           T
 
 
+### Validity and Entailment
+
 One of the most important concepts in logic is that of **validity**. Validity is a property of arguments. An argument is a series of statements, where one is designated the conclusion and the other statements the premises (these are intended to support the conclusion). An argument is valid when *if* the premises are true, then the conclusion *has* to be true. Put differently: an argument is valid when there is no possible way of making the conclusion false and the premises true. One more way of putting it: there is no counterexample that makes the premises true but the conclusion false. 
 
 Typically arguments have two or more premises. Modus Ponens, for example, is a style of argument that has a conditional as one statement and a second statement that affirms the antecedent of the conditional. For example: If John lives in Idaho, then he lives in the US. John does indeed live in Idaho. Therefore, John lives in the US.
@@ -321,7 +323,7 @@ This is an important result, one that we will use often. Here's a different way 
 
 There's one additional concept that we'll make use of going forward, but it isn't really a concept of deductive logic. Recall that two propositions are exclusive (inconsistent) when they cannot be true at the same time. So, if we flip a fair coin, landing Heads on the first toss, $H_1$ is exclusive of landing Tails on the first toss, $T_1$. But landing Heads on the first toss, $H_1$ is not inconsistent with landing Tails *on the second* toss, $T_2$. In fact, if the coin is fair and nothing about the first toss influences the outcome of the second toss, then we say that the two tosses are *independent*. 
 
-`r newthought("Independence")` is an important concept of inductive logic. It says that the truth of one proposition *does not change the probability* of another proposition being true. It's important not to confuse independence with exclusivity.^[Note that if A and B are exclusive, then finding out that A is true *does* change the probability that B is true, in fact we know it would ahve to be false! Hence, A and B are not independent.]
+`r newthought("Independence")` is an important concept of inductive logic. It says that the truth of one proposition *does not change the probability* of another proposition being true. It's important not to confuse independence with exclusivity.^[Note that if A and B are exclusive, then finding out that A is true *does* change the probability that B is true, in fact we know it would ahve to be false! Hence, A and B are not independent.] We'll have to wait until we have the concept of conditional probability to formally define independence, but a rough intuition is good enough for now.
 
 Independence allows us to introduce a rule for how to *multiply* probabilities. For example, suppose we have a sequence of independent tosses of our fair coin. How many possible sequences are there of two tosses? We can express them using our logic of propositions: 
 
