@@ -13,7 +13,7 @@
 
 <meta name="author" content="Bert Baumgaertner" />
 
-<meta name="date" content="2022-10-13" />
+<meta name="date" content="2022-10-24" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -136,6 +136,7 @@ $$
 <li><a href="conditional-probabilities-and-likelihoods.html#calculating-conditional-probability"><span class="toc-section-number">10.1</span> Calculating Conditional Probability</a></li>
 <li><a href="conditional-probabilities-and-likelihoods.html#application-monty-hall-problem"><span class="toc-section-number">10.2</span> Application: Monty Hall Problem</a></li>
 <li><a href="conditional-probabilities-and-likelihoods.html#likelihoods"><span class="toc-section-number">10.3</span> Likelihoods</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#application-the-taxi-cab-problem"><span class="toc-section-number">10.4</span> Application: The Taxi Cab Problem</a></li>
 </ul></li>
 <li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
 <li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
@@ -749,6 +750,9 @@ $$
 </tr>
 </tbody>
 </table>
+</div>
+<div id="validity-and-entailment" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> Validity and Entailment</h3>
 <p>One of the most important concepts in logic is that of <strong>validity</strong>. Validity is a property of arguments. An argument is a series of statements, where one is designated the conclusion and the other statements the premises (these are intended to support the conclusion). An argument is valid when <em>if</em> the premises are true, then the conclusion <em>has</em> to be true. Put differently: an argument is valid when there is no possible way of making the conclusion false and the premises true. One more way of putting it: there is no counterexample that makes the premises true but the conclusion false.</p>
 <p>Typically arguments have two or more premises. Modus Ponens, for example, is a style of argument that has a conditional as one statement and a second statement that affirms the antecedent of the conditional. For example: If John lives in Idaho, then he lives in the US. John does indeed live in Idaho. Therefore, John lives in the US.</p>
 <p>Not all arguments have to have two or more premises, however. Some arguments can have no premises at all! Tautologies are examples where if you make them the conclusion of an argument with no premises, the argument is still, strictly speaking, valid. (You can’t make the conclusion false! So there’s no counterexample.)</p>
@@ -758,7 +762,7 @@ $$
 <p>Something similar is the case if we think of probabilities instead of truth. If A entails B, then the probability of B is at least as high as the probability of A. We have this feature because when A entails B, that means that B has to be true in all the possibilities where A is (if that weren’t the case, we’d have a counterexample). So if B is true in at least all the same places where A is, then the probability of B has to be at least as great as A.</p>
 </div>
 <div id="inconsistency-or-mutual-exclusivity" class="section level3">
-<h3><span class="header-section-number">9.3.3</span> Inconsistency (or Mutual Exclusivity)</h3>
+<h3><span class="header-section-number">9.3.4</span> Inconsistency (or Mutual Exclusivity)</h3>
 <p>A standard light switch is either on or off – it’s not both on and off at the same time. Now imagine that you have two light switches arranged so that when one is on it automatically turns the other one off (and vice versa). In this arrangement, the light switches are never both on at the same time, nor both off at the same time.</p>
 <p>Similarly, when we say that two propositions are inconsistent, we mean that whenever one is true the other is false, and when one is false the other is true. Consider ‘<span class="math inline">\(\neg\)</span>(P <span class="math inline">\(\wedge\)</span> Q)’ and ‘P <span class="math inline">\(\wedge\)</span> Q’. When we complete the truth tables for these, we see that they have opposite truth values on each row.</p>
 <table>
@@ -800,7 +804,7 @@ $$
 <p>Whenever two propositions are inconsistent, then the probability of the disjunction of those two propositions is the sum of each of them. For example, suppose that A and B are inconsistent (that is, suppose they are <em>mutually exclusive</em>). Then <span class="math inline">\(Pr\)</span>(A<span class="math inline">\(\vee\)</span>B) = <span class="math inline">\(Pr\)</span>(A) + <span class="math inline">\(Pr\)</span>(B).</p>
 </div>
 <div id="logic-probabilities" class="section level3">
-<h3><span class="header-section-number">9.3.4</span> Logic Probabilities</h3>
+<h3><span class="header-section-number">9.3.5</span> Logic Probabilities</h3>
 <p>So let’s think again about why the probability of a tautology is 1. This is actually because of two features. First, A and <span class="math inline">\(\neg\)</span>A are inconsistent, so the probability of their disjunction (i.e. <span class="math inline">\(Pr\)</span>(A<span class="math inline">\(\vee\)</span> <span class="math inline">\(\neg\)</span>A) ) is going to be the sum of the probabilty of A and the probablity of <span class="math inline">\(\neg\)</span>A. Second, whatever the probability of A is, the probability of ‘<span class="math inline">\(\neg\)</span>A’ is going to be <span class="math inline">\(1-Pr\)</span>(A). This is because inconsistent propositions cannot have probabilities that vary independently. If the probability of A is fixed, this automatically fixes the probability of ‘<span class="math inline">\(\neg\)</span>A’ (and vice versa). And since ‘<span class="math inline">\(\neg\)</span>A’ will cover all the remaining possibilities that ‘A’ did not cover and the probability of the universe (i.e., all possibilities) is 1, the probability of ‘<span class="math inline">\(\neg\)</span>A’ is <span class="math inline">\(1-Pr\)</span>(A).</p>
 <p>What about the case where A and B are not inconsistent? Is the sum of their probabilities somehow connected to the features we have been considering so far? Yes.</p>
 <p>Let’s look at the following truth table. Notice that A and B are not inconsistent, since there are rows where their truth values match. In the left most column we have variables representing the probability of each row. If A and B meant ‘lands heads’ and ‘lands tails’ respectively, this exercise would be much easier (since each row has a probability of 0.25). But we’re asking about whether there’s some general pattern that we can express even if we don’t know the probabilities of any row.</p>
@@ -873,7 +877,7 @@ Pr(\text{A}) + Pr(\text{B}) = Pr(\text{A}\wedge\text{B}) + Pr(\text{A}\vee\text{
 <div id="independence" class="section level2">
 <h2><span class="header-section-number">9.4</span> Independence</h2>
 <p>There’s one additional concept that we’ll make use of going forward, but it isn’t really a concept of deductive logic. Recall that two propositions are exclusive (inconsistent) when they cannot be true at the same time. So, if we flip a fair coin, landing Heads on the first toss, <span class="math inline">\(H_1\)</span> is exclusive of landing Tails on the first toss, <span class="math inline">\(T_1\)</span>. But landing Heads on the first toss, <span class="math inline">\(H_1\)</span> is not inconsistent with landing Tails <em>on the second</em> toss, <span class="math inline">\(T_2\)</span>. In fact, if the coin is fair and nothing about the first toss influences the outcome of the second toss, then we say that the two tosses are <em>independent</em>.</p>
-<p><span class="newthought">Independence</span> is an important concept of inductive logic. It says that the truth of one proposition <em>does not change the probability</em> of another proposition being true. It’s important not to confuse independence with exclusivity.<label for="tufte-sn-87" class="margin-toggle sidenote-number">87</label><input type="checkbox" id="tufte-sn-87" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">87</span> Note that if A and B are exclusive, then finding out that A is true <em>does</em> change the probability that B is true, in fact we know it would ahve to be false! Hence, A and B are not independent.</span></p>
+<p><span class="newthought">Independence</span> is an important concept of inductive logic. It says that the truth of one proposition <em>does not change the probability</em> of another proposition being true. It’s important not to confuse independence with exclusivity.<label for="tufte-sn-87" class="margin-toggle sidenote-number">87</label><input type="checkbox" id="tufte-sn-87" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">87</span> Note that if A and B are exclusive, then finding out that A is true <em>does</em> change the probability that B is true, in fact we know it would ahve to be false! Hence, A and B are not independent.</span> We’ll have to wait until we have the concept of conditional probability to formally define independence, but a rough intuition is good enough for now.</p>
 <p>Independence allows us to introduce a rule for how to <em>multiply</em> probabilities. For example, suppose we have a sequence of independent tosses of our fair coin. How many possible sequences are there of two tosses? We can express them using our logic of propositions:</p>
 <ul>
 <li><span class="math inline">\(H_1 \,\&amp;\, H_2\)</span>,</li>
