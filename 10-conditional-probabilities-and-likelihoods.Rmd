@@ -254,7 +254,7 @@ Notice, though, the first branch in a tree diagram is different. In the $H$-vs.-
 
 Independence
 
-:    $A$ is independent of $B$ if $\p(A \given B) = \p(A)$ and $\p(A) > 0$.
+:    $A$ is independent of $B$ if $Pr(A | B) = Pr(A)$ and $Pr(A) > 0$.
 
 
 We will see more of this concept of independence, as it plays an important role in calculating probabilities. But first, there is an important kind of conditional probability called a *likelihood* that is worth taking some time to explain. 
