@@ -13,7 +13,7 @@
 
 <meta name="author" content="Bert Baumgaertner" />
 
-<meta name="date" content="2022-10-24" />
+<meta name="date" content="2022-11-01" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -135,8 +135,10 @@ $$
 <li class="has-sub"><a href="conditional-probabilities-and-likelihoods.html#conditional-probabilities-and-likelihoods"><span class="toc-section-number">10</span> Conditional Probabilities and Likelihoods</a><ul>
 <li><a href="conditional-probabilities-and-likelihoods.html#calculating-conditional-probability"><span class="toc-section-number">10.1</span> Calculating Conditional Probability</a></li>
 <li><a href="conditional-probabilities-and-likelihoods.html#application-monty-hall-problem"><span class="toc-section-number">10.2</span> Application: Monty Hall Problem</a></li>
-<li><a href="conditional-probabilities-and-likelihoods.html#likelihoods"><span class="toc-section-number">10.3</span> Likelihoods</a></li>
-<li><a href="conditional-probabilities-and-likelihoods.html#application-the-taxi-cab-problem"><span class="toc-section-number">10.4</span> Application: The Taxi Cab Problem</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#independence-1"><span class="toc-section-number">10.3</span> Independence</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#likelihoods"><span class="toc-section-number">10.4</span> Likelihoods</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#application-the-taxi-cab-problem"><span class="toc-section-number">10.5</span> Application: The Taxi Cab Problem</a></li>
+<li><a href="conditional-probabilities-and-likelihoods.html#exercises-9"><span class="toc-section-number">10.6</span> Exercises</a></li>
 </ul></li>
 <li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
 <li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
@@ -148,9 +150,9 @@ $$
 <div class="col-sm-12">
 <div id="conditional-probabilities-and-likelihoods" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Conditional Probabilities and Likelihoods</h1>
-<p>Assuming you have a driver’s licence and the roads are relatively clear, the chances of crashing your car are pretty low. But if you’re drink, the chances of crash are much higher. Probabilities change depending on the conditions.</p>
+<p>Assuming you have a driver’s licence and the roads are relatively clear, the chances of crashing your car are pretty low. But if you’re drunk, the chances of crashing are much higher. Probabilities change depending on the conditions.</p>
 <p>We already have notation for symbolizing this idea. We use <span class="math inline">\(P(A | B)\)</span> to represent the probability that <span class="math inline">\(A\)</span> is true <em>given</em> that <span class="math inline">\(B\)</span> is true. For example, to say the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is 30%, we write:
-<span class="math display">\[ P(A | B) = .3 \]</span>
+<span class="math display">\[ P(A | B) = 0.3 \]</span>
 When we condition probabilities in this way, we call them <em>conditional probabilities</em>. Conditional probabilities play a central role in the remaining material, so let’s spend some time learning how to calculate them.</p>
 <div id="calculating-conditional-probability" class="section level2">
 <h2><span class="header-section-number">10.1</span> Calculating Conditional Probability</h2>
@@ -258,8 +260,18 @@ Figure 10.5: Stage 3 of tree diagram
 \]</span>
 Notice, though, the first branch in a tree diagram is different. In the <span class="math inline">\(H\)</span>-vs.-<span class="math inline">\(T\)</span> branch, the probabilities are <em>un</em>conditional, since there are no previous branches for them to be conditional on.</p>
 </div>
+<div id="independence-1" class="section level2">
+<h2><span class="header-section-number">10.3</span> Independence</h2>
+<p><span class="newthought">We can state independence</span> in a rigorous way now. Informally stated, we said that A and B are independent when the probability of B (or the truth of B) does not affect the probability of A. The concept of conditional probability allows us to say this explicitly using probability theory:</p>
+<dl>
+<dt>Independence</dt>
+<dd><p><span class="math inline">\(A\)</span> is independent of <span class="math inline">\(B\)</span> if <span class="math inline">\(Pr(A | B) = Pr(A)\)</span> and <span class="math inline">\(Pr(A) &gt; 0\)</span>.</p>
+</dd>
+</dl>
+<p>We will see more of this concept of independence, as it plays an important role in calculating probabilities. But first, there is an important kind of conditional probability called a <em>likelihood</em> that is worth taking some time to explain.</p>
+</div>
 <div id="likelihoods" class="section level2">
-<h2><span class="header-section-number">10.3</span> Likelihoods</h2>
+<h2><span class="header-section-number">10.4</span> Likelihoods</h2>
 <p><span class="newthought">Order matters</span> when it comes to conditional probabilities. For example, given that someone is a university student (S), the probability that they are below 40 years old (F) is relatively high. However, given that someone is below 40 years old, the probability that they are a university student is low. In symbols, <span class="math inline">\(Pr(S|F)\neq Pr(F|S)\)</span>.<label for="tufte-sn-92" class="margin-toggle sidenote-number">92</label><input type="checkbox" id="tufte-sn-92" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">92</span> There are some cases where the two are the same, but that’s rare.</span></p>
 <p><span class="newthought">Here’s another example.</span><label for="tufte-sn-93" class="margin-toggle sidenote-number">93</label><input type="checkbox" id="tufte-sn-93" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">93</span> Borrowed from Weisberg’s <em>Odds and Ends</em>, chapter 6.</span> Suppose a university has 10,000 students. Each is studying under one of four broad headings: Humanities, Social Sciences, STEM, or Professional. Under each of these categories, the number of students with an average grade of A, B, C, or D is listed in the following table. What is the probability a randomly selected student will have an A average, given that they are studying either Humanities or Social Sciences?</p>
 <table>
@@ -347,7 +359,7 @@ Notice how we get a different number now.</p>
 <p><span class="newthought">A likelihood</span> is a conditional probability of seeing some evidence given the assumption that a hypothesis is true, i.e. <span class="math inline">\(P(E|H)\)</span>.</p>
 </div>
 <div id="application-the-taxi-cab-problem" class="section level2">
-<h2><span class="header-section-number">10.4</span> Application: The Taxi Cab Problem</h2>
+<h2><span class="header-section-number">10.5</span> Application: The Taxi Cab Problem</h2>
 <p>If there’s anything to take away from this chapter about how conditional probabilities are used in (scientific) reasoning, it’s to make sure you remember that <span class="math inline">\(P(E|H)\neq P(H|E)\)</span>.</p>
 <p><span class="newthought">To illustrate</span> this point, consider the following famous taxi cab problem.
 <label for="tufte-mn-8" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-8" class="margin-toggle"><span class="marginnote"><span style="display: block;">The experiment was first published in 1971. It was performed by <a href="https://en.wikipedia.org/wiki/Daniel_Kahneman">Daniel Kahneman</a> and <a href="https://en.wikipedia.org/wiki/Amos_Tversky">Amos Tversky</a>. Their work on human reasoning reshaped the field of psychology, and eventually won a Nobel prize in 2002.</span></span></p>
@@ -375,6 +387,96 @@ Notice how we get a different number now.</p>
 <p>Another way to think about the problem is that there are <em>two</em> pieces of information relevant to whether the cab is blue. The witness says the cab is blue, but also, most cabs are not blue. So there’s evidence for the cab being blue, but also strong evidence against it. The diagram shows us how to balance these two, competing pieces of evidence and come to the correct answer.</p>
 <p>What trips people up so much in the taxicab problem? Remember how order matters with conditional probability. In this problem, we’re asked to find <span class="math inline">\(Pr(B | W)\)</span>, the probability the cab is blue given that the witness says it is. That’s not the same as <span class="math inline">\(Pr(W | B)\)</span>, the probability the witness will say the cab is blue if it really is. The problem tells us <span class="math inline">\(Pr(W | B) = 8/10\)</span>, but it doesn’t tell us a number for <span class="math inline">\(Pr(B | W)\)</span>. We have to figure that out.</p>
 <p><span class="newthought">It’s not that the two conditional probabilities</span> aren’t related. The taxi cab problem highlights why we should keep the two distinct, but we’d be wrong to think that they aren’t related at all. In fact a very famous theorem called <em>Bayes Theorem</em> shows us a fundamental connection between them. We show that next.</p>
+</div>
+<div id="exercises-9" class="section level2">
+<h2><span class="header-section-number">10.6</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Answer each of the following:</p>
+<p><label for="tufte-mn-9" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-9" class="margin-toggle"><span class="marginnote"><span style="display: block;">Nearly all of these exercises come directly from or are versions of those in Chapter 6 of Weisberg’s <em>Odds and Ends</em>.</span></span></p>
+<ol style="list-style-type: lower-alpha">
+<li>On a fair die with six sides, what is the probability of rolling a low number (1, 2, or 3) given that you roll an even number.</li>
+<li>On a fair die with eight sides, what is the probability of rolling an even number given that you roll a high number (5, 6, 7, or 8)?</li>
+</ol></li>
+<li><p>Suppose <span class="math inline">\(Pr(B) = 4/10\)</span>, <span class="math inline">\(Pr(A) = 7/10\)</span>, and <span class="math inline">\(Pr(B \wedge A) = 2/10\)</span>.
+What are each of the following probabilities?</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Pr(A | B)\)</span></li>
+<li><span class="math inline">\(Pr(B | A)\)</span></li>
+</ol></li>
+<li><p>Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor company Guild do. A computer store buys <span class="math inline">\(40\%\)</span> of its tablets from Ixian, and <span class="math inline">\(60\%\)</span> from Guild.</p>
+<p><label for="tufte-mn-10" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-10" class="margin-toggle"><span class="marginnote"><span style="display: block;">This exercise and the next one are based on very similar exercises from Ian Hacking’s wonderful book, <em>An Introduction to Probability and Inductive Logic</em>.</span></span></p>
+<p>Draw a probability tree to answer the following questions.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability a randomly selected tablet in the store is made by Ixian and has a factory defect?</li>
+<li>What is the probability a randomly selected tablet in the store has a factory defect?</li>
+<li>What is the probability a tablet from this store is made by Ixian, given that it has a factory defect?</li>
+</ol></li>
+<li><p>In the city of Elizabeth, the neighbourhood of Southside has lots of chemical plants. <span class="math inline">\(2\%\)</span> of Elizabeth’s children live in Southside, and <span class="math inline">\(14\%\)</span> of those children have been exposed to toxic levels of lead. Elsewhere in the city, only <span class="math inline">\(1\%\)</span> of the children have toxic levels of exposure.</p>
+<p>Draw a probability tree to answer the following questions.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability that a randomly chosen child from Elizabeth lives in Southside and has toxic levels of lead exposure?</li>
+<li>What is the probability that a randomly chosen child from Elizabeth has toxic levels of lead exposure?</li>
+<li>What is the probability that a randomly chosen child from Elizabeth who has toxic levels of lead exposure lives in Southside?</li>
+</ol></li>
+<li><p>Imagine 100 prisoners are sentenced to death. 70 of them are housed in cell block A, the other 30 are in cell block B. Of the prisoners in cell block A, 9 are innocent. Only 1 prisoner in cell block B is innocent.</p>
+<p>The law requires that one prisoner be pardoned. The lucky prisoner will be selected by flipping a fair coin to choose either cell block A or B. Then a fair lottery will be used to select a random prisoner from the chosen cell block.</p>
+<p>What is the probability the pardoned prisoner comes from cell block A if she is innocent? Answer each of the following to find out.</p>
+<p><span class="math inline">\(I\)</span> = The pardoned prisoner is innocent.<br />
+<span class="math inline">\(A\)</span> = The pardoned prisoner comes from cell block A.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is <span class="math inline">\(Pr(I | A)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(A \wedge I)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(I | B)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(B \wedge I)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(I)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(A | I)\)</span>?</li>
+<li>Draw a probability tree to visualize and verify your calculations.</li>
+</ol></li>
+<li><p>Suppose <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> are independent, and they each have the same probability: <span class="math inline">\(1/3\)</span>. What is <span class="math inline">\(Pr(A \wedge B | C)\)</span>?</p></li>
+<li><p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive, what is <span class="math inline">\(Pr(A | B)\)</span>? Justify your answer using the definition of conditional probability.</p></li>
+<li><p>Which of the following situations is impossible? Justify your answer.</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Pr(A) = 1/2, Pr(A | B) = 1/2, Pr(B | A) = 1/2\)</span>.</li>
+<li><span class="math inline">\(Pr(A) = 1/2, Pr(A | B) = 1, Pr(A | \neg B) = 1\)</span>.</li>
+</ol></li>
+<li><p>Is the following statement true or false: if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive, then <span class="math inline">\(Pr(A \vee B | C) = Pr(A | C) + Pr(B | C)\)</span>. Justify your answer.</p></li>
+<li><p>Justify the second part of the “independence means multiply” mantra: if <span class="math inline">\(Pr(A) &gt; 0\)</span>, <span class="math inline">\(Pr(B) &gt; 0\)</span>, and <span class="math inline">\(Pr(A \wedge B) = Pr(A) Pr(B)\)</span>, then <span class="math inline">\(A\)</span> is independent of <span class="math inline">\(B\)</span>.</p>
+<p><label for="tufte-mn-11" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-11" class="margin-toggle"><span class="marginnote"><span style="display: block;">This and the remaining exercises are more challenging and ask you to think more deeply about conditional probability and independence.</span></span></p>
+<p>Hint: start by supposing <span class="math inline">\(Pr(A) &gt; 0\)</span>, <span class="math inline">\(Pr(B) &gt; 0\)</span>, and <span class="math inline">\(Pr(A \wedge B) = Pr(A)Pr(B)\)</span>. Then apply some algebra and the definition of conditional probability.</p></li>
+<li><p>Justify the claim that independence is symmetric: if <span class="math inline">\(A\)</span> is independent of <span class="math inline">\(B\)</span>, then <span class="math inline">\(B\)</span> is independent of <span class="math inline">\(A\)</span>.</p>
+<p>Hint: start by supposing that <span class="math inline">\(A\)</span> is independent of <span class="math inline">\(B\)</span>. Then write out <span class="math inline">\(Pr(A | B)\)</span> and apply the definition of conditional probability.</p></li>
+<li><p>Suppose <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> are independent. Is it possible that <span class="math inline">\(Pr(A \wedge B \wedge C) = 0\)</span>? If yes, give an example where this happens. If no, prove that it cannot happen.</p></li>
+<li><p>Suppose we have <span class="math inline">\(4\)</span> apples and <span class="math inline">\(10\)</span> buckets. We place each apple in a random bucket; the placement of each apple is independent of the others. Let <span class="math inline">\(B_{ij}\)</span> be the proposition that apples <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> were placed in the same bucket.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Is <span class="math inline">\(B_{12}\)</span> independent of <span class="math inline">\(B_{34}\)</span>?</li>
+<li>Is <span class="math inline">\(B_{12}\)</span> independent of <span class="math inline">\(B_{23}\)</span>?</li>
+<li>Is every pair of <span class="math inline">\(B_{ij}\)</span> propositions independent?</li>
+<li>Is every trio of <span class="math inline">\(B_{ij}\)</span> propositions independent?</li>
+</ol></li>
+<li><p>Suppose we have a coin whose bias we want to learn, so we’re going to flip it <span class="math inline">\(3\)</span> times. We start out by assigning the same probability to each possible sequence of heads and tails. For example, the sequences <span class="math inline">\(HTH\)</span> and <span class="math inline">\(TTT\)</span> are equally likely, as are all other sequences.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Before we do our <span class="math inline">\(3\)</span> flips, what is the probability of <span class="math inline">\(HTH\)</span>?</li>
+<li>What is the probability of heads on the third flip, given that the first two flips land heads?</li>
+</ol></li>
+<li><p>Prove that if <span class="math inline">\(A\)</span> logically entails <span class="math inline">\(B\)</span>, then <span class="math inline">\(Pr(B | A) = 1\)</span>.</p></li>
+<li><p>Suppose the following three conditions hold:</p>
+<ol style="list-style-type: lower-roman">
+<li><span class="math inline">\(Pr(A) = Pr(\neg A)\)</span>,</li>
+<li><span class="math inline">\(Pr(B | A) = Pr(B | \neg A)\)</span>,</li>
+<li><span class="math inline">\(Pr(B) &gt; 0\)</span>.</li>
+</ol>
+<p>Must the following be true then?</p>
+<ol start="4" style="list-style-type: lower-roman">
+<li><span class="math inline">\(Pr(A | B) = Pr(A | \neg B) = 1/2\)</span>?</li>
+</ol>
+<p>If yes, prove that (iv) must hold. If no, give a counterexample: draw an Euler diagram where conditions (i)–(iii) hold, but not (iv).</p></li>
+<li><p>Prove that the equation <span class="math inline">\(Pr(A | B) Pr(B) = Pr(B | A) Pr(A)\)</span> always holds. (Assume both conditional probabilities are well-defined.)</p></li>
+<li><p>Prove that the following equation always holds, assuming the conditional probabilities are well-defined:
+<span class="math display">\[ \frac{Pr(A | B)}{Pr(B | A)} = \frac{Pr(A)}{Pr(B)}. \]</span></p></li>
+<li><p>Does the equation <span class="math inline">\(Pr(A | B) = Pr(\neg B | \neg A)\)</span> always hold, assuming both conditional probabilities are both well-defined? If yes, prove that it does. If no, draw an eikosogram where it fails to hold.</p></li>
+<li><p>Suppose an urn contains 30 black marbles and 70 white. We randomly draw 5 marbles with replacement. Let <span class="math inline">\(A\)</span> be the proposition that <span class="math inline">\(3\)</span> of the first <span class="math inline">\(4\)</span> draws are black, and let <span class="math inline">\(B\)</span> be the proposition that the <span class="math inline">\(5\)</span><sup>th</sup> draw is black. Calculate the following quantity:
+<span class="math display">\[ \frac{Pr(A \,\vert\, B)}{Pr(B \,\vert\, A)} \frac{Pr(B)}{Pr(A)}. \]</span></p></li>
+</ol>
 <!-- 
 Use two lotteries (or slot machines) as examples.
 
