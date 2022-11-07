@@ -75,7 +75,7 @@
 % title / author / date
 \title{Decision Theory}
 \author{Bert Baumgaertner}
-\date{2022-11-01}
+\date{2022-11-07}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -4215,6 +4215,368 @@ What trips people up so much in the taxicab problem? Remember how order matters 
 
 \hypertarget{base-rates-priors-and-bayes-rule}{%
 \chapter{Base Rates, Priors, and Bayes Rule}\label{base-rates-priors-and-bayes-rule}}
+
+The past chapter exposed you to the basic idea that underlies one of the most important theorems of probability theory. This chapter will explicitly introduce you to it: Bayes' Theorem.
+
+\hypertarget{bayes-theorem-by-example}{%
+\section{Bayes' Theorem by Example}\label{bayes-theorem-by-example}}
+
+In the cab problem of the last chapter you were presented with two pieces of information:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(85\%\) of the cabs in the city are Green and \(15\%\) are Blue.
+\item
+  A witness identified the cab as Blue. The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the two colors \(80\%\) of the time and failed \(20\%\) of the time.
+\end{enumerate}
+
+When asked about the probability that the cab involved in the accident was blue rather green, most of us are inclined to say \(80%
+\). The correct answer, however, is about \(41\%\). The reason why the probability is lower than \(80%
+\) is that blue cabs are rare. In other words, we failed to account for the first piece of information.\footnote{When we fail to incorporate information about base rates, it is known as the \emph{base rate fallacy}.} The reasoning we did to get to the correct answer (\(41%
+\)) reflects a thinking about \emph{both} pieces of information.
+
+\newthought{Let's systematically} walk through this problem using our concepts of conditional and unconditional probabilities. What we want to know is the probability that the cab involved in the accident was blue (call this \(H\)) given that the witness said it was blue (call this \(E\)). That is, we want to know \(Pr(H|E)\).
+
+\newthought{A base rate} is the information we have that is not conditioned on some other fact. In the cab problem, the base rate is contained in (1) the number of green cabs and the number of blue ones. Another famous example of a base rate is the prevalence of some disease in a population.
+
+\newthought{A prior probability} is typically used to represent some base rate. In the cab problem, for example, \(Pr(H)=0.15\) would be the prior probability of the hypothesis (\(H\)) that the cab was blue.\footnote{``Prior'' because this is before we're thinking about new evidence. In the taxi cab problem, the report from the witness is the new evidence.}
+
+\newthought{What a likelihood} does is tell us how much we should increase or decrease that prior probability given some evidence. In the taxi cab problem the evidence is the report from the witness. There are actually two steps here, but both are embedded in the information in (2) above. Let's walk through both steps in turn.
+
+\newthought{The first step} is to remember that \(Pr(E|H)\) is the probability that the witness would report the cab was blue \emph{if the cab were in fact blue}. Given the information in (2), \(Pr(E|H)= 0.8\).
+
+\newthought{The second step} is to recognize that the witness might also report that they saw a blue cab when the cab was in fact green. This is important because the accuracy of reports (or any kind of thing that could count as evidence by ``measuring'' something) has two sides: how often something is reported to be the case \emph{when in fact it is the case}, but also, how often is something reported to be the case \emph{when in fact it is not the case}.\footnote{Think of the boy who cried wolf.} What we ultimately want here is to know how probable it is that the witness will report blue \emph{regardless of what the color of the car is}. We can actually calculate this. The basic idea is to use two likelihoods: the probability the witness reports blue when a cab is blue (\(Pr(E|H)=0.8\)), and the probability the witness reports blue when a cab is not blue, but rather green (\(Pr(E|\neg H)=0.2\)). And lest we forget our previous lesson, we need to weight both of these by the frequency of blue and green cabs! In the end we then have:
+\[
+Pr(E) = Pr(E|H)*Pr(H) + Pr(E|\neg H)*Pr(\neg H)
+\]
+
+\newthought{Bayes' Theorem} tells us how to combine all this information so that we can calculate \(Pr(H|E)\):\footnote{The theorem is named after Thomas Bayes (1701-1761) who was both a mathematician and an English minister.}
+
+\begin{description}
+\item[Bayes' Theorem]
+\[Pr(H|E) = \frac{Pr(H)*Pr(E|H)}{Pr(E)}\]
+\end{description}
+
+\newthought{Why is this} the way to combine the information? The are several ways we can demonstrate this. One is to use a tree diagram for the taxicab problem.\footnote{Let's walk through this together.}
+
+Another way to demonstrate Bayes' Theorem is to ``chase'' the definitions and rules we've already learned. The definition of a conditional probability is:
+\[
+Pr(H|E) = \frac{Pr(H\wedge E)}{Pr(E)}
+\]
+Notice that the numerator is a conjunction. To calculate the probabilities of conjunctions, we multiply the probabilites of each conjunct \emph{if they are independent}. That is,
+\[
+Pr(A\wedge B) = Pr(A)\times Pr(B)
+\]
+\newthought{Remember that,} if \(A\) and \(B\) are independent, then \(Pr(B|A)=Pr(B)\). So if \(A\) and \(B\) are not independent, we'll need to use the conditional probability instead of the unconditional one. That is:
+\[
+Pr(A\wedge B) = Pr(A|B)\times Pr(B)
+\]
+In the context of hypothesis and evidence, that means we replace the numerator with:
+\[
+Pr(H\wedge E) = Pr(E|H)\times Pr(H)
+\]
+Plug that in to the equation above with the definition of a conditional probability, and we get:
+\[
+Pr(H|E) = \frac{Pr(E|H)\times Pr(H)}{Pr(E)}
+\]
+
+There are four distinct elements for Bayes' Theorem, and it's convenient to have names from them, most of which we've now seen:
+
+\begin{itemize}
+\tightlist
+\item
+  \(Pr(H|E)\) is the \emph{posterior} probability.
+\item
+  \(Pr(H)\) is the \emph{prior} probability.
+\item
+  \(Pr(E|H)\) is the \emph{likelihood}.
+\item
+  \(Pr(E)\) is the ``normalizing constant'' - it's the probability of seeing the evidence across all the possible hypotheses.
+\end{itemize}
+
+The case of \(Pr(E)\) is an instance of what is known as \emph{The Law of Total Probability}. In general, it says
+
+\begin{description}
+\item[Law of Total Probability]
+If \(1 > Pr(B) > 0\) then \[Pr(A) = Pr(A | B)Pr(B) + Pr(A | \neg B)Pr(\neg B).\]
+\end{description}
+
+We will make use of this law enough that it's worth remembering.
+
+\hypertarget{application-conditionalization}{%
+\section{Application: Conditionalization}\label{application-conditionalization}}
+
+\newthought{The strength} of Bayes' Thereom (sometimes also known as Bayes' Rule) becomes apparent when we add a philosophical principle or rule about how we should update our beliefs as new evidence is presented to us over time. The rule, in its simplest form, is that ``yesterday's posterior probability should be today's prior probability'', that is:
+
+\begin{description}
+\item[Simple Conditionalization]
+\[Pr_{new}(H) = Pr_{old}(H|E)\]
+\end{description}
+
+Stated rigorously in words: suppose you don't know if \(E\) is true but I ask you to speculate and temporarily add \(E\) to your current stock of beliefs. The number you assign to \(H\) on the speculation that \(E\) is true should be the same as the number you assign in your unconditional credence in \(H\) when the real world has provided you with \(E\).
+
+\newthought{Let's work through an example.} Let's say we want to know what the probability is that Jamey has some disease, \(D\). Jamey was recently given a test for the disease and we'll assume it came back positive, \(T\). We want to know how confident Jamey should be that she has the disease given a positive test. Should Jamey be very confident now, or perhaps just a bit more confident? There are a lot of assumptions that should go into Jamey's learning, e.g., how reliable are the tests? How frequent is the disease in the first place?
+
+Conditionalization tells us how to relate the assumptions to these kinds of questions. To start, when we're using conditionalization, we need to be mindful of our prior information and our posterior information. We'll use 1 for the prior time (before we got the test result) and 2 for the time we got the test result. So what we're asking is what \(Pr_2(D)\) is. Simple conditionalization says
+\[ Pr_2(D) = Pr_1(D|T) \]
+Bayes' Rule tells us what the right hand term of simple conditionalization is:
+\[Pr_1(D|T) = \frac{Pr_1(D)*Pr_1(T|D)}{Pr_1(T)}\]
+There are three terms now for which we need some additional information.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  We need to know what \(Pr_1(T|D)\) is, i.e., what the probability is that a test comes back positive given that the patient has the disease (recall this is also called the likelihood). Let's say that this likelihood is 80\%.\footnote{Figuring out how accurate tests are is itself a tricky matter, but the basic idea is to use the tests on cases in which we are highly confident, like in a lab context, and then see how good the tests are.} That gives one piece of the puzzle: \[Pr_1(D|T) = \frac{Pr_1(D)*0.8}{Pr_1(T)}\]
+\item
+  We need to know what \(Pr_1(D)\) is, i.e., what is the baseline probability of having the disease (also known as our prior probability). One way to estimate this is to find out what percentage of the relevant demographic group has the disease. Let's say that in the demographic group to which Jamey belongs, \(5%
+  \) of patients have the disease. So formally, \(Pr_1(D) = 0.05\) (which means \(Pr_1(\neg D) = 0.95\)). We have another piece of the puzzle: \[Pr_1(D|T) = \frac{0.05*0.8}{Pr_1(T)}\]
+\item
+  Last, we need to know \(Pr_1(T)\), i.e., what is the probability that a test comes back positive. We already know that when a patient has the disease, then the test returns a positive result \(80%
+  \) of the time. We represent this formally as \(Pr(T|D)\). But that by itself is not enough information. We also need to know what percentage of the time we get a false positive, i.e., a test result that says positive when in fact the person does not have the disease. Let's say this is \(10%
+  \) of the time. Or put differently, when the patient does not have the disease, then the test returns a negative result \(90%
+  \) of the time. Formally, we write this as \(Pr(T|\neg D)\). The Law of Total Probability says \[Pr(T) = Pr(T|D)\times Pr(D) + Pr(T|\neg D)\times Pr(\neg D)\] Notice that we have all these numbers already! Plugging them in we get: \[Pr(T) = 0.8\times 0.05 + 0.1 \times 0.95=0.04+0.095=0.135\] In other words, there's a \(13.5%
+  \) chance that a test comes back positive.
+\end{enumerate}
+
+\newthought{Putting all the pieces together} we have:
+\[
+  \begin{aligned}
+    Pr_2(D) &= Pr_1(D|T) \\
+            &= \frac{Pr_1(D)*Pr_1(T|D)}{Pr_1(T)} \\
+            &= \frac{0.05*0.8}{0.135}\\
+            &=0.296
+  \end{aligned}
+\]
+In words: there's about a \(30%
+\) chance that Jamey has the disease given the positive test. That's probably lower than you might expect, but as we learned before, the reason is because the base rate of the disease is itself pretty low.\footnote{If you want to see a version of this example illustrated visually, see \url{https://www.youtube.com/watch?v=lG4VkPoG3ko} }
+
+\newthought{What if Jamey got a second test?} And suppose that this second test also comes back positive. Just like before, Simple Conditionalization tells us to use prior information, but this time that information includes the results from the first test (but before the second test). Remember the adage ``yesterday's posteriors are today's priors''. In this context, it's ``the result of updating beliefs after the first positive test is now the prior for updating on the second positive test''. It doesn't have the same ring, but the idea is the same:
+\[Pr_3(D)=Pr_2(D|T)=\frac{Pr_2(D)*Pr_2(T|D)}{Pr_2(T)}\]
+Notice: if the tests are independent, then one of three terms will stay the same, namely \(Pr_2(T|D)=Pr_1(T|D)=0.8\). So that's an easy first piece of the puzzle: \[Pr_3(D|T)=\frac{Pr_2(D)*Pr_2(T|D)}{Pr_2(T)}=\frac{Pr_2(D)*0.8}{Pr_2(T)}\]
+
+Next, Simple Conditionalizing tells us to plug in an ``updated'' prior, which is \emph{not} \(Pr_1(D) = 0.05\), since that reflected only the base rate. Instead, what we need to plug is in \(Pr_2(D)=0.296\) - the \emph{posterior} we calculated after the first test. We then have:
+\[Pr_3(D|T)=\frac{Pr_2(D)*Pr_2(T|D)}{Pr_2(T)}=\frac{0.296*0.8}{Pr_2(T)}\]
+The last part for \(Pr_2(T)\) is a bit more subtle. It's tempting to think that \(Pr_2(T)\) will also be the same as before, but if we recall how we went about calculating it, we'll notice that it contained information about base rates in the form of priors: \[Pr(T) = Pr(T|D)\times Pr(D) + Pr(T|\neg D)\times Pr(\neg D)\]
+So if we are conducting the test on Jamey again (which we are), we have to also update the probability that we'll get a positive test given the evidence we have obtained about Jamey. That is, while the likelihoods stay the same (the tests don't change their accuracy from person to person, at least we're assuming), the priors do not. So plugging in the new priors first, and then the likelihood like we had before, we get:
+\[
+  \begin{aligned}
+  Pr(T) &= Pr(T|D)\times Pr_2(D) + Pr(T|\neg D)\times Pr_2(\neg D)\\
+        &= Pr(T|D)\times 0.296 + Pr(T|\neg D)\times 0.704\\
+        &= 0.8\times 0.296 + 0.1 \times 0.704\\
+        &= 0.2368 + 0.0704\\
+        &= 0.3072
+  \end{aligned}
+\]
+Notice that this number is higher than earlier when we didn't have any information about Jamey. This makes intuitive sense: it \emph{should} be more likely that we'll get a positive test from Jamey since we've accumulated some evidence that he has the disease.
+
+So now that gives us all the puzzle pieces:
+
+\[Pr_3(D|T)=\frac{Pr_2(D)*Pr_2(T|D)}{Pr_2(T)}=\frac{0.296\times 0.8}{0.3072}=0.7708\]
+After two positive tests, we now have a substantially higher probability that Jamey has the rare disease. It is still far from certain. In fact, it is still \emph{lower} than the mere accuracy of the test, \(Pr(T|D)=0.8\). But his confidence is moving in that direction.\footnote{Exercise: will his confidence go above \(Pr(T|D)=0.8\) for some set of evidence?}
+
+\hypertarget{advanced-application}{%
+\section{Advanced Application}\label{advanced-application}}
+
+\newthought{The Problem of Uncertain Evidence} emerges from the recognition that our observation of evidence is itself not certain.
+
+Simple Conditionalization with Bayes' Rule makes a simplifying assumption that some authors call into question. The conditional probability, \(P(H|E)\), says what the probability of \(H\) is if we were to observe evidence \(E\). In the conditionalization process, it is assumed that when an observation is made, that the probability of the evidence statement, \(P_i(E)\), which is somewhere between zero and one, is updated and changed to \(P_j(E) = 1\) (where \(i\) is a prior time and \(j\) is a later time). That's the idea from going from what we previously knew, \(P_i(E)\) to the process of learning, \(P_i(H|E)\), to having an updated or posterior belief, \(Pr_j(H)\). And in fact, it is usually written \(Pr_j(H)=P_i(H|E)\). The objection is that we can never be entirely certain of any evidence. So to say that \(P(E)=1\) is to say that we observed a logical truth or tautology!
+
+This is called the \emph{Problem of Uncertain Evidence}. That is, any empirical observation always has the possibility of being false - that is what it means for the world to be contingent. We should therefore not assign 1 to \(P(E)\). This problem is solved by Jeffrey Conditionalization.
+
+\newthought{Jeffrey Conditionalization} assigns a degree of belief that some evidential statement is true, rather than assigning it a level of certainty by giving it 1. It is similar to Bayes' theorem, but we have to do a bit more work by accounting for the probability that \(E\) is false (that is, \(\neg E\) might be true):
+
+\begin{description}
+\item[Jeffrey Conditionalization]
+\[P_j(H) = P_i(H|E)\times P_j(E) + P_i(H|\neg E)\times P_j(\neg E)\]
+\end{description}
+
+Notice that if we set \(P_j(E)=1\) then we get Simple Conditionalization again (the right term of the addition will cancel out because \(P_j(\neg E) = 0\).
+
+There is some debate about how well Jeffrey Conditionalization can accommodate uncertain evidence generally. We won't pursue that here, but readers looking for more advanced discussion are encouraged to start with the Stanford Encyclopedia of Philosophy entry on Bayesian epistemology: \url{https://plato.stanford.edu/entries/epistemology-bayesian/supplement.html\#sec-jeffrey-general}
+
+\hypertarget{exercises-10}{%
+\section*{Exercises}\label{exercises-10}}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Suppose there are three colors of cabs and you are given the following information:
+
+  In the cab problem of the last chapter you were presented with two pieces of information: i) \(80\%\) of the cabs in the city are Green, \(10\%\) are Blue, and \$10\% are Yellow. a) A witness identified the cab as Blue. The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the three colors \(80\%\) of the time and failed \(20\%\) of the time.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What is the probability that the cab in the accident is Blue given the witness report?
+  \end{itemize}
+\item
+  Consider our medical example with Jamey.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If a third test comes back positive, what should his confidence be that he has the disease?
+  \item
+    If the third test instead came back negative, what should his confidence be?
+  \item
+    Notice that after enough positive tests, Jamey's confidence will be \emph{higher} than the likelihood that a single test returns a positive result \emph{given} that the person has the disease (i.e.~\(Pr(T|D)\)\$). Why is that?
+  \end{itemize}
+\item
+  Suppose Paul is an introvert. Should you be more confident that Paul is a librarian or in sales?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What's the base rate of librarians? What about people in sales?
+
+    \begin{itemize}
+    \tightlist
+    \item
+      A brief and rough search for the US suggests that \(0.05%
+      \) of people are librarians and \(20%
+      \) are in sales.
+    \end{itemize}
+  \item
+    What's the probability of randomly selecting an introvert in the US?
+
+    \begin{itemize}
+    \tightlist
+    \item
+      ``Introversion'' is loosely defined, so let's say \(25%
+      \) of people are introverts.
+    \end{itemize}
+  \item
+    What are the likelihoods of introverts given the library position? What about given the sales position?
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Let's say the likelhood of introversion of a librarian is 0.8 and for a sales person it's 0.01.
+    \end{itemize}
+  \item
+    Use Bayes' Theorem to calculate the probability that Paul is a librarian.
+  \item
+    Use Bayes' Theorem to calculate the probability that Paul is a sales person.
+  \item
+    Which is more likely? And how many times more?
+  \end{itemize}
+\item
+  Suppose you additionally learn that Paul also has an undergraduate degree. Should you be more confident that Paul is a librarian or in sales?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    State what, if anything, you can use from the previous calculations.
+  \item
+    What information do you need to collect to answer this question?
+  \item
+    Collect some rough estimates of the information you need like we did in the above question about Paul being an introvert.
+  \item
+    Again, use Bayes' Theorem to calculate the probability that Paul is a librarian.
+  \item
+    Again, use Bayes' Theorem to calculate the probability that Paul is a sales person.
+  \item
+    Which is more likely given that you know Paul is both introverted and has an undergraduate degree? And how many times more?
+  \end{itemize}
+\item
+  Recall an earlier problem we faced:
+
+  \begin{quote}
+  Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor company Guild do. A computer store buys \(40\%\) of its tablets from Ixian, and \(60\%\) from Guild.
+  \end{quote}
+
+  Use Bayes' theorem to find \(Pr(I | D)\), the probability a tablet from this store is made by Ixian, given that it has a factory defect?
+\item
+  Recall another problem we faced:
+
+  \begin{quote}
+  In the city of Elizabeth, the neighbourhood of Southside has lots of chemical plants. \(2\%\) of Elizabeth's children live in Southside, and \(14\%\) of those children have been exposed to toxic levels of lead. Elsewhere in the city, only \(1\%\) of the children have toxic levels of exposure.
+  \end{quote}
+
+  Use Bayes' theorem to find \(Pr(S | L)\), the probability that a randomly chosen child from Elizabeth who has toxic levels of lead exposure lives in Southside?
+\item
+  The probability that Nasim will study for her test is \(4/10\). The probability that she will pass, given that she studies, is \(9/10\). The probability that she passes, given that she does not study, is \(3/10\). What is the probability that she has studied, given that she passes?
+\item
+  At the height of flu season, roughly \(1\) in every \(100\) people have the flu. But some people don't show symptoms even when they have it: only half the people who have the virus show symptoms.
+
+  Flu symptoms can also be caused by other things, like colds and allergies. So about \(1\) in every \(20\) people who don't have the flu still have flu-like symptoms.
+
+  If someone has flu-like symptoms at the height of flu season, what is the probability that they actually have the flu?
+\item
+  There is a room filled with two types of urns.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Type A urns have \(30\) yellow marbles, \(70\) red.
+  \item
+    Type B urns have \(20\) green marbles, \(80\) yellow.
+  \end{itemize}
+
+  The two types of urn look identical, but \(80\%\) of them are Type A. You pick an urn at random and draw a marble from it at random.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    What is the probability the marble will be yellow?
+  \end{enumerate}
+
+  Now you look at the marble: it is yellow.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \tightlist
+  \item
+    What is the probability the urn is a Type B urn, given that you drew a yellow marble?
+  \end{enumerate}
+\item
+  A company makes websites, always powered by one of three server platforms: Bulldozer, Kumquat, or Penguin. Bulldozer crashes \(1\) out of every \(10\) visits, Kumquat crashes \(1\) in \(50\) visits, and Penguin only crashes \(1\) out of every \(200\) visits.
+
+  \begin{marginfigure}
+   This problem is based on Exercise 6 from p.~78 of Ian Hacking's \emph{An
+   Introduction to Probability \& Inductive Logic}.
+   \end{marginfigure}
+
+  Half of the websites are run on Bulldozer, \(30\%\) are run on Kumquat, and \(20\%\) are run on Penguin.
+
+  You visit one of their sites for the first time and it crashes. What is the probability it was run on Penguin?
+\item
+  You and Carlos are at a party, which means there's a \(2/3\) chance he's been drinking. You decide to experiment to find out: you throw a tennis ball to Carlos and he misses the catch. Five minutes later you try again and he misses again. Assume the two catches are independent.
+
+  When he's sober, Carlos misses a catch only two times out of ten. When he's been drinking, Carlos misses catches half the time.
+
+  What is the probability that Carlos has been drinking, given that he missed both catches?
+\item
+  The Queen Gertrude Hotel has two kinds of suites: singles have one bed, royal suites have three beds. There are \(80\) singles and \(20\) royals.
+
+  In a single, the probability of bed bugs is \(1/100\). But every additional bed put in a suite doubles the chance of bed bugs.
+
+  If a suite is inspected at random and bed bugs are found, what is the probability it's a royal?
+\item
+  Willy Wonka Chocolates Inc.~makes two kinds of boxes of chocolates. The ``wonk box'' has four caramel chocolates and six regular chocolates. The ``zonk box'' has six caramel chocolates, two regular chocolates, and two mint chocolates. A third of their boxes are wonk boxes, the rest are zonk boxes. They don't mark the boxes. The only way to tell what kind of box you've bought is by trying the chocolates inside. In fact, all the chocolates look the same. You can only tell the difference by tasting them. If you buy a random box, try a chocolate at random, and find that it's caramel, what is the probability you've bought a wonk box?
+\item
+  A room contains four urns. Three of them are Type X, one is Type Y. The Type X urns each contain \(3\) black marbles, \(2\) white marbles. The Type Y urn contains \(1\) black marble, \(4\) white marbles. You are going to pick an urn at random and start drawing marbles from it at random \emph{without} replacement. What is the probability the urn is Type X if the first draw is black?
+\item
+  Suppose I have an even mix of black and white marbles. I choose one at random without letting you see the colour, and I put it in a hat.
+
+  \begin{marginfigure}
+  This problem was devised by Lewis Carroll, author of \emph{Alices
+  Adventures in Wonderland}.
+  \end{marginfigure}
+
+  Then I add a second, black marble to the hat. If I draw one marble at random from the hat and it's black, what is the probability the marble left in the hat is black?
+\item
+  Suppose you have a test for some disease, which always comes up positive for people who have the disease: \(Pr(P | D) = 1\). The base-rate in the population for this disease is \(1\%\). How low does the false-positive rate \(Pr(P | \neg D)\) have to be for the test to achieve \(95\%\) reliability, i.e.~to have \(Pr(D | P) = .95\)?
+\item
+  Suppose the test for some disease is perfect for people who have the disease, \(Pr(P | D) = 1\). And it's almost perfect for people who don't have the disease: \(Pr(\neg P | \neg D) = 98/99\). How high does the base rate have to be for the test to be \(99\%\) reliable, i.e.~to have \(Pr(D | P) = .99\)?
+\item
+  An urn contains \(4\) marbles, either blue or green. The number of blue marbles is equally likely to be \(0, 1, 2, 3\), or \(4\). Suppose we do \(3\) random draws with replacement, and the observed sequence is: blue, green, blue. What is the probability the urn contains just \(1\) blue marble?
+\end{enumerate}
 
 \hypertarget{learning-and-motivated-reasoning}{%
 \chapter{Learning and Motivated Reasoning}\label{learning-and-motivated-reasoning}}

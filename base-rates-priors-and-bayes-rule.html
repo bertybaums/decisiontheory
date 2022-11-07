@@ -13,7 +13,7 @@
 
 <meta name="author" content="Bert Baumgaertner" />
 
-<meta name="date" content="2022-11-01" />
+<meta name="date" content="2022-11-07" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -140,7 +140,12 @@ $$
 <li><a href="conditional-probabilities-and-likelihoods.html#application-the-taxi-cab-problem"><span class="toc-section-number">10.5</span> Application: The Taxi Cab Problem</a></li>
 <li><a href="conditional-probabilities-and-likelihoods.html#exercises-9"><span class="toc-section-number">10.6</span> Exercises</a></li>
 </ul></li>
-<li><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a></li>
+<li class="has-sub"><a href="base-rates-priors-and-bayes-rule.html#base-rates-priors-and-bayes-rule"><span class="toc-section-number">11</span> Base Rates, Priors, and Bayes Rule</a><ul>
+<li><a href="base-rates-priors-and-bayes-rule.html#bayes-theorem-by-example"><span class="toc-section-number">11.1</span> Bayes’ Theorem by Example</a></li>
+<li><a href="base-rates-priors-and-bayes-rule.html#application-conditionalization"><span class="toc-section-number">11.2</span> Application: Conditionalization</a></li>
+<li><a href="base-rates-priors-and-bayes-rule.html#advanced-application"><span class="toc-section-number">11.3</span> Advanced Application</a></li>
+<li><a href="base-rates-priors-and-bayes-rule.html#exercises-10">Exercises</a></li>
+</ul></li>
 <li><a href="learning-and-motivated-reasoning.html#learning-and-motivated-reasoning"><span class="toc-section-number">12</span> Learning and Motivated Reasoning</a></li>
 </ul>
 </div>
@@ -150,7 +155,220 @@ $$
 <div class="col-sm-12">
 <div id="base-rates-priors-and-bayes-rule" class="section level1">
 <h1><span class="header-section-number">Chapter 11</span> Base Rates, Priors, and Bayes Rule</h1>
+<p>The past chapter exposed you to the basic idea that underlies one of the most important theorems of probability theory. This chapter will explicitly introduce you to it: Bayes’ Theorem.</p>
+<div id="bayes-theorem-by-example" class="section level2">
+<h2><span class="header-section-number">11.1</span> Bayes’ Theorem by Example</h2>
+<p>In the cab problem of the last chapter you were presented with two pieces of information:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(85\%\)</span> of the cabs in the city are Green and <span class="math inline">\(15\%\)</span> are Blue.</li>
+<li>A witness identified the cab as Blue. The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the two colors <span class="math inline">\(80\%\)</span> of the time and failed <span class="math inline">\(20\%\)</span> of the time.</li>
+</ol>
+<p>When asked about the probability that the cab involved in the accident was blue rather green, most of us are inclined to say <span class="math inline">\(80%\)</span>. The correct answer, however, is about <span class="math inline">\(41\%\)</span>. The reason why the probability is lower than <span class="math inline">\(80%\)</span> is that blue cabs are rare. In other words, we failed to account for the first piece of information.<label for="tufte-sn-97" class="margin-toggle sidenote-number">97</label><input type="checkbox" id="tufte-sn-97" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">97</span> When we fail to incorporate information about base rates, it is known as the <em>base rate fallacy</em>.</span> The reasoning we did to get to the correct answer (<span class="math inline">\(41%\)</span>) reflects a thinking about <em>both</em> pieces of information.</p>
+<p><span class="newthought">Let’s systematically</span> walk through this problem using our concepts of conditional and unconditional probabilities. What we want to know is the probability that the cab involved in the accident was blue (call this <span class="math inline">\(H\)</span>) given that the witness said it was blue (call this <span class="math inline">\(E\)</span>). That is, we want to know <span class="math inline">\(Pr(H|E)\)</span>.</p>
+<p><span class="newthought">A base rate</span> is the information we have that is not conditioned on some other fact. In the cab problem, the base rate is contained in (1) the number of green cabs and the number of blue ones. Another famous example of a base rate is the prevalence of some disease in a population.</p>
+<p><span class="newthought">A prior probability</span> is typically used to represent some base rate. In the cab problem, for example, <span class="math inline">\(Pr(H)=0.15\)</span> would be the prior probability of the hypothesis (<span class="math inline">\(H\)</span>) that the cab was blue.<label for="tufte-sn-98" class="margin-toggle sidenote-number">98</label><input type="checkbox" id="tufte-sn-98" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">98</span> “Prior” because this is before we’re thinking about new evidence. In the taxi cab problem, the report from the witness is the new evidence.</span></p>
+<p><span class="newthought">What a likelihood</span> does is tell us how much we should increase or decrease that prior probability given some evidence. In the taxi cab problem the evidence is the report from the witness. There are actually two steps here, but both are embedded in the information in (2) above. Let’s walk through both steps in turn.</p>
+<p><span class="newthought">The first step</span> is to remember that <span class="math inline">\(Pr(E|H)\)</span> is the probability that the witness would report the cab was blue <em>if the cab were in fact blue</em>. Given the information in (2), <span class="math inline">\(Pr(E|H)= 0.8\)</span>.</p>
+<p><span class="newthought">The second step</span> is to recognize that the witness might also report that they saw a blue cab when the cab was in fact green. This is important because the accuracy of reports (or any kind of thing that could count as evidence by “measuring” something) has two sides: how often something is reported to be the case <em>when in fact it is the case</em>, but also, how often is something reported to be the case <em>when in fact it is not the case</em>.<label for="tufte-sn-99" class="margin-toggle sidenote-number">99</label><input type="checkbox" id="tufte-sn-99" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">99</span> Think of the boy who cried wolf.</span> What we ultimately want here is to know how probable it is that the witness will report blue <em>regardless of what the color of the car is</em>. We can actually calculate this. The basic idea is to use two likelihoods: the probability the witness reports blue when a cab is blue (<span class="math inline">\(Pr(E|H)=0.8\)</span>), and the probability the witness reports blue when a cab is not blue, but rather green (<span class="math inline">\(Pr(E|\neg H)=0.2\)</span>). And lest we forget our previous lesson, we need to weight both of these by the frequency of blue and green cabs! In the end we then have:
+<span class="math display">\[
+Pr(E) = Pr(E|H)*Pr(H) + Pr(E|\neg H)*Pr(\neg H)
+\]</span></p>
+<p><span class="newthought">Bayes’ Theorem</span> tells us how to combine all this information so that we can calculate <span class="math inline">\(Pr(H|E)\)</span>:<label for="tufte-sn-100" class="margin-toggle sidenote-number">100</label><input type="checkbox" id="tufte-sn-100" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">100</span> The theorem is named after Thomas Bayes (1701-1761) who was both a mathematician and an English minister.</span></p>
+<dl>
+<dt>Bayes’ Theorem</dt>
+<dd><p><span class="math display">\[Pr(H|E) = \frac{Pr(H)*Pr(E|H)}{Pr(E)}\]</span></p>
+</dd>
+</dl>
+<p><span class="newthought">Why is this</span> the way to combine the information? The are several ways we can demonstrate this. One is to use a tree diagram for the taxicab problem.<label for="tufte-sn-101" class="margin-toggle sidenote-number">101</label><input type="checkbox" id="tufte-sn-101" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">101</span> Let’s walk through this together.</span></p>
+<p>Another way to demonstrate Bayes’ Theorem is to “chase” the definitions and rules we’ve already learned. The definition of a conditional probability is:
+<span class="math display">\[
+Pr(H|E) = \frac{Pr(H\wedge E)}{Pr(E)}
+\]</span>
+Notice that the numerator is a conjunction. To calculate the probabilities of conjunctions, we multiply the probabilites of each conjunct <em>if they are independent</em>. That is,
+<span class="math display">\[
+Pr(A\wedge B) = Pr(A)\times Pr(B)
+\]</span>
+<span class="newthought">Remember that,</span> if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(Pr(B|A)=Pr(B)\)</span>. So if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent, we’ll need to use the conditional probability instead of the unconditional one. That is:
+<span class="math display">\[
+Pr(A\wedge B) = Pr(A|B)\times Pr(B)
+\]</span>
+In the context of hypothesis and evidence, that means we replace the numerator with:
+<span class="math display">\[
+Pr(H\wedge E) = Pr(E|H)\times Pr(H)
+\]</span>
+Plug that in to the equation above with the definition of a conditional probability, and we get:
+<span class="math display">\[
+Pr(H|E) = \frac{Pr(E|H)\times Pr(H)}{Pr(E)}
+\]</span></p>
+<p>There are four distinct elements for Bayes’ Theorem, and it’s convenient to have names from them, most of which we’ve now seen:</p>
+<ul>
+<li><span class="math inline">\(Pr(H|E)\)</span> is the <em>posterior</em> probability.</li>
+<li><span class="math inline">\(Pr(H)\)</span> is the <em>prior</em> probability.</li>
+<li><span class="math inline">\(Pr(E|H)\)</span> is the <em>likelihood</em>.</li>
+<li><span class="math inline">\(Pr(E)\)</span> is the “normalizing constant” - it’s the probability of seeing the evidence across all the possible hypotheses.</li>
+</ul>
+<p>The case of <span class="math inline">\(Pr(E)\)</span> is an instance of what is known as <em>The Law of Total Probability</em>. In general, it says</p>
+<dl>
+<dt>Law of Total Probability</dt>
+<dd><p>If <span class="math inline">\(1 &gt; Pr(B) &gt; 0\)</span> then <span class="math display">\[Pr(A) = Pr(A | B)Pr(B) + Pr(A | \neg B)Pr(\neg B).\]</span></p>
+</dd>
+</dl>
+<p>We will make use of this law enough that it’s worth remembering.</p>
+</div>
+<div id="application-conditionalization" class="section level2">
+<h2><span class="header-section-number">11.2</span> Application: Conditionalization</h2>
+<p><span class="newthought">The strength</span> of Bayes’ Thereom (sometimes also known as Bayes’ Rule) becomes apparent when we add a philosophical principle or rule about how we should update our beliefs as new evidence is presented to us over time. The rule, in its simplest form, is that “yesterday’s posterior probability should be today’s prior probability”, that is:</p>
+<dl>
+<dt>Simple Conditionalization</dt>
+<dd><p><span class="math display">\[Pr_{new}(H) = Pr_{old}(H|E)\]</span></p>
+</dd>
+</dl>
+<p>Stated rigorously in words: suppose you don’t know if <span class="math inline">\(E\)</span> is true but I ask you to speculate and temporarily add <span class="math inline">\(E\)</span> to your current stock of beliefs. The number you assign to <span class="math inline">\(H\)</span> on the speculation that <span class="math inline">\(E\)</span> is true should be the same as the number you assign in your unconditional credence in <span class="math inline">\(H\)</span> when the real world has provided you with <span class="math inline">\(E\)</span>.</p>
+<p><span class="newthought">Let’s work through an example.</span> Let’s say we want to know what the probability is that Jamey has some disease, <span class="math inline">\(D\)</span>. Jamey was recently given a test for the disease and we’ll assume it came back positive, <span class="math inline">\(T\)</span>. We want to know how confident Jamey should be that she has the disease given a positive test. Should Jamey be very confident now, or perhaps just a bit more confident? There are a lot of assumptions that should go into Jamey’s learning, e.g., how reliable are the tests? How frequent is the disease in the first place?</p>
+<p>Conditionalization tells us how to relate the assumptions to these kinds of questions. To start, when we’re using conditionalization, we need to be mindful of our prior information and our posterior information. We’ll use 1 for the prior time (before we got the test result) and 2 for the time we got the test result. So what we’re asking is what <span class="math inline">\(Pr_2(D)\)</span> is. Simple conditionalization says
+<span class="math display">\[ Pr_2(D) = Pr_1(D|T) \]</span>
+Bayes’ Rule tells us what the right hand term of simple conditionalization is:
+<span class="math display">\[Pr_1(D|T) = \frac{Pr_1(D)*Pr_1(T|D)}{Pr_1(T)}\]</span>
+There are three terms now for which we need some additional information.</p>
+<ol style="list-style-type: decimal">
+<li><p>We need to know what <span class="math inline">\(Pr_1(T|D)\)</span> is, i.e., what the probability is that a test comes back positive given that the patient has the disease (recall this is also called the likelihood). Let’s say that this likelihood is 80%.<label for="tufte-sn-102" class="margin-toggle sidenote-number">102</label><input type="checkbox" id="tufte-sn-102" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">102</span> Figuring out how accurate tests are is itself a tricky matter, but the basic idea is to use the tests on cases in which we are highly confident, like in a lab context, and then see how good the tests are.</span> That gives one piece of the puzzle: <span class="math display">\[Pr_1(D|T) = \frac{Pr_1(D)*0.8}{Pr_1(T)}\]</span></p></li>
+<li><p>We need to know what <span class="math inline">\(Pr_1(D)\)</span> is, i.e., what is the baseline probability of having the disease (also known as our prior probability). One way to estimate this is to find out what percentage of the relevant demographic group has the disease. Let’s say that in the demographic group to which Jamey belongs, <span class="math inline">\(5%\)</span> of patients have the disease. So formally, <span class="math inline">\(Pr_1(D) = 0.05\)</span> (which means <span class="math inline">\(Pr_1(\neg D) = 0.95\)</span>). We have another piece of the puzzle: <span class="math display">\[Pr_1(D|T) = \frac{0.05*0.8}{Pr_1(T)}\]</span></p></li>
+<li><p>Last, we need to know <span class="math inline">\(Pr_1(T)\)</span>, i.e., what is the probability that a test comes back positive. We already know that when a patient has the disease, then the test returns a positive result <span class="math inline">\(80%\)</span> of the time. We represent this formally as <span class="math inline">\(Pr(T|D)\)</span>. But that by itself is not enough information. We also need to know what percentage of the time we get a false positive, i.e., a test result that says positive when in fact the person does not have the disease. Let’s say this is <span class="math inline">\(10%\)</span> of the time. Or put differently, when the patient does not have the disease, then the test returns a negative result <span class="math inline">\(90%\)</span> of the time. Formally, we write this as <span class="math inline">\(Pr(T|\neg D)\)</span>. The Law of Total Probability says <span class="math display">\[Pr(T) = Pr(T|D)\times Pr(D) + Pr(T|\neg D)\times Pr(\neg D)\]</span> Notice that we have all these numbers already! Plugging them in we get: <span class="math display">\[Pr(T) = 0.8\times 0.05 + 0.1 \times 0.95=0.04+0.095=0.135\]</span> In other words, there’s a <span class="math inline">\(13.5%\)</span> chance that a test comes back positive.</p></li>
+</ol>
+<p><span class="newthought">Putting all the pieces together</span> we have:
+<span class="math display">\[
+  \begin{aligned}
+    Pr_2(D) &amp;= Pr_1(D|T) \\
+            &amp;= \frac{Pr_1(D)*Pr_1(T|D)}{Pr_1(T)} \\
+            &amp;= \frac{0.05*0.8}{0.135}\\
+            &amp;=0.296
+  \end{aligned}
+\]</span>
+In words: there’s about a <span class="math inline">\(30%\)</span> chance that Jamey has the disease given the positive test. That’s probably lower than you might expect, but as we learned before, the reason is because the base rate of the disease is itself pretty low.<label for="tufte-sn-103" class="margin-toggle sidenote-number">103</label><input type="checkbox" id="tufte-sn-103" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">103</span> If you want to see a version of this example illustrated visually, see <a href="https://www.youtube.com/watch?v=lG4VkPoG3ko" class="uri">https://www.youtube.com/watch?v=lG4VkPoG3ko</a> </span></p>
+<p><span class="newthought">What if Jamey got a second test?</span> And suppose that this second test also comes back positive. Just like before, Simple Conditionalization tells us to use prior information, but this time that information includes the results from the first test (but before the second test). Remember the adage “yesterday’s posteriors are today’s priors”. In this context, it’s “the result of updating beliefs after the first positive test is now the prior for updating on the second positive test”. It doesn’t have the same ring, but the idea is the same:
+<span class="math display">\[Pr_3(D)=Pr_2(D|T)=\frac{Pr_2(D)*Pr_2(T|D)}{Pr_2(T)}\]</span>
+Notice: if the tests are independent, then one of three terms will stay the same, namely <span class="math inline">\(Pr_2(T|D)=Pr_1(T|D)=0.8\)</span>. So that’s an easy first piece of the puzzle: <span class="math display">\[Pr_3(D|T)=\frac{Pr_2(D)*Pr_2(T|D)}{Pr_2(T)}=\frac{Pr_2(D)*0.8}{Pr_2(T)}\]</span></p>
+<p>Next, Simple Conditionalizing tells us to plug in an “updated” prior, which is <em>not</em> <span class="math inline">\(Pr_1(D) = 0.05\)</span>, since that reflected only the base rate. Instead, what we need to plug is in <span class="math inline">\(Pr_2(D)=0.296\)</span> - the <em>posterior</em> we calculated after the first test. We then have:
+<span class="math display">\[Pr_3(D|T)=\frac{Pr_2(D)*Pr_2(T|D)}{Pr_2(T)}=\frac{0.296*0.8}{Pr_2(T)}\]</span>
+The last part for <span class="math inline">\(Pr_2(T)\)</span> is a bit more subtle. It’s tempting to think that <span class="math inline">\(Pr_2(T)\)</span> will also be the same as before, but if we recall how we went about calculating it, we’ll notice that it contained information about base rates in the form of priors: <span class="math display">\[Pr(T) = Pr(T|D)\times Pr(D) + Pr(T|\neg D)\times Pr(\neg D)\]</span>
+So if we are conducting the test on Jamey again (which we are), we have to also update the probability that we’ll get a positive test given the evidence we have obtained about Jamey. That is, while the likelihoods stay the same (the tests don’t change their accuracy from person to person, at least we’re assuming), the priors do not. So plugging in the new priors first, and then the likelihood like we had before, we get:
+<span class="math display">\[
+  \begin{aligned}
+  Pr(T) &amp;= Pr(T|D)\times Pr_2(D) + Pr(T|\neg D)\times Pr_2(\neg D)\\
+        &amp;= Pr(T|D)\times 0.296 + Pr(T|\neg D)\times 0.704\\
+        &amp;= 0.8\times 0.296 + 0.1 \times 0.704\\
+        &amp;= 0.2368 + 0.0704\\
+        &amp;= 0.3072
+  \end{aligned}
+\]</span>
+Notice that this number is higher than earlier when we didn’t have any information about Jamey. This makes intuitive sense: it <em>should</em> be more likely that we’ll get a positive test from Jamey since we’ve accumulated some evidence that he has the disease.</p>
+<p>So now that gives us all the puzzle pieces:</p>
+<p><span class="math display">\[Pr_3(D|T)=\frac{Pr_2(D)*Pr_2(T|D)}{Pr_2(T)}=\frac{0.296\times 0.8}{0.3072}=0.7708\]</span>
+After two positive tests, we now have a substantially higher probability that Jamey has the rare disease. It is still far from certain. In fact, it is still <em>lower</em> than the mere accuracy of the test, <span class="math inline">\(Pr(T|D)=0.8\)</span>. But his confidence is moving in that direction.<label for="tufte-sn-104" class="margin-toggle sidenote-number">104</label><input type="checkbox" id="tufte-sn-104" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">104</span> Exercise: will his confidence go above <span class="math inline">\(Pr(T|D)=0.8\)</span> for some set of evidence?</span></p>
+</div>
+<div id="advanced-application" class="section level2">
+<h2><span class="header-section-number">11.3</span> Advanced Application</h2>
+<p><span class="newthought">The Problem of Uncertain Evidence</span> emerges from the recognition that our observation of evidence is itself not certain.</p>
+<p>Simple Conditionalization with Bayes’ Rule makes a simplifying assumption that some authors call into question. The conditional probability, <span class="math inline">\(P(H|E)\)</span>, says what the probability of <span class="math inline">\(H\)</span> is if we were to observe evidence <span class="math inline">\(E\)</span>. In the conditionalization process, it is assumed that when an observation is made, that the probability of the evidence statement, <span class="math inline">\(P_i(E)\)</span>, which is somewhere between zero and one, is updated and changed to <span class="math inline">\(P_j(E) = 1\)</span> (where <span class="math inline">\(i\)</span> is a prior time and <span class="math inline">\(j\)</span> is a later time). That’s the idea from going from what we previously knew, <span class="math inline">\(P_i(E)\)</span> to the process of learning, <span class="math inline">\(P_i(H|E)\)</span>, to having an updated or posterior belief, <span class="math inline">\(Pr_j(H)\)</span>. And in fact, it is usually written <span class="math inline">\(Pr_j(H)=P_i(H|E)\)</span>. The objection is that we can never be entirely certain of any evidence. So to say that <span class="math inline">\(P(E)=1\)</span> is to say that we observed a logical truth or tautology!</p>
+<p>This is called the <em>Problem of Uncertain Evidence</em>. That is, any empirical observation always has the possibility of being false - that is what it means for the world to be contingent. We should therefore not assign 1 to <span class="math inline">\(P(E)\)</span>. This problem is solved by Jeffrey Conditionalization.</p>
+<p><span class="newthought">Jeffrey Conditionalization</span> assigns a degree of belief that some evidential statement is true, rather than assigning it a level of certainty by giving it 1. It is similar to Bayes’ theorem, but we have to do a bit more work by accounting for the probability that <span class="math inline">\(E\)</span> is false (that is, <span class="math inline">\(\neg E\)</span> might be true):</p>
+<dl>
+<dt>Jeffrey Conditionalization</dt>
+<dd><p><span class="math display">\[P_j(H) = P_i(H|E)\times P_j(E) + P_i(H|\neg E)\times P_j(\neg E)\]</span></p>
+</dd>
+</dl>
+<p>Notice that if we set <span class="math inline">\(P_j(E)=1\)</span> then we get Simple Conditionalization again (the right term of the addition will cancel out because <span class="math inline">\(P_j(\neg E) = 0\)</span>.</p>
+<p>There is some debate about how well Jeffrey Conditionalization can accommodate uncertain evidence generally. We won’t pursue that here, but readers looking for more advanced discussion are encouraged to start with the Stanford Encyclopedia of Philosophy entry on Bayesian epistemology: <a href="https://plato.stanford.edu/entries/epistemology-bayesian/supplement.html#sec-jeffrey-general" class="uri">https://plato.stanford.edu/entries/epistemology-bayesian/supplement.html#sec-jeffrey-general</a></p>
+</div>
+<div id="exercises-10" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Suppose there are three colors of cabs and you are given the following information:</p>
+<p>In the cab problem of the last chapter you were presented with two pieces of information: i) <span class="math inline">\(80\%\)</span> of the cabs in the city are Green, <span class="math inline">\(10\%\)</span> are Blue, and $10% are Yellow. a) A witness identified the cab as Blue. The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the three colors <span class="math inline">\(80\%\)</span> of the time and failed <span class="math inline">\(20\%\)</span> of the time.</p>
+<ul>
+<li>What is the probability that the cab in the accident is Blue given the witness report?</li>
+</ul></li>
+<li><p>Consider our medical example with Jamey.</p>
+<ul>
+<li>If a third test comes back positive, what should his confidence be that he has the disease?</li>
+<li>If the third test instead came back negative, what should his confidence be?</li>
+<li>Notice that after enough positive tests, Jamey’s confidence will be <em>higher</em> than the likelihood that a single test returns a positive result <em>given</em> that the person has the disease (i.e. <span class="math inline">\(Pr(T|D)\)</span>$). Why is that?</li>
+</ul></li>
+<li><p>Suppose Paul is an introvert. Should you be more confident that Paul is a librarian or in sales?</p>
+<ul>
+<li>What’s the base rate of librarians? What about people in sales?
+<ul>
+<li>A brief and rough search for the US suggests that <span class="math inline">\(0.05%\)</span> of people are librarians and <span class="math inline">\(20%\)</span> are in sales.</li>
+</ul></li>
+<li>What’s the probability of randomly selecting an introvert in the US?
+<ul>
+<li>“Introversion” is loosely defined, so let’s say <span class="math inline">\(25%\)</span> of people are introverts.</li>
+</ul></li>
+<li>What are the likelihoods of introverts given the library position? What about given the sales position?
+<ul>
+<li>Let’s say the likelhood of introversion of a librarian is 0.8 and for a sales person it’s 0.01.</li>
+</ul></li>
+<li>Use Bayes’ Theorem to calculate the probability that Paul is a librarian.</li>
+<li>Use Bayes’ Theorem to calculate the probability that Paul is a sales person.</li>
+<li>Which is more likely? And how many times more?</li>
+</ul></li>
+<li><p>Suppose you additionally learn that Paul also has an undergraduate degree. Should you be more confident that Paul is a librarian or in sales?</p>
+<ul>
+<li>State what, if anything, you can use from the previous calculations.</li>
+<li>What information do you need to collect to answer this question?</li>
+<li>Collect some rough estimates of the information you need like we did in the above question about Paul being an introvert.</li>
+<li>Again, use Bayes’ Theorem to calculate the probability that Paul is a librarian.</li>
+<li>Again, use Bayes’ Theorem to calculate the probability that Paul is a sales person.</li>
+<li>Which is more likely given that you know Paul is both introverted and has an undergraduate degree? And how many times more?</li>
+</ul></li>
+<li><p>Recall an earlier problem we faced:</p>
+<blockquote>
+<p>Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor company Guild do. A computer store buys <span class="math inline">\(40\%\)</span> of its tablets from Ixian, and <span class="math inline">\(60\%\)</span> from Guild.</p>
+</blockquote>
+<p>Use Bayes’ theorem to find <span class="math inline">\(Pr(I | D)\)</span>, the probability a tablet from this store is made by Ixian, given that it has a factory defect?</p></li>
+<li><p>Recall another problem we faced:</p>
+<blockquote>
+<p>In the city of Elizabeth, the neighbourhood of Southside has lots of chemical plants. <span class="math inline">\(2\%\)</span> of Elizabeth’s children live in Southside, and <span class="math inline">\(14\%\)</span> of those children have been exposed to toxic levels of lead. Elsewhere in the city, only <span class="math inline">\(1\%\)</span> of the children have toxic levels of exposure.</p>
+</blockquote>
+<p>Use Bayes’ theorem to find <span class="math inline">\(Pr(S | L)\)</span>, the probability that a randomly chosen child from Elizabeth who has toxic levels of lead exposure lives in Southside?</p></li>
+<li><p>The probability that Nasim will study for her test is <span class="math inline">\(4/10\)</span>. The probability that she will pass, given that she studies, is <span class="math inline">\(9/10\)</span>. The probability that she passes, given that she does not study, is <span class="math inline">\(3/10\)</span>. What is the probability that she has studied, given that she passes?</p></li>
+<li><p>At the height of flu season, roughly <span class="math inline">\(1\)</span> in every <span class="math inline">\(100\)</span> people have the flu. But some people don’t show symptoms even when they have it: only half the people who have the virus show symptoms.</p>
+<p>Flu symptoms can also be caused by other things, like colds and allergies. So about <span class="math inline">\(1\)</span> in every <span class="math inline">\(20\)</span> people who don’t have the flu still have flu-like symptoms.</p>
+<p>If someone has flu-like symptoms at the height of flu season, what is the probability that they actually have the flu?</p></li>
+<li><p>There is a room filled with two types of urns.</p>
+<ul>
+<li>Type A urns have <span class="math inline">\(30\)</span> yellow marbles, <span class="math inline">\(70\)</span> red.</li>
+<li>Type B urns have <span class="math inline">\(20\)</span> green marbles, <span class="math inline">\(80\)</span> yellow.</li>
+</ul>
+<p>The two types of urn look identical, but <span class="math inline">\(80\%\)</span> of them are Type A. You pick an urn at random and draw a marble from it at random.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability the marble will be yellow?</li>
+</ol>
+<p>Now you look at the marble: it is yellow.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>What is the probability the urn is a Type B urn, given that you drew a yellow marble?</li>
+</ol></li>
+<li><p>A company makes websites, always powered by one of three server platforms: Bulldozer, Kumquat, or Penguin. Bulldozer crashes <span class="math inline">\(1\)</span> out of every <span class="math inline">\(10\)</span> visits, Kumquat crashes <span class="math inline">\(1\)</span> in <span class="math inline">\(50\)</span> visits, and Penguin only crashes <span class="math inline">\(1\)</span> out of every <span class="math inline">\(200\)</span> visits.</p>
+<p><label for="tufte-mn-12" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-12" class="margin-toggle"><span class="marginnote"><span style="display: block;">This problem is based on Exercise 6 from p. 78 of Ian Hacking’s <em>An Introduction to Probability &amp; Inductive Logic</em>.</span></span></p>
+<p>Half of the websites are run on Bulldozer, <span class="math inline">\(30\%\)</span> are run on Kumquat, and <span class="math inline">\(20\%\)</span> are run on Penguin.</p>
+<p>You visit one of their sites for the first time and it crashes. What is the probability it was run on Penguin?</p></li>
+<li><p>You and Carlos are at a party, which means there’s a <span class="math inline">\(2/3\)</span> chance he’s been drinking. You decide to experiment to find out: you throw a tennis ball to Carlos and he misses the catch. Five minutes later you try again and he misses again. Assume the two catches are independent.</p>
+<p>When he’s sober, Carlos misses a catch only two times out of ten. When he’s been drinking, Carlos misses catches half the time.</p>
+<p>What is the probability that Carlos has been drinking, given that he missed both catches?</p></li>
+<li><p>The Queen Gertrude Hotel has two kinds of suites: singles have one bed, royal suites have three beds. There are <span class="math inline">\(80\)</span> singles and <span class="math inline">\(20\)</span> royals.</p>
+<p>In a single, the probability of bed bugs is <span class="math inline">\(1/100\)</span>. But every additional bed put in a suite doubles the chance of bed bugs.</p>
+<p>If a suite is inspected at random and bed bugs are found, what is the probability it’s a royal?</p></li>
+<li><p>Willy Wonka Chocolates Inc. makes two kinds of boxes of chocolates. The “wonk box” has four caramel chocolates and six regular chocolates. The “zonk box” has six caramel chocolates, two regular chocolates, and two mint chocolates. A third of their boxes are wonk boxes, the rest are zonk boxes. They don’t mark the boxes. The only way to tell what kind of box you’ve bought is by trying the chocolates inside. In fact, all the chocolates look the same. You can only tell the difference by tasting them. If you buy a random box, try a chocolate at random, and find that it’s caramel, what is the probability you’ve bought a wonk box?</p></li>
+<li><p>A room contains four urns. Three of them are Type X, one is Type Y. The Type X urns each contain <span class="math inline">\(3\)</span> black marbles, <span class="math inline">\(2\)</span> white marbles. The Type Y urn contains <span class="math inline">\(1\)</span> black marble, <span class="math inline">\(4\)</span> white marbles. You are going to pick an urn at random and start drawing marbles from it at random <em>without</em> replacement. What is the probability the urn is Type X if the first draw is black?</p></li>
+<li><p>Suppose I have an even mix of black and white marbles. I choose one at random without letting you see the colour, and I put it in a hat.</p>
+<p><label for="tufte-mn-13" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-13" class="margin-toggle"><span class="marginnote"><span style="display: block;">This problem was devised by Lewis Carroll, author of <em>Alices Adventures in Wonderland</em>.</span></span></p>
+<p>Then I add a second, black marble to the hat. If I draw one marble at random from the hat and it’s black, what is the probability the marble left in the hat is black?</p></li>
+<li><p>Suppose you have a test for some disease, which always comes up positive for people who have the disease: <span class="math inline">\(Pr(P | D) = 1\)</span>. The base-rate in the population for this disease is <span class="math inline">\(1\%\)</span>. How low does the false-positive rate <span class="math inline">\(Pr(P | \neg D)\)</span> have to be for the test to achieve <span class="math inline">\(95\%\)</span> reliability, i.e. to have <span class="math inline">\(Pr(D | P) = .95\)</span>?</p></li>
+<li><p>Suppose the test for some disease is perfect for people who have the disease, <span class="math inline">\(Pr(P | D) = 1\)</span>. And it’s almost perfect for people who don’t have the disease: <span class="math inline">\(Pr(\neg P | \neg D) = 98/99\)</span>. How high does the base rate have to be for the test to be <span class="math inline">\(99\%\)</span> reliable, i.e. to have <span class="math inline">\(Pr(D | P) = .99\)</span>?</p></li>
+<li><p>An urn contains <span class="math inline">\(4\)</span> marbles, either blue or green. The number of blue marbles is equally likely to be <span class="math inline">\(0, 1, 2, 3\)</span>, or <span class="math inline">\(4\)</span>. Suppose we do <span class="math inline">\(3\)</span> random draws with replacement, and the observed sequence is: blue, green, blue. What is the probability the urn contains just <span class="math inline">\(1\)</span> blue marble?</p></li>
+</ol>
 
+</div>
 </div>
 <p style="text-align: center;">
 <a href="conditional-probabilities-and-likelihoods.html"><button class="btn btn-default">Previous</button></a>
