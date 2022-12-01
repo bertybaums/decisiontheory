@@ -161,7 +161,7 @@ There is some debate about how well Jeffrey Conditionalization can accommodate u
 
 1. Suppose there are three colors of cabs and you are given the following information:
 
-    In the cab problem of the last chapter you were presented with two pieces of information: i) $80\%$ of the cabs in the city are Green, $10\%$ are Blue, and $10\% are Yellow. a) A witness identified the cab as Blue. The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the three colors $80\%$ of the time and failed $20\%$ of the time.
+    In the cab problem of the last chapter you were presented with two pieces of information: i) $80\%$ of the cabs in the city are Green, $10\%$ are Blue, and $10\%$ are Yellow. ii) A witness identified the cab as Blue. The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the three colors $80\%$ of the time and failed $20\%$ of the time.
     
     - What is the probability that the cab in the accident is Blue given the witness report?
 
@@ -169,14 +169,14 @@ There is some debate about how well Jeffrey Conditionalization can accommodate u
 
     - If a third test comes back positive, what should his confidence be that he has the disease?
     - If the third test instead came back negative, what should his confidence be?
-    - Notice that after enough positive tests, Jamey's confidence will be *higher* than the likelihood that a single test returns a positive result *given* that the person has the disease (i.e. $Pr(T|D)$$). Why is that?
+    - Notice that after enough positive tests, Jamey's confidence will be *higher* than the likelihood that a single test returns a positive result *given* that the person has the disease (i.e. $Pr(T|D)$). Why is that?
 
 2. Suppose Paul is an introvert. Should you be more confident that Paul is a librarian or in sales?
   
     - What's the base rate of librarians? What about people in sales?
-      - A brief and rough search for the US suggests that $0.05%$ of people are librarians and $20%$ are in sales.
+      - A brief and rough search for the US suggests that $0.05\%$ of people are librarians and $20\%$ are in sales.
     - What's the probability of randomly selecting an introvert in the US?
-      - "Introversion" is loosely defined, so let's say $25%$ of people are introverts.
+      - "Introversion" is loosely defined, so let's say $25\%$ of people are introverts.
     - What are the likelihoods of introverts given the library position? What about given the sales position?
       - Let's say the likelhood of introversion of a librarian is 0.8 and for a sales person it's 0.01.
     - Use Bayes' Theorem to calculate the probability that Paul is a librarian.
